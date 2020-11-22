@@ -469,3 +469,21 @@ class CfgSoundSets
 		soundShaders[] = {"ER7_Shot_SoundShader","ER7_midShot_SoundShader","ER7_distShot_SoundShader"};
 	};
 };
+
+class CfgMods
+{
+	class ER7_Mod
+	{
+		class defs
+		{
+			class worldScriptModule
+			{
+				value="";
+				files[] = 
+				{
+					"Namalsk_Weapon\GaussMk2\Scripts\4_World"
+				};
+			};
+		};
+	};
+};
