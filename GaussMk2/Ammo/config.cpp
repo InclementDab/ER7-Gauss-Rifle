@@ -24,7 +24,7 @@ class CfgVehicles
 		rotationFlags = 17;
 		weight = 300;
 		hiddenSelections[] = {"camoGround","zbytek"};
-		hiddenSelectionsTextures[] = {"CPBAmmo\50Cal\Data\50calbox.paa","CPBAmmo\50Cal\Data\50calbox.paa"};
+		//hiddenSelectionsTextures[] = {"CPBAmmo\50Cal\Data\50calbox.paa","CPBAmmo\50Cal\Data\50calbox.paa"};
 		class Resources
 		{
 			class Ammo_ER7RFW
