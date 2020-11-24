@@ -34,4 +34,10 @@ class ER7Scope: ItemOptics
 		super.OnEnergyConsumed();
 		Print("I like bacon");
 	}
+	
+	override void ShowReddot(bool state)
+	{
+		super.ShowReddot(state);
+		PrintFormat("Show reddot %1", state);
+	}
 }
