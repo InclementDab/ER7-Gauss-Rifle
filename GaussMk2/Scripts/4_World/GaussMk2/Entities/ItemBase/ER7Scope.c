@@ -1,6 +1,8 @@
 class ER7Scope: ItemOptics
 {
-	Widget test_widget;
+	protected bool m_IsEnabled;
+	
+	TextWidget test_widget;
 	
 	/*
 	override void StartPeriodicMeasurement()
@@ -27,10 +29,18 @@ class ER7Scope: ItemOptics
 	
 	override void ShowReddot(bool state)
 	{
-		if (state) {
+		if (m_IsEnabled == state) {
+			return;
+		}
+		
+		m_IsEnabled = state;
+		
+		if (m_IsEnabled) {
 			test_widget = GetGame().GetWorkspace().CreateWidgets("gui/layouts/gameplay/rangefinder_hud.layout");
 		} else {
 			test_widget.Unlink();
 		}
+		
+		test_widget.SetText("Tiny dick jimmy");
 	}
 }
