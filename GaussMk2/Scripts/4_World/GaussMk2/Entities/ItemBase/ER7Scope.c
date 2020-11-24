@@ -1,5 +1,7 @@
 class ER7Scope: ItemOptics
 {
+	Widget test_widget;
+	
 	/*
 	override void StartPeriodicMeasurement()
 	{
@@ -22,22 +24,13 @@ class ER7Scope: ItemOptics
 			delete m_RangeText;
 		}
 	}*/
-
-	override void OnWork(float consumed_energy)
-	{
-		super.OnWork(consumed_energy);
-		Print("I like bacon");
-	}
-	
-	override void OnEnergyConsumed()
-	{
-		super.OnEnergyConsumed();
-		Print("I like bacon");
-	}
 	
 	override void ShowReddot(bool state)
 	{
-		super.ShowReddot(state);
-		PrintFormat("Show reddot %1", state);
+		if (state) {
+			test_widget = GetGame().GetWorkspace().CreateWidgets("gui/layouts/gameplay/rangefinder_hud.layout");
+		} else {
+			test_widget.Unlink();
+		}
 	}
 }
