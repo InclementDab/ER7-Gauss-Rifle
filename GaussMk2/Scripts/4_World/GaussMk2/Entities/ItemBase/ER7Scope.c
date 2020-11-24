@@ -27,13 +27,31 @@ class ER7Scope: ItemOptics
 		}
 	}*/
 	
+	override void OnWorkStart()
+	{
+		super.OnWorkStart();
+		Print("WorkStart");
+	}
+	
+	override void OnWorkStop()
+	{
+		super.OnWorkStop();
+		Print("WorkStop");
+	}
+	
 	override void ShowReddot(bool state)
 	{
+		
+		Print("ShowReddot");
 		if (m_IsEnabled == state) {
 			return;
 		}
 		
 		m_IsEnabled = state;
+		
+		if (test_widget) {
+			test_widget.Unlink();
+		}
 		
 		if (m_IsEnabled) {
 			test_widget = GetGame().GetWorkspace().CreateWidgets("gui/layouts/gameplay/rangefinder_hud.layout");
