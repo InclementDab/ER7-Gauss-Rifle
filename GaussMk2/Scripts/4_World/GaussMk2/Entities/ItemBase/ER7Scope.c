@@ -1,5 +1,6 @@
-class ER7Scope: Rangefinder
+class ER7Scope: ItemOptics
 {
+	/*
 	override void StartPeriodicMeasurement()
 	{
 		if (!m_Timer) {
@@ -20,5 +21,12 @@ class ER7Scope: Rangefinder
 		if (m_RangeText) {
 			delete m_RangeText;
 		}
+	}*/
+
+	override void OnWork(float consumed_energy)
+	{
+		super.OnWork(consumed_energy);
+		Print("I like bacon");
+		
 	}
 }
