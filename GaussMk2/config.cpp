@@ -10,6 +10,34 @@ class CfgPatches
 		ammo[] = {};
 	};
 };
+
+class CfgMods
+{
+	class ER7_Mod
+	{
+		name = "ER7 Scripts";
+		dir = "Namalsk_Weapon";
+		credits = "InclementDab & ChrisPBacon";
+		author = "InclementDab & ChrisPBacon";
+		type = "mod";
+		dependencies[] =
+		{
+			"World"
+		};
+		class defs
+		{
+			class worldScriptModule
+			{
+				value="";
+				files[] = 
+				{
+					"Namalsk_Weapon\GaussMk2\Scripts\4_World"
+				};
+			};
+		};
+	};
+};
+
 class Mode_Safe;
 class Mode_SemiAuto;
 class cfgWeapons
@@ -467,32 +495,5 @@ class CfgSoundSets
 	class ER7_Shot_SoundSet: Rifle_Shot_Base_SoundSet
 	{
 		soundShaders[] = {"ER7_Shot_SoundShader","ER7_midShot_SoundShader","ER7_distShot_SoundShader"};
-	};
-};
-
-class CfgMods
-{
-	class ER7_Mod
-	{
-		name = "ER7 Scripts";
-		dir = "Namalsk_Weapon";
-		credits = "InclementDab & ChrisPBacon";
-		author = "InclementDab & ChrisPBacon";
-		type = "mod";
-		dependencies[] =
-		{
-			"World"
-		};
-		class defs
-		{
-			class worldScriptModule
-			{
-				value="";
-				files[] = 
-				{
-					"Namalsk_Weapon\GaussMk2\Scripts\4_World"
-				};
-			};
-		};
 	};
 };
