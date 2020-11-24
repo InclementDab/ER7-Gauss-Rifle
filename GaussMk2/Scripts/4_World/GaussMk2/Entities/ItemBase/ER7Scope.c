@@ -27,6 +27,11 @@ class ER7Scope: ItemOptics
 	{
 		super.OnWork(consumed_energy);
 		Print("I like bacon");
-		
+	}
+	
+	override void OnEnergyConsumed()
+	{
+		super.OnEnergyConsumed();
+		Print("I like bacon");
 	}
 }
