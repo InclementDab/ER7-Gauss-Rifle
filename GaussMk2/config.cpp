@@ -474,6 +474,15 @@ class CfgMods
 {
 	class ER7_Mod
 	{
+		name = "ER7 Scripts";
+		dir = "Namalsk_Weapon";
+		credits = "InclementDab & ChrisPBacon";
+		author = "InclementDab & ChrisPBacon";
+		type = "mod";
+		dependencies[] =
+		{
+			"World"
+		};
 		class defs
 		{
 			class worldScriptModule
