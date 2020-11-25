@@ -91,7 +91,7 @@ class cfgVehicles
 			useModelOptics = 1;
 			memoryPointCamera = "eyeScope";
 			cameraDir = "cameraDir";
-			//modelOptics = "-";
+			modelOptics = "Namalsk_Weapon\GaussMk2\Scope\ER7Ret.p3d";
 			opticsDisablePeripherialVision = 0.67;
 			opticsFlare = 1;
 			opticsPPEffects[] = {"OpticsCHAbera3","OpticsBlur1"};
