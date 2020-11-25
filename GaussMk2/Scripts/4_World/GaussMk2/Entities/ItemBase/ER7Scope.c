@@ -63,7 +63,7 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		// Set ALT
 		alt_base.SetText(string.Format("ALT: %1", Math.Round(contact_pos[1])));
 		
-		float ang = Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]);
+		float ang = Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]) * Math.RAD2DEG;
 		
 		// Set ANG
 		ang_base.SetText(string.Format("ANG: %1", Math.Round(ang)));
