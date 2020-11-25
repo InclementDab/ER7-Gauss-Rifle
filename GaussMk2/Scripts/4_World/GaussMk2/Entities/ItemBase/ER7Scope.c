@@ -4,33 +4,58 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	protected Widget m_LayoutRoot;
 	
 	protected TextWidget range_text;
-		
+	protected ImageWidget contact_image;
+	
+	protected ref Timer m_Timer;
+	
 	void ER7ScopeLayoutHandler()
 	{
 		Print("ER7ScopeLayoutHandler");
-
+		m_Timer = new Timer(CALL_CATEGORY_GUI);		
+		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
 	void ~ER7ScopeLayoutHandler()
 	{	
 		Print("~ER7ScopeLayoutHandler");
+		m_Timer.Stop();
+		delete m_Timer;
 	}
 	
 	void OnWidgetScriptInit(Widget w)
 	{
+		Print("init");
 		m_LayoutRoot = w;
 		m_LayoutRoot.SetHandler(this);
 	}
 	
-	void UpdateHud(array<ref RaycastRVResult> raycast_result)
-	{
-		range_text.SetText("RNG MAX");
-		if (raycast_result.Count() > 0) {
-			float distance = vector.Distance(GetGame().GetCurrentCameraPosition(), raycast_result[0].pos);
-			distance = Math.Round(distance);
 		
-			// Set Range
-			range_text.SetText(distance.ToString()); 
+	void UpdateHud()
+	{
+		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
+			return;
+		}
+		
+		vector begin = GetGame().GetCurrentCameraPosition();
+		vector end = begin + (GetGame().GetCurrentCameraDirection() * 1000);
+		vector contact_pos, contact_dir;
+		int contact_component;
+		set<Object> results = new set<Object>();
+		
+		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, GetGame().GetPlayer(), false, false);
+		
+		float distance = vector.Distance(begin, contact_pos);
+		distance = Math.Round(distance);
+		
+		// Set Range
+		range_text.SetText(distance.ToString()); 
+		
+		// Set Human Detection
+		contact_image.Show(false);
+		foreach (Object result: results) {
+			if (result.IsAlive() && result.IsMan()) {
+				contact_image.Show(true);
+			}
 		}
 	}
 }
@@ -40,57 +65,19 @@ class ER7Scope: ItemOptics
 {
 	protected bool m_IsEnabled;	
 	protected Widget m_ScopeWidget;
-	protected ER7ScopeLayoutHandler m_ER7ScopeLayoutHandler;
-	
-	protected ref Timer m_Timer;
 	
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
+		Print("WorkStart");
 		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
-		m_ScopeWidget.GetScript(m_ER7ScopeLayoutHandler);
-		
-		
-		m_Timer = new Timer(CALL_CATEGORY_GUI);		
-		m_Timer.Run(0.1, this, "UpdateHud", null, true);
-		
+		Print(m_ScopeWidget);
 	}
-	
-	void UpdateHud()
-	{
-		
-		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
-			return;
-		}
-		
-		RaycastRVParams raycast_params(GetGame().GetCurrentCameraPosition(), GetGame().GetCurrentCameraPosition() + (GetGame().GetCurrentCameraDirection() * 1000), GetGame().GetPlayer());
-				
-		array<ref RaycastRVResult> raycast_results = {};
-		DayZPhysics.RaycastRVProxy(raycast_params, raycast_results);
-		
-		// Set Human Detection
-		SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), false);
-		foreach (RaycastRVResult result: raycast_results) {
-			if (result.obj.IsAlive() && result.obj.IsMan()) {
-				SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), true);
-			}
-		}
-		
-		if (m_ER7ScopeLayoutHandler) {
-			m_ER7ScopeLayoutHandler.UpdateHud(raycast_results);
-		}	
-	}
-		
 	
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();
-		
-		if (m_Timer) {
-			m_Timer.Stop();
-			delete m_Timer;
-		}
-		
+		Print("OnWorkStop");
 		if (m_ScopeWidget) {
 			m_ScopeWidget.Unlink();
 		}
