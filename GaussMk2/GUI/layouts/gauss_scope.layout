@@ -27,9 +27,10 @@ FrameWidgetClass root_widget {
    "text halign" center
   }
   ImageWidgetClass contact_image {
-   visible 0
+   visible 1
    ignorepointer 1
-   size 1000 565
+   position 0 0
+   size 112 112
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -39,6 +40,8 @@ FrameWidgetClass root_widget {
    imageTexture "{F78D7F6DA12F296C}Namalsk_Weapon/GaussMk2/Scope/Data/Circle.edds"
    mode blend
    "src alpha" 1
+   "no wrap" 1
+   stretch 0
   }
   WrapSpacerWidgetClass scope_data {
    ignorepointer 1
