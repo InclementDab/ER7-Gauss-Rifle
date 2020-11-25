@@ -2,7 +2,10 @@
 class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
 	protected Widget m_LayoutRoot;
+	
 	protected TextWidget range_text;
+	protected TextWidget contact_text;
+	
 	protected ref Timer m_Timer;
 	
 	void ER7ScopeLayoutHandler()
@@ -29,8 +32,6 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		
 	void UpdateHud()
 	{
-		Print("UpdateHud");
-		Print(range_text);
 		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			return;
 		}
@@ -39,14 +40,21 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		vector end = begin + (GetGame().GetCurrentCameraDirection() * 1000);
 		vector contact_pos, contact_dir;
 		int contact_component;
+		set<Object> results = new set<Object>();
 		
-		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, null, null, GetGame().GetPlayer(), false, false, ObjIntersectIFire);
+		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, GetGame().GetPlayer(), false, false);
 		
 		float distance = vector.Distance(begin, contact_pos);
 		distance = Math.Round(distance);
 		
-		range_text.SetText("tiny pp");
 		range_text.SetText(distance.ToString()); 
+		
+		contact_text.SetText("False");
+		foreach (Object result: results) {
+			if (result.IsAlive() && result.IsMan()) {
+				contact_text.SetText("True");
+			}
+		}
 	}
 }
 

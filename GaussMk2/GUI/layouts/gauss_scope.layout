@@ -13,34 +13,41 @@ FrameWidgetClass root_widget {
  {
   TextWidgetClass range_text {
    ignorepointer 1
-   position 357.41602 538.75897
-   size 105.84 48
+   position 620 0.475
+   size 100 0.05
    hexactpos 1
-   vexactpos 1
+   vexactpos 0
    hexactsize 1
-   vexactsize 1
+   vexactsize 0
    font "gui/fonts/Metron"
    "text color" 0.5608 0.0706 0.4392 1
   }
   ImageWidgetClass ImageWidget0 {
    visible 0
    ignorepointer 1
-   position 0 20.2438
-   size 1 1
+   position 0 0
+   size 1024 1024
    halign center_ref
    valign center_ref
    hexactpos 1
    vexactpos 1
-   hexactsize 0
-   vexactsize 0
+   hexactsize 1
+   vexactsize 1
    imageTexture "{29B106924CA41952}Namalsk_Weapon/GaussMk2/Scope/Data/ER7Ret.edds"
    mode blend
    "src alpha" 1
-   stretch 1
+   "no wrap" 1
+   stretch 0
+   nocache 0
   }
- }
- {
-  ScriptParamsClass {
+  TextWidgetClass contact_text {
+   ignorepointer 1
+   position 1109.62 517.41602
+   size 214.34399 48
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
   }
  }
 }
