@@ -2,7 +2,7 @@ class ER7Scope: ItemOptics
 {
 	protected bool m_IsEnabled;
 	
-	protected TextWidget m_ScopeWidget;
+	protected Widget m_ScopeWidget;
 	
 	protected ref Timer m_Timer;
 		
@@ -10,7 +10,7 @@ class ER7Scope: ItemOptics
 	{
 		super.OnWorkStart();
 		
-		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("gui/layouts/gameplay/rangefinder_hud.layout");
+		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GUI/layouts/gauss_scope.layout");
 		
 		
 		if (!m_Timer) {
@@ -24,7 +24,6 @@ class ER7Scope: ItemOptics
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();
-
 
 		if (m_ScopeWidget) {
 			m_ScopeWidget.Unlink();
