@@ -13,7 +13,8 @@ FrameWidgetClass root_widget {
  {
   TextWidgetClass range_text {
    ignorepointer 1
-   position 620 0.475
+   color 0.502 0 0.3765 1
+   position 589.23706 0.48196
    size 100 0.05
    hexactpos 1
    vexactpos 0
@@ -42,7 +43,7 @@ FrameWidgetClass root_widget {
   }
   TextWidgetClass contact_text {
    ignorepointer 1
-   position 1109.62 517.41602
+   position 1113.15002 479.733
    size 214.34399 48
    hexactpos 1
    vexactpos 1
