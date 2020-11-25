@@ -14,23 +14,24 @@ FrameWidgetClass root_widget {
   TextWidgetClass range_text {
    ignorepointer 1
    color 1 0 0.1608 1
-   position -337.396 0.00919
-   size 100 0.05
+   position -334.52499 0.00983
+   size 100 0.03422
    halign center_ref
    valign center_ref
    hexactpos 1
    vexactpos 0
    hexactsize 1
    vexactsize 0
-   font "gui/fonts/Metron"
+   text "1000"
+   font "gui/fonts/MetronLight"
    "text color" 0.5608 0.0706 0.4392 1
    "text halign" center
   }
   ImageWidgetClass contact_marker {
-   visible 0
+   visible 1
    ignorepointer 1
-   position 215.008 185.237
-   size 32 32
+   position 236.284 182.94798
+   size 20 20
    halign center_ref
    valign center_ref
    hexactpos 1
