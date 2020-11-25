@@ -1,5 +1,6 @@
 FrameWidgetClass root_widget {
- position 0 0
+ visible 1
+ position 0 -0.26463
  size 1 1
  halign center_ref
  valign center_ref
@@ -10,12 +11,30 @@ FrameWidgetClass root_widget {
  {
   TextWidgetClass range_text {
    ignorepointer 1
-   position 355.034 489.539
-   size 48 48
+   position 357.41602 538.75897
+   size 105.84 48
    hexactpos 1
    vexactpos 1
    hexactsize 1
    vexactsize 1
+   font "gui/fonts/Metron"
+   "text color" 0.5608 0.0706 0.4392 1
+  }
+  ImageWidgetClass ImageWidget0 {
+   visible 0
+   ignorepointer 1
+   position 0 20.2438
+   size 1 1
+   halign center_ref
+   valign center_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 0
+   imageTexture "{29B106924CA41952}Namalsk_Weapon/GaussMk2/Scope/Data/ER7Ret.edds"
+   mode blend
+   "src alpha" 1
+   stretch 1
   }
  }
 }

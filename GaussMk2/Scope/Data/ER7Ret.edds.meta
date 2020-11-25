@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{29B106924CA41952}Namalsk_Weapon/GaussMk2/Scope/Data/ER7Ret.edds"
+ Author "desktop-jkk61tg"
+ ChangeDate 1355295097
+ Configurations {
+  PAAResourceClass PC {
+   SourceFile "ER7Ret.paa"
+  }
+  PAAResourceClass XBOX_ONE : PC {
+  }
+  PAAResourceClass PS4 : PC {
+  }
+  PAAResourceClass LINUX : PC {
+  }
+ }
+}
