@@ -46,7 +46,7 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		distance = Math.Round(distance);
 		
 		range_text.SetText("tiny pp");
-		//range_text.SetText(distance.ToString()); 
+		range_text.SetText(distance.ToString()); 
 	}
 }
 

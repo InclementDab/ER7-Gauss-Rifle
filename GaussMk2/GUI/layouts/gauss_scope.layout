@@ -8,6 +8,7 @@ FrameWidgetClass root_widget {
  vexactpos 1
  hexactsize 0
  vexactsize 0
+ scriptclass "ER7ScopeLayoutHandler"
  {
   TextWidgetClass range_text {
    ignorepointer 1
@@ -35,6 +36,10 @@ FrameWidgetClass root_widget {
    mode blend
    "src alpha" 1
    stretch 1
+  }
+ }
+ {
+  ScriptParamsClass {
   }
  }
 }
