@@ -29,8 +29,8 @@ FrameWidgetClass root_widget {
   ImageWidgetClass ImageWidget0 {
    visible 0
    ignorepointer 1
-   position 0 0
-   size 1024 1024
+   position 219.14301 10.7496
+   size 1961.7699 1412.66992
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -52,6 +52,53 @@ FrameWidgetClass root_widget {
    vexactpos 1
    hexactsize 1
    vexactsize 1
+  }
+  TextWidgetClass evr_text {
+   ignorepointer 1
+   position 1344.96997 728.401
+   size 57.9234 28.1531
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "blah"
+   font "gui/fonts/MetronBlack16"
+  }
+  TextWidgetClass evr_base {
+   ignorepointer 1
+   position 1278.63 726.90002
+   size 61.2312 28.1531
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "EVR:"
+   font "gui/fonts/MetronBlack16"
+   "text halign" center
+  }
+  TextWidgetClass el_base {
+   ignorepointer 1
+   position 1275.05005 757.24597
+   size 66.19289 26.4993
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "ELV:"
+   font "gui/fonts/MetronBlack16"
+   "text halign" center
+  }
+  TextWidgetClass el_text {
+   ignorepointer 1
+   position 1340.51001 757.59204
+   size 66.19289 26.4993
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "high"
+   font "gui/fonts/MetronBlack16"
+   "text halign" center
   }
  }
 }
