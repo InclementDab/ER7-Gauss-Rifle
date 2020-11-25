@@ -4,7 +4,7 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	protected Widget m_LayoutRoot;
 	
 	protected TextWidget range_text;
-	protected TextWidget contact_text;
+	protected ImageWidget contact_image;
 	
 	protected ref Timer m_Timer;
 	
@@ -47,12 +47,14 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		float distance = vector.Distance(begin, contact_pos);
 		distance = Math.Round(distance);
 		
+		// Set Range
 		range_text.SetText(distance.ToString()); 
 		
-		contact_text.SetText("False");
+		// Set Human Detection
+		contact_image.Show(false);
 		foreach (Object result: results) {
 			if (result.IsAlive() && result.IsMan()) {
-				contact_text.SetText("True");
+				contact_image.Show(true);
 			}
 		}
 	}

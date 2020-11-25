@@ -26,79 +26,58 @@ FrameWidgetClass root_widget {
    "text color" 0.5608 0.0706 0.4392 1
    "text halign" center
   }
-  ImageWidgetClass ImageWidget0 {
+  ImageWidgetClass contact_image {
    visible 0
    ignorepointer 1
-   position 219.14301 10.7496
-   size 1961.7699 1412.66992
+   size 1000 565
    halign center_ref
    valign center_ref
    hexactpos 1
    vexactpos 1
    hexactsize 1
    vexactsize 1
-   imageTexture "{29B106924CA41952}Namalsk_Weapon/GaussMk2/Scope/Data/ER7Ret.edds"
+   imageTexture "{F78D7F6DA12F296C}Namalsk_Weapon/GaussMk2/Scope/Data/Circle.edds"
    mode blend
    "src alpha" 1
-   "no wrap" 1
-   stretch 0
-   nocache 0
   }
-  TextWidgetClass contact_text {
+  WrapSpacerWidgetClass scope_data {
    ignorepointer 1
-   position 1113.15002 479.733
-   size 214.34399 48
-   hexactpos 1
-   vexactpos 1
-   hexactsize 1
-   vexactsize 1
-  }
-  TextWidgetClass evr_text {
-   ignorepointer 1
-   position 1344.96997 728.401
-   size 57.9234 28.1531
-   hexactpos 1
-   vexactpos 1
-   hexactsize 1
-   vexactsize 1
-   text "blah"
-   font "gui/fonts/MetronBlack16"
-  }
-  TextWidgetClass evr_base {
-   ignorepointer 1
-   position 1278.63 726.90002
-   size 61.2312 28.1531
-   hexactpos 1
-   vexactpos 1
-   hexactsize 1
-   vexactsize 1
-   text "EVR:"
-   font "gui/fonts/MetronBlack16"
-   "text halign" center
-  }
-  TextWidgetClass el_base {
-   ignorepointer 1
-   position 1275.05005 757.24597
-   size 66.19289 26.4993
-   hexactpos 1
-   vexactpos 1
-   hexactsize 1
-   vexactsize 1
-   text "ELV:"
-   font "gui/fonts/MetronBlack16"
-   "text halign" center
-  }
-  TextWidgetClass el_text {
-   ignorepointer 1
-   position 1340.51001 757.59204
-   size 66.19289 26.4993
-   hexactpos 1
-   vexactpos 1
-   hexactsize 1
-   vexactsize 1
-   text "high"
-   font "gui/fonts/MetronBlack16"
-   "text halign" center
+   position 0.65 0.65
+   size 0.1 0.044
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   Padding 0
+   Margin 0
+   "Size To Content H" 1
+   {
+    TextWidgetClass evr_base {
+     ignorepointer 1
+     color 1 0 0.1608 1
+     position 0.65 0.65
+     size 1 20
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     text "ALT:"
+     font "gui/fonts/Metron16"
+     "text color" 1 0 0.1608 1
+    }
+    TextWidgetClass el_base {
+     ignorepointer 1
+     color 1 0 0.1608 1
+     position 0.65 0.65
+     size 1 20
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     text "ANG:"
+     font "gui/fonts/Metron16"
+    }
+   }
   }
  }
 }
