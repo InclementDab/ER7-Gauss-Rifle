@@ -1,7 +1,7 @@
 MetaFileClass {
  Name "{F78D7F6DA12F296C}Namalsk_Weapon/GaussMk2/Scope/Data/Circle.edds"
  Author "desktop-jkk61tg"
- ChangeDate 461678969
+ ChangeDate 1668098425
  Configurations {
   PNGResourceClass PC {
    SourceFile "Circle.png"
