@@ -1,5 +1,6 @@
 FrameWidgetClass root_widget {
  visible 1
+ ignorepointer 1
  position 0 -0.26463
  size 1 1
  halign center_ref
