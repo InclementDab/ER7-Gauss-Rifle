@@ -37,15 +37,19 @@ class ER7Scope: ItemOptics
 	
 	void UpdateHud()
 	{
+		if (!GetGame().IsClient()) {
+			return;
+		}
+		
 		vector begin = GetGame().GetCurrentCameraPosition();
-		vector end = GetGame().GetCurrentCameraPosition() + GetGame().GetCurrentCameraDirection() * 1000;
+		vector end = begin + (GetGame().GetCurrentCameraDirection() * 1000);
 		vector contact_pos, contact_dir;
 		int contact_component;
 		
-		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component);
+		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, null, null, GetGame().GetPlayer(), false, false, ObjIntersectIFire);
 		
 		float distance = vector.Distance(begin, contact_pos);
-		Print(distance);
+		distance = Math.Round(distance);
 		
 		if (m_ScopeWidget) {
 			m_ScopeWidget.SetText(distance.ToString());
