@@ -14,14 +14,17 @@ FrameWidgetClass root_widget {
   TextWidgetClass range_text {
    ignorepointer 1
    color 0.502 0 0.3765 1
-   position 589.23706 0.48196
+   position -337.396 0.00919
    size 100 0.05
+   halign center_ref
+   valign center_ref
    hexactpos 1
    vexactpos 0
    hexactsize 1
    vexactsize 0
    font "gui/fonts/Metron"
    "text color" 0.5608 0.0706 0.4392 1
+   "text halign" center
   }
   ImageWidgetClass ImageWidget0 {
    visible 0
