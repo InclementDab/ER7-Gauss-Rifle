@@ -37,7 +37,7 @@ class ER7Scope: ItemOptics
 	
 	void UpdateHud()
 	{
-		if (!GetGame().IsClient()) {
+		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			return;
 		}
 		
