@@ -7,6 +7,8 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	protected TextWidget alt_base;
 	protected TextWidget ang_base;
 	
+	protected ImageWidget contact_marker;
+	
 	protected ref Timer m_Timer;
 	
 	void ER7ScopeLayoutHandler()
@@ -59,10 +61,20 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		vector player_ori = player.GetDirection();
 		
 		// Set ALT
-		alt_base.SetText(string.Format("ALT: %1", Math.Round(player_pos[1])));
+		alt_base.SetText(string.Format("ALT: %1", Math.Round(contact_pos[1])));
+		
+		float ang = Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]);
 		
 		// Set ANG
-		ang_base.SetText(string.Format("ANG: %1", Math.Round(player_ori[1])));
+		ang_base.SetText(string.Format("ANG: %1", Math.Round(ang)));
+		
+		// Set Human Detection
+		contact_marker.Show(false);
+		foreach (Object result: results) {
+			if (result.IsAlive() && result.IsMan()) {
+				contact_marker.Show(true);
+			}
+		}
 	}
 }
 
@@ -71,43 +83,16 @@ class ER7Scope: ItemOptics
 	protected bool m_IsEnabled;	
 	protected Widget m_ScopeWidget;
 	
-	protected ref Timer m_Timer;
-	
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
 		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
-		
-		m_Timer = new Timer(CALL_CATEGORY_GUI);		
-		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
-	void UpdateHud()
-	{
-		vector begin = GetGame().GetCurrentCameraPosition();
-		vector end = begin + (GetGame().GetCurrentCameraDirection() * 1000);
-		vector contact_pos, contact_dir;
-		int contact_component;
-		set<Object> results = new set<Object>();
-		
-		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, GetGame().GetPlayer(), false, false);
-		/*		
-		// Set Human Detection
-		SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), false);
-		foreach (Object result: results) {
-			if (result.IsAlive() && result.IsMan()) {
-				SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), true);
-			}
-		}*/
-	}
-	
+
 	override void OnWorkStop()
 	{
-		super.OnWorkStop();
-		
-		m_Timer.Stop();
-		delete m_Timer;
-		
+		super.OnWorkStop();		
 		if (m_ScopeWidget) {
 			m_ScopeWidget.Unlink();
 		}
