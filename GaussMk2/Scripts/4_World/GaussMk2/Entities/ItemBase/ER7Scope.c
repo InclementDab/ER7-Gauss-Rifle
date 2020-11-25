@@ -1,13 +1,14 @@
 
 class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
+	protected Widget m_LayoutRoot;
 	protected TextWidget range_text;
 	protected ref Timer m_Timer;
 	
 	void ER7ScopeLayoutHandler()
 	{
 		Print("ER7ScopeLayoutHandler");
-		m_Timer = new Timer(CALL_CATEGORY_GAMEPLAY);		
+		m_Timer = new Timer(CALL_CATEGORY_GUI);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
@@ -16,6 +17,13 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		Print("~ER7ScopeLayoutHandler");
 		m_Timer.Stop();
 		delete m_Timer;
+	}
+	
+	void OnWidgetScriptInit(Widget w)
+	{
+		Print("init");
+		m_LayoutRoot = w;
+		m_LayoutRoot.SetHandler(this);
 	}
 	
 		
@@ -37,7 +45,8 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		float distance = vector.Distance(begin, contact_pos);
 		distance = Math.Round(distance);
 		
-		range_text.SetText(distance.ToString()); 
+		range_text.SetText("tiny pp");
+		//range_text.SetText(distance.ToString()); 
 	}
 }
 
@@ -52,7 +61,6 @@ class ER7Scope: ItemOptics
 		super.OnWorkStart();
 		
 		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
-		m_ScopeWidget.SetHandler(new ER7ScopeLayoutHandler());
 	}
 	
 	override void OnWorkStop()
