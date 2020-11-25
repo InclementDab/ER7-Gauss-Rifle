@@ -26,22 +26,22 @@ FrameWidgetClass root_widget {
    "text color" 0.5608 0.0706 0.4392 1
    "text halign" center
   }
-  ImageWidgetClass contact_image {
+  ImageWidgetClass contact_marker {
    visible 0
    ignorepointer 1
-   position 0 0
-   size 112 112
+   position 215.008 185.237
+   size 32 32
    halign center_ref
    valign center_ref
    hexactpos 1
    vexactpos 1
    hexactsize 1
    vexactsize 1
-   imageTexture "{F78D7F6DA12F296C}Namalsk_Weapon/GaussMk2/Scope/Data/Circle.edds"
+   imageTexture "{464405743C00CC31}Namalsk_Weapon/GaussMk2/Scope/Data/contact_marker.edds"
    mode blend
    "src alpha" 1
    "no wrap" 1
-   stretch 0
+   stretch 1
   }
   WrapSpacerWidgetClass scope_data {
    ignorepointer 1

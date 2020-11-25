@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{464405743C00CC31}Namalsk_Weapon/GaussMk2/Scope/Data/contact_marker.edds"
+ Author "desktop-jkk61tg"
+ ChangeDate 126708089
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "contact_marker.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
