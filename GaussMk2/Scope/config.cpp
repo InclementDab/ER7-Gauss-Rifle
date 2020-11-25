@@ -30,7 +30,7 @@ class cfgVehicles
 		simulation = "itemoptics";
 		dispersionModifier = -0.000125;
 		dispersionCondition = "true";
-		recoilModifier[] = {0.001,0.001,0.001};
+		//recoilModifier[] = {0.001,0.001,0.001};
 		memoryPointCamera = "eyeScope";
 		cameraDir = "cameraDir";
 		class DamageSystem
