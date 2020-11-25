@@ -1,4 +1,15 @@
 
+
+class NM_Bloodsucker: ZombieMaleBase
+{
+	void NM_Bloodsucker()
+	{
+		Print(GetHiddenSelectionIndex("camo"));
+		SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("camo"), false);
+	}
+}
+
+
 class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
 	protected Widget m_LayoutRoot;
