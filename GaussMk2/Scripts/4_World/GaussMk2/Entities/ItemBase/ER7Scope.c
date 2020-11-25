@@ -61,6 +61,7 @@ class ER7Scope: ItemOptics
 		super.OnWorkStart();
 		
 		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
+		Print(m_ScopeWidget);
 	}
 	
 	override void OnWorkStop()
