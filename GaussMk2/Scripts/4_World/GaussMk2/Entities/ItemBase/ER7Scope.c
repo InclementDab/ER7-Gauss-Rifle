@@ -4,7 +4,8 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	protected Widget m_LayoutRoot;
 	
 	protected TextWidget range_text;
-	protected ImageWidget contact_image;
+	protected TextWidget alt_base;
+	protected TextWidget ang_base;
 	
 	protected ref Timer m_Timer;
 	
@@ -24,7 +25,6 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	
 	void OnWidgetScriptInit(Widget w)
 	{
-		Print("init");
 		m_LayoutRoot = w;
 		m_LayoutRoot.SetHandler(this);
 	}
@@ -35,24 +35,36 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			return;
 		}
-		
+	
+		PlayerBase player = GetGame().GetPlayer();
+		if (!player) {
+			return;
+		}
+			
 		vector begin = GetGame().GetCurrentCameraPosition();
-		vector end = begin + (GetGame().GetCurrentCameraDirection() * 1000);
+		vector end = begin + (GetGame().GetCurrentCameraDirection() * 2500);
 		vector contact_pos, contact_dir;
 		int contact_component;
 		set<Object> results = new set<Object>();
 		
-		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, GetGame().GetPlayer(), false, false);
+		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, player, false, false);
 		
 		float distance = vector.Distance(begin, contact_pos);
 		distance = Math.Round(distance);
 		
 		// Set Range
 		range_text.SetText(distance.ToString()); 
-
+		
+		vector player_pos = player.GetPosition();
+		vector player_ori = player.GetDirection();
+		
+		// Set ALT
+		alt_base.SetText(string.Format("ALT: %1", Math.Round(player_pos[1])));
+		
+		// Set ANG
+		ang_base.SetText(string.Format("ANG: %1", Math.Round(player_ori[1])));
 	}
 }
-
 
 class ER7Scope: ItemOptics
 {
@@ -79,21 +91,14 @@ class ER7Scope: ItemOptics
 		set<Object> results = new set<Object>();
 		
 		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, GetGame().GetPlayer(), false, false);
-				
-		Print(GetHiddenSelectionIndex("contact_marker"));
-		
-		TStringArray text = GetHiddenSelectionsTextures();
-		foreach (string t: text) {
-			Print(t);
-		}
-		
+		/*		
 		// Set Human Detection
 		SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), false);
 		foreach (Object result: results) {
 			if (result.IsAlive() && result.IsMan()) {
 				SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("contact_marker"), true);
 			}
-		}
+		}*/
 	}
 	
 	override void OnWorkStop()

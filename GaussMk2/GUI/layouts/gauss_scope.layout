@@ -27,7 +27,7 @@ FrameWidgetClass root_widget {
    "text halign" center
   }
   ImageWidgetClass contact_image {
-   visible 1
+   visible 0
    ignorepointer 1
    position 0 0
    size 112 112
@@ -55,7 +55,7 @@ FrameWidgetClass root_widget {
    Margin 0
    "Size To Content H" 1
    {
-    TextWidgetClass evr_base {
+    TextWidgetClass alt_base {
      ignorepointer 1
      color 1 0 0.1608 1
      position 0.65 0.65
@@ -68,7 +68,7 @@ FrameWidgetClass root_widget {
      font "gui/fonts/Metron16"
      "text color" 1 0 0.1608 1
     }
-    TextWidgetClass el_base {
+    TextWidgetClass ang_base {
      ignorepointer 1
      color 1 0 0.1608 1
      position 0.65 0.65
