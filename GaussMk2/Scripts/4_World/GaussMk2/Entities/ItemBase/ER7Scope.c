@@ -1,39 +1,22 @@
-class ER7Scope: ItemOptics
+
+class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
-	protected bool m_IsEnabled;
-	
-	protected Widget m_ScopeWidget;
-	
+	protected TextWidget range_text;
 	protected ref Timer m_Timer;
-		
-	override void OnWorkStart()
+	
+	void ER7ScopeLayoutHandler()
 	{
-		super.OnWorkStart();
-		
-		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GUI/layouts/gauss_scope.layout");
-		
-		
-		if (!m_Timer) {
-			m_Timer = new Timer(CALL_CATEGORY_GAMEPLAY);
-		}
-		
-		
+		m_Timer = new Timer(CALL_CATEGORY_GAMEPLAY);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
-	override void OnWorkStop()
-	{
-		super.OnWorkStop();
-
-		if (m_ScopeWidget) {
-			m_ScopeWidget.Unlink();
-		}
-		
-		if (m_Timer) {
-			m_Timer.Stop();
-		}
+	void ~ER7ScopeLayoutHandler()
+	{	
+		m_Timer.Stop();
+		delete m_Timer;
 	}
 	
+		
 	void UpdateHud()
 	{
 		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
@@ -50,8 +33,30 @@ class ER7Scope: ItemOptics
 		float distance = vector.Distance(begin, contact_pos);
 		distance = Math.Round(distance);
 		
+		range_text.SetText(distance.ToString()); 
+	}
+}
+
+
+class ER7Scope: ItemOptics
+{
+	protected bool m_IsEnabled;	
+	protected Widget m_ScopeWidget;
+	
+	override void OnWorkStart()
+	{
+		super.OnWorkStart();
+		
+		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GUI/layouts/gauss_scope.layout");
+		m_ScopeWidget.SetHandler(new ER7ScopeLayoutHandler());
+	}
+	
+	override void OnWorkStop()
+	{
+		super.OnWorkStop();
+
 		if (m_ScopeWidget) {
-			m_ScopeWidget.SetText(distance.ToString());
+			m_ScopeWidget.Unlink();
 		}
 	}
 }
