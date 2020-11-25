@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{F78D7F6DA12F296C}Namalsk_Weapon/GaussMk2/Scope/Data/Circle.edds"
+ Author "desktop-jkk61tg"
+ ChangeDate 461678969
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "Circle.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

@@ -13,7 +13,7 @@ FrameWidgetClass root_widget {
  {
   TextWidgetClass range_text {
    ignorepointer 1
-   color 0.502 0 0.3765 1
+   color 1 0 0.1608 1
    position -337.396 0.00919
    size 100 0.05
    halign center_ref

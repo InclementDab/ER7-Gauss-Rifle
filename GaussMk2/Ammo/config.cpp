@@ -83,16 +83,16 @@ class cfgAmmo
 		indirectHit = 0;
 		indirectHitRange = 0;
 		tracerScale = 1;
-		caliber = 0.5;
+		caliber = 0.65000004;
 		deflecting = 45;
 		visibleFire = 5;
 		audibleFire = 9;
-		typicalSpeed = 50000;
+		typicalSpeed = 5000;
 		airFriction = 0;
 		supersonicCrackNear[] = {};
 		supersonicCrackFar[] = {};
-		initSpeed = 50000;
-		weight = 0;
+		initSpeed = 5000;
+		weight = 0.0149;
 		class DamageApplied
 		{
 			type = "Projectile";
