@@ -6,12 +6,14 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	
 	void ER7ScopeLayoutHandler()
 	{
+		Print("ER7ScopeLayoutHandler");
 		m_Timer = new Timer(CALL_CATEGORY_GAMEPLAY);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
 	void ~ER7ScopeLayoutHandler()
 	{	
+		Print("~ER7ScopeLayoutHandler");
 		m_Timer.Stop();
 		delete m_Timer;
 	}
@@ -19,6 +21,8 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		
 	void UpdateHud()
 	{
+		Print("UpdateHud");
+		Print(range_text);
 		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			return;
 		}
