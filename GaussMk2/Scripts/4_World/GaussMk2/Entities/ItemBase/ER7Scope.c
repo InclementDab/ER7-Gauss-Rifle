@@ -5,7 +5,15 @@ class NM_Bloodsucker: ZombieMaleBase
 	void NM_Bloodsucker()
 	{
 		Print(GetHiddenSelectionIndex("camo"));
+		
 		SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("camo"), false);
+	}
+	
+	override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
+	{
+		
+		Print("Mind State: " + pInputController.GetMindState());
+		return super.HandleMindStateChange(pCurrentCommandID, pInputController, pDt);
 	}
 }
 
