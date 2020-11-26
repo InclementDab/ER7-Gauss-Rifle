@@ -78,13 +78,13 @@ class cfgAmmo
 		scope = 2;
 		lootCategory = "Crafted";
 		cartridge = "FxCartridge_9mm";
+		model = "\dz\weapons\projectiles\tracer_green.p3d";
 		spawnPileType = "Ammo_ER7RFW";
 		hit = 11;
 		indirectHit = 0;
 		indirectHitRange = 0;
-		tracerScale = 1;
 		caliber = 0.65000004;
-		deflecting = 45;
+		deflecting = 0;
 		visibleFire = 5;
 		audibleFire = 9;
 		typicalSpeed = 5000;
@@ -92,6 +92,9 @@ class cfgAmmo
 		supersonicCrackNear[] = {};
 		supersonicCrackFar[] = {};
 		initSpeed = 5000;
+		tracerScale = 2;
+		tracerStartTime = 0.075;
+		tracerEndTime = 100;
 		weight = 0.0149;
 		class DamageApplied
 		{

@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class CS_Gauss
+	class C3_Gauss
 	{
 		units[] = {};
 		weapons[] = {};
@@ -11,16 +11,16 @@ class CfgPatches
 	};
 };
 class Mode_Safe;
-class Mode_FullAuto;
+class Mode_SemiAuto;
 class cfgWeapons
 {
 	class FAL;
-	class CS_Gauss: FAL
+	class C3_Gauss: FAL
 	{
 		scope = 2;
 		absorbency = 0.1;
-		displayName = "Thing";
-		descriptionShort = "";
+		displayName = "EFW ER7 MK2";
+		descriptionShort = "Alien gun go pew pew.";
 		model = "\Namalsk_Weapon\Gauss\C3_Gauss.p3d";
 		magazines[] = {"C3_Gauss_Magazine"};
 		itemSize[] = {8,3};
@@ -30,17 +30,17 @@ class cfgWeapons
 		dexterity = 3.0;
 		discreteDistance[] = {25,50,100};
 		chamberSize = 1;
-		chamberableFrom[] = {"Ammo_12gaPellets","Ammo_12gaSlug","Ammo_12gaRubberSlug","Ammo_12gaBeanbag","Ammo_12gaPellets_tracer","Ammo_12gaNeedles","Ammo_new_12gaBuckshot5","Ammo_new_12gaExpressBuckshot6","Ammo_new_12gaBuckshot7","Ammo_new_12gaMagnumBuckshot8","Ammo_new_12gaRip","Ammo_new_12gaAP20","Ammo_new_12ga2Sabot","Ammo_new_12gaFtxCustomLIte","Ammo_new_12gaGrizzly40","Ammo_new_12gaPoleva3","Ammo_new_12gaPoleva6","Ammo_new_12ga50Bmg","Ammo_new_12gaLead","Ammo_new_12gaFlchetteS","Ammo_new_12gaSuperFormance","Ammo_new_12gaCopperSabotPremier","Ammo_new_12gaImbalanced","Ammo_new_12gaImbalancedSlug","Mag_12gaSnaploader_2Rnd"};
-		attachments[] = {};
+		attachments[] = {"weaponOptics","weaponWrap","weaponOpticsHunting"};
+		chamberableFrom[] = {"Ammo_ER7RFW"};
 		reloadAction = "ReloadM4";
-		modes[] = {"FullAuto"};
-		class FullAuto: Mode_FullAuto
+		modes[] = {"SemiAuto"};
+		class SemiAuto: Mode_SemiAuto
 		{
-			soundSetShot[] = {"ER7_Shot_SoundSet","Mosin_Tail_SoundSet","Mosin_InteriorTail_SoundSet"};
-			reloadTime = 0.12;
-			recoil = "recoil_m4";
-			recoilProne = "recoil_m4_prone";
-			dispersion = 0.0015;
+			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
+			reloadTime = 0.425;
+			recoil = "recoil_AKM";
+			recoilProne = "recoil_AKM_prone";
+			dispersion = 0.00075;
 			magazineSlot = "magazine";
 		};
 		class Particles
@@ -114,14 +114,14 @@ class CfgMagazines
 	class C3_Gauss_Magazine: Mag_AKM_30Rnd
 	{
 		scope = 2;
-		displayName = "AA-12 32Rnd Drum Magazine";
+		displayName = "EFW ER7 Magazine";
 		descriptionShort = "";
 		model = "\Namalsk_Weapon\Gauss\C3_Gauss_Magazine.p3d";
 		weight = 230;
-		itemSize[] = {3,3};
-		count = 32;
-		ammo = "Bullet_12GaugePellets";
-		ammoItems[] = {"Ammo_12gaPellets","Ammo_12gaSlug","Ammo_12gaRubberSlug","Ammo_12gaBeanbag","Ammo_12gaPellets_tracer","Ammo_12gaNeedles","Ammo_new_12gaBuckshot5","Ammo_new_12gaExpressBuckshot6","Ammo_new_12gaBuckshot7","Ammo_new_12gaMagnumBuckshot8","Ammo_new_12gaRip","Ammo_new_12gaAP20","Ammo_new_12ga2Sabot","Ammo_new_12gaFtxCustomLIte","Ammo_new_12gaGrizzly40","Ammo_new_12gaPoleva3","Ammo_new_12gaPoleva6","Ammo_new_12ga50Bmg","Ammo_new_12gaLead","Ammo_new_12gaFlchetteS","Ammo_new_12gaSuperFormance","Ammo_new_12gaCopperSabotPremier","Ammo_new_12gaImbalanced","Ammo_new_12gaImbalancedSlug"};
+		itemSize[] = {2,2};
+		count = 4;
+		ammo = "Bullet_ER7RFW";
+		ammoItems[] = {"Ammo_ER7RFW"};
 		isMeleeWeapon = 0;
 		tracersEvery = 1;
 	};
