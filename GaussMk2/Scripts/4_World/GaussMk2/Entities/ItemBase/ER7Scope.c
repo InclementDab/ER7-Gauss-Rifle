@@ -98,7 +98,7 @@ class ER7Scope: ItemOptics
 	}
 }
 
-class ER7: M4A1_Base
+class CS_Gauss: FAL_Base
 {
 	override void EEFired(int muzzleType, int mode, string ammoType)
 	{
