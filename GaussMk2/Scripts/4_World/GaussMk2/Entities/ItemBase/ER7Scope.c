@@ -112,3 +112,15 @@ class ER7: M4A1_Base
 		super.EEFired(muzzleType, mode, ammoType);
 	}
 }
+
+modded class WeaponParticlesBase
+{
+	override void OnActivate(ItemBase weapon, int muzzle_index, string ammoType, ItemBase muzzle_owner, ItemBase suppressor, string config_to_search)
+	{
+		Print("onactivate");
+		Print(weapon);
+		Print(muzzle_owner);
+		
+		super.OnActivate(weapon, muzzle_index, ammoType, muzzle_owner, suppressor, config_to_search);
+	}
+}
