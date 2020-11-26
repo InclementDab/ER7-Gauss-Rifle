@@ -1,23 +1,3 @@
-
-
-class NM_Bloodsucker: ZombieMaleBase
-{
-	void NM_Bloodsucker()
-	{
-		//Print(GetHiddenSelectionIndex("invis"));
-		
-		//SetSimpleHiddenSelectionState(GetHiddenSelectionIndex("invis"), false);
-	}
-	
-	override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
-	{
-		
-		Print("Mind State: " + pInputController.GetMindState());
-		return super.HandleMindStateChange(pCurrentCommandID, pInputController, pDt);
-	}
-}
-
-
 class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
 	protected Widget m_LayoutRoot;
@@ -115,5 +95,20 @@ class ER7Scope: ItemOptics
 		if (m_ScopeWidget) {
 			m_ScopeWidget.Unlink();
 		}
+	}
+}
+
+class ER7: M4A1_Base
+{
+	override void EEFired(int muzzleType, int mode, string ammoType)
+	{
+		Print("EEFired");
+		
+		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
+			
+			Print("Pew electric effects!");
+		}
+		
+		super.EEFired(muzzleType, mode, ammoType);
 	}
 }
