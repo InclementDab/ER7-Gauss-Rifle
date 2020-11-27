@@ -1,12 +1,12 @@
 class CfgPatches
 {
-	class C3_Gauss
+	class ER7_Gauss
 	{
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition","DZ_Weapons_Magazines"};
-		magazines[] = {"C3_Gauss_Magazine"};
+		magazines[] = {"ER7_Gauss_Magazine"};
 		ammo[] = {};
 	};
 };
@@ -15,14 +15,14 @@ class Mode_SemiAuto;
 class cfgWeapons
 {
 	class FAL;
-	class C3_Gauss: FAL
+	class ER7_Gauss: FAL
 	{
 		scope = 2;
 		absorbency = 0.1;
 		displayName = "EFW ER7 MK2";
 		descriptionShort = "Alien gun go pew pew.";
 		model = "\Namalsk_Weapon\Gauss\C3_Gauss.p3d";
-		magazines[] = {"C3_Gauss_Magazine"};
+		magazines[] = {"ER7_Gauss_Magazine"};
 		itemSize[] = {8,3};
 		repairableWithKits[] = {5,1};
 		repairCosts[] = {30,25};
@@ -30,7 +30,7 @@ class cfgWeapons
 		dexterity = 3.0;
 		discreteDistance[] = {25,50,100};
 		chamberSize = 1;
-		attachments[] = {"weaponOptics","weaponWrap","weaponOpticsHunting"};
+		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
 		chamberableFrom[] = {"Ammo_ER7RFW"};
 		reloadAction = "ReloadM4";
 		modes[] = {"SemiAuto"};
@@ -111,7 +111,7 @@ class CfgMagazines
 {
 	class Ammunition_Base;
 	class Mag_AKM_30Rnd;
-	class C3_Gauss_Magazine: Mag_AKM_30Rnd
+	class ER7_Gauss_Magazine: Mag_AKM_30Rnd
 	{
 		scope = 2;
 		displayName = "EFW ER7 Magazine";
@@ -136,5 +136,31 @@ class CfgNonAIVehicles
 		scope = 2;
 		inventorySlot = "magazine";
 		model = "\Namalsk_Weapon\Gauss\C3_Gauss_Magazine.p3d";
+	};
+};
+
+
+
+class HouseNoDestruct;
+class CfgVehicles 
+{
+	class vfx_gauss_thunderboltnorm: HouseNoDestruct
+    {
+        model = "\dz\data\data\blesk1.p3d";
+    };
+    class vfx_gauss_thunderboltheavy: HouseNoDestruct
+    {
+        model = "\dz\data\data\blesk2.p3d";
+    };
+};
+
+
+class cfgSlots
+{
+	class Slot_RailgunBattery
+	{
+		name = "RailgunBattery";
+		displayName = "RailgunBattery";
+		ghostIcon = "Battery9V";
 	};
 };

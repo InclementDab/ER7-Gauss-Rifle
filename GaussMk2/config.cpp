@@ -497,17 +497,3 @@ class CfgSoundSets
 		soundShaders[] = {"ER7_Shot_SoundShader","ER7_midShot_SoundShader","ER7_distShot_SoundShader"};
 	};
 };
-
-
-class HouseNoDestruct;
-class CfgVehicles 
-{
-	class vfx_gauss_thunderboltnorm: HouseNoDestruct
-    {
-        model = "\dz\data\data\blesk1.p3d";
-    };
-    class vfx_gauss_thunderboltheavy: HouseNoDestruct
-    {
-        model = "\dz\data\data\blesk2.p3d";
-    };
-};

@@ -1,8 +1,8 @@
 class CfgPatches
 {
-	class ER7Scope
+	class ER7_Scope
 	{
-		units[] = {"ER7Scope"};
+		units[] = {"ER7_Scope"};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"DZ_Data","DZ_Weapons_Optics"};
 		weapons[] = {};
@@ -11,7 +11,7 @@ class CfgPatches
 class cfgVehicles
 {
 	class ItemOptics;
-	class ER7Scope: ItemOptics
+	class ER7_Scope: ItemOptics
 	{
 		scope = 2;
 		displayName = "ER7 SCOPE THING DONT HAVE A NAME YET REEEEEEEEEEE";
