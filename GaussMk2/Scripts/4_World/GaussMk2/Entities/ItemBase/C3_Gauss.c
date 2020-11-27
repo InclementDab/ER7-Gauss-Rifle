@@ -21,6 +21,12 @@ class ER7_Gauss: FAL_Base
 		
 	}
 	
+	override bool JamCheck(int muzzleIndex)
+	{ 
+		bool jam_check = false;
+		return (super.JamCheck(muzzleIndex) && jam_check);
+	}
+	
 	override bool CanFire()
 	{
 		bool has_energy = false;
@@ -47,15 +53,5 @@ class ER7_Gauss: FAL_Base
 		bolt.SetScale(scale);
 		Sleep(25);
 		GetGame().ObjectDelete(bolt);
-	}
-}
-
-
-modded class WeaponFSM
-{
-	protected override bool Internal_ValidateAndRepair()
-	{
-		Print("AHAHAHA");
-		return false;
 	}
 }
