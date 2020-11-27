@@ -1,6 +1,6 @@
 static const ref array<string> GAUSS_LIGHTNING_BOLT_TYPES = { "vfx_gauss_thunderboltnorm", "vfx_gauss_thunderboltheavy" };
 
-class C3_Gauss: FAL_Base
+class ER7_Gauss: FAL_Base
 {
 	override void EEFired(int muzzleType, int mode, string ammoType)
 	{
@@ -19,6 +19,23 @@ class C3_Gauss: FAL_Base
 			Print("Pew electric effects!");
 		}
 		
+	}
+	
+	override bool CanFire()
+	{
+		bool has_energy = false;
+		
+		Print(GetGame().IsClient());
+		Print(GetGame().IsServer());
+		
+		Print(GetCompEM());
+		if (GetCompEM().GetEnergySource() && GetCompEM().GetEnergySource().GetCompEM()) {
+			Print(GetCompEM().GetEnergySource().GetCompEM().GetEnergy());
+		}
+		
+		
+		
+		return (super.CanFire() && has_energy);
 	}
 	
 	private void CreateFireBolt(vector position, vector orientation, float scale)

@@ -9,7 +9,7 @@ FrameWidgetClass root_widget {
  vexactpos 1
  hexactsize 0
  vexactsize 0
- scriptclass "ER7ScopeLayoutHandler"
+ scriptclass "ER7_ScopeLayoutHandler"
  {
   TextWidgetClass range_text {
    ignorepointer 1
@@ -82,6 +82,10 @@ FrameWidgetClass root_widget {
      font "gui/fonts/Metron16"
     }
    }
+  }
+ }
+ {
+  ScriptParamsClass {
   }
  }
 }

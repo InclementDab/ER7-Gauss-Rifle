@@ -1,4 +1,4 @@
-class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
+class ER7_ScopeLayoutHandler: ScriptedWidgetEventHandler
 {
 	protected Widget m_LayoutRoot;
 	
@@ -10,16 +10,16 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	
 	protected ref Timer m_Timer;
 	
-	void ER7ScopeLayoutHandler()
+	void ER7_ScopeLayoutHandler()
 	{
-		Print("ER7ScopeLayoutHandler");
+		Print("ER7_ScopeLayoutHandler");
 		m_Timer = new Timer(CALL_CATEGORY_GUI);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
-	void ~ER7ScopeLayoutHandler()
+	void ~ER7_ScopeLayoutHandler()
 	{	
-		Print("~ER7ScopeLayoutHandler");
+		Print("~ER7_ScopeLayoutHandler");
 		m_Timer.Stop();
 		delete m_Timer;
 	}
@@ -76,7 +76,7 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 	}
 }
 
-class ER7Scope: ItemOptics
+class ER7_Scope: ItemOptics
 {
 	protected bool m_IsEnabled;	
 	protected Widget m_ScopeWidget;
