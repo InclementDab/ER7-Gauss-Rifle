@@ -49,3 +49,13 @@ class ER7_Gauss: FAL_Base
 		GetGame().ObjectDelete(bolt);
 	}
 }
+
+
+modded class WeaponFSM
+{
+	protected override bool Internal_ValidateAndRepair()
+	{
+		Print("AHAHAHA");
+		return false;
+	}
+}
