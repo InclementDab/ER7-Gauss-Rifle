@@ -101,7 +101,7 @@ class ER7Scope: ItemOptics
 
 static const ref array<string> GAUSS_LIGHTNING_BOLT_TYPES = { "vfx_gauss_thunderboltnorm", "vfx_gauss_thunderboltheavy" };
 
-class CS_Gauss: FAL_Base
+class C3_Gauss: FAL_Base
 {
 	override void EEFired(int muzzleType, int mode, string ammoType)
 	{
