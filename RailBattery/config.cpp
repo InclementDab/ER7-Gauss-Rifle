@@ -1,0 +1,70 @@
+class CfgPatches
+{
+	class RailgunBattery
+	{
+		units[] = {};
+		weapons[] = {};
+		requiredVersion = 0.1;
+		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition","DZ_Weapons_Magazines"};
+		magazines[] = {};
+		ammo[] = {};
+	};
+};
+
+
+
+class Inventory_Base;  
+class CfgVehicles 
+{
+	class ER7_Gauss_Battery: Inventory_Base
+    {
+        scope = 2;
+        displayName = "Railgun Battery";
+        descriptionShort = "Railgun Battery";
+        model = "\dz\gear\consumables\9v_battery.p3d";
+        isMeleeWeapon = 1;
+        weight = 10;
+        absorbency = 0.8;
+        itemSize[] = {1,1};
+        stackedUnit = "w";
+        quantityBar = 1;
+        varQuantityInit = 1000;
+        varQuantityMin = 0.0;
+        varQuantityMax = 1000;
+        varQuantityDestroyOnMin = 0;
+        inventorySlot[] = {"RailgunBattery"};
+        rotationFlags = 17;
+        class EnergyManager
+        {
+            hasIcon = 1;
+            switchOnAtSpawn = 1;
+            isPassiveDevice = 1;
+            energyStorageMax = 1000;
+            energyAtSpawn = 1000;
+            convertEnergyToQuantity = 1;
+            reduceMaxEnergyByDamageCoef = 1;
+            powerSocketsCount = 1;
+            compatiblePlugTypes[] = {1};
+        };
+        class AnimationSources
+        {
+            class cover
+            {
+                source = "user";
+                animPeriod = 0.5;
+                initPhase = 1;
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 20;
+                    healthLevels[] = {{1.0,{"DZ\gear\consumables\data\9v.rvmat"}},{0.7,{"DZ\gear\consumables\data\9v.rvmat"}},{0.5,{"DZ\gear\consumables\data\9v_damage.rvmat"}},{0.3,{"DZ\gear\consumables\data\9v_damage.rvmat"}},{0.0,{"DZ\gear\consumables\data\9v_destruct.rvmat"}}};
+                };
+            };
+        };
+    };
+};
