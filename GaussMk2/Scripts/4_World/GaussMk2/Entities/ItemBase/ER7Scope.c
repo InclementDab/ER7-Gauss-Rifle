@@ -109,10 +109,10 @@ class C3_Gauss: FAL_Base
 		
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 			
-			for (int i = 0; i < Math.RandomIntInclusive(5, 25); i++) {
+			for (int i = 0; i < 10; i++) {
 				vector pos = GetPosition();
 				vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
-				float scl = GetScale() * 0.15;
+				float scl = GetScale() * 0.05;
 				thread CreateFireBolt(pos, ori, scl);
 			}
 			
