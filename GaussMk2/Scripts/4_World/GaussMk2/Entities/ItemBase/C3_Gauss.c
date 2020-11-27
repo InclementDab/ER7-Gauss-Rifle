@@ -9,12 +9,12 @@ class C3_Gauss: FAL_Base
 		
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 			
-			for (int i = 0; i < 10; i++) {
+			//for (int i = 0; i < 10; i++) {
 				vector pos = GetPosition();
 				//vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
 				float scl = GetScale() * 0.005;
 				thread CreateFireBolt(pos, vector.Zero, scl);
-			}
+			//}
 			
 			Print("Pew electric effects!");
 		}
