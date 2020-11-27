@@ -131,6 +131,7 @@ class C3_Gauss: FAL_Base
 		bolt.SetScale(scale);
 		//Sleep(25);
 		//bolt.Delete();
+		Print("Done");
 	}
 }
 
