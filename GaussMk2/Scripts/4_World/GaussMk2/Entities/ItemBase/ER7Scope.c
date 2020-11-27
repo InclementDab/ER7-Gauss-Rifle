@@ -30,7 +30,6 @@ class ER7ScopeLayoutHandler: ScriptedWidgetEventHandler
 		m_LayoutRoot.SetHandler(this);
 	}
 	
-		
 	void UpdateHud()
 	{
 		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
@@ -87,7 +86,6 @@ class ER7Scope: ItemOptics
 		super.OnWorkStart();
 		m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
 	}
-	
 
 	override void OnWorkStop()
 	{
@@ -97,6 +95,3 @@ class ER7Scope: ItemOptics
 		}
 	}
 }
-
-
-

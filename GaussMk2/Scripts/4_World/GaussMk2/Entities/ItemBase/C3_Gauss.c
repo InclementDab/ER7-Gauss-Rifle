@@ -18,6 +18,7 @@ class C3_Gauss: FAL_Base
 			
 			Print("Pew electric effects!");
 		}
+		
 	}
 	
 	private void CreateFireBolt(vector position, vector orientation, float scale)
