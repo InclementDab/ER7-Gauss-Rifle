@@ -46,7 +46,7 @@ class cfgWeapons
 	class A2GaussMk2_Base: M4A1
 	{
 		scope = 0;
-		descriptionShort = "";
+		descriptionShort = "The GK8 ER7 is a Linear motor device that uses an electromagnetic force to shoot a projectile at high velocity.";
 		model = "\Namalsk_Weapon\GaussMk2\A2GaussMk2.p3d";
 		weight = 13000;
 		itemSize[] = {10,4};
@@ -496,4 +496,18 @@ class CfgSoundSets
 	{
 		soundShaders[] = {"ER7_Shot_SoundShader","ER7_midShot_SoundShader","ER7_distShot_SoundShader"};
 	};
+};
+
+
+class HouseNoDestruct;
+class CfgVehicles 
+{
+	class vfx_gauss_thunderboltnorm: HouseNoDestruct
+    {
+        model = "\dz\data\data\blesk1.p3d";
+    };
+    class vfx_gauss_thunderboltheavy: HouseNoDestruct
+    {
+        model = "\dz\data\data\blesk2.p3d";
+    };
 };
