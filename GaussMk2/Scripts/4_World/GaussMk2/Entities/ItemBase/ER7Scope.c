@@ -113,7 +113,7 @@ class C3_Gauss: FAL_Base
 				vector pos = GetPosition();
 				vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
 				float scl = GetScale() * 0.15;
-				CreateFireBolt(pos, ori, scl);
+				thread CreateFireBolt(pos, ori, scl);
 			}
 			
 			Print("Pew electric effects!");
