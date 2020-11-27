@@ -129,8 +129,8 @@ class C3_Gauss: FAL_Base
 		if (!bolt) return;
 		bolt.SetOrientation(orientation);
 		bolt.SetScale(scale);
-		Sleep(25);
-		GetGame().ObjectDelete(bolt);
+		//Sleep(25);
+		//bolt.Delete();
 	}
 }
 
