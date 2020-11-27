@@ -111,9 +111,9 @@ class C3_Gauss: FAL_Base
 			
 			for (int i = 0; i < 10; i++) {
 				vector pos = GetPosition();
-				vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
+				//vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
 				float scl = GetScale() * 0.05;
-				thread CreateFireBolt(pos, ori, scl);
+				thread CreateFireBolt(pos, vector.Zero, scl);
 			}
 			
 			Print("Pew electric effects!");
@@ -125,6 +125,8 @@ class C3_Gauss: FAL_Base
 	private void CreateFireBolt(vector position, vector orientation, float scale)
 	{
 		Print("CreateFireBolt " + position);
+		Print(orientation);
+		Print(scale);
 		Object bolt = GetGame().CreateObjectEx(GAUSS_LIGHTNING_BOLT_TYPES.GetRandomElement(), position, ECE_LOCAL);
 		if (!bolt) return;
 		bolt.SetOrientation(orientation);
