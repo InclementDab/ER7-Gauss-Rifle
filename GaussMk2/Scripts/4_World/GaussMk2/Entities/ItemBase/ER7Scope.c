@@ -125,11 +125,13 @@ class C3_Gauss: FAL_Base
 	{
 		Print("CreateFireBolt " + position);
 		Object bolt = GetGame().CreateObjectEx(GAUSS_LIGHTNING_BOLT_TYPES.GetRandomElement(), position, ECE_LOCAL);
+		Print(bolt);
 		if (!bolt) return;
 		bolt.SetOrientation(orientation);
 		bolt.SetScale(scale);
 		Sleep(25);
-		bolt.Delete();
+		//bolt.Delete();
+		GetGame().ObjectDelete(bolt);
 		Print("Done");
 	}
 }
