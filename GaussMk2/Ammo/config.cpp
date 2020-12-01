@@ -87,11 +87,11 @@ class cfgAmmo
 		deflecting = 0;
 		visibleFire = 5;
 		audibleFire = 9;
-		typicalSpeed = 5000;
+		typicalSpeed = 3500;
 		airFriction = 0;
 		supersonicCrackNear[] = {};
 		supersonicCrackFar[] = {};
-		initSpeed = 5000;
+		initSpeed = 3500;
 		tracerScale = 2;
 		tracerStartTime = 0.075;
 		tracerEndTime = 100;

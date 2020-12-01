@@ -42,12 +42,13 @@ class Mode_Safe;
 class Mode_SemiAuto;
 class cfgWeapons
 {
-	class M4A1;
-	class A2GaussMk2_Base: M4A1
+	class FAL_Base;
+	class ER7_Gauss: FAL_Base
 	{
-		scope = 0;
+		scope = 2;
+		displayName = "GRW ER7 MK2";
 		descriptionShort = "The GK8 ER7 is a Linear motor device that uses an electromagnetic force to shoot a projectile at high velocity.";
-		model = "\Namalsk_Weapon\GaussMk2\A2GaussMk2.p3d";
+		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
 		weight = 13000;
 		itemSize[] = {10,4};
 		dexterity = 1.8;
@@ -56,23 +57,14 @@ class cfgWeapons
 		repairCosts[] = {30,25};
 		discreteDistance[] = {100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
 		discreteDistanceInitIndex = 0;
-		modelOptics = "-";
 		distanceZoomMin = 100;
 		distanceZoomMax = 100;
 		PPDOFProperties[] = {0,0,0,0,0,0};
-		optics = 1;
-		opticsFlare = 0;
-		value = 0;
 		chamberedRound = "";
-		chamberSize = 1;
-		attachments[] = {"weaponOptics","weaponWrap","weaponOpticsHunting"};
+		chamberSize = 4;
+		attachments[] = {"weaponOptics","weaponOpticsHunting"};
 		chamberableFrom[] = {"Ammo_ER7RFW"};
-		magazines[] = {"A2GaussMk2_Magazine"};
-		magazineSwitchTime = 0.25;
-		barrelArmor = 3000;
-		ejectType = 1;
 		recoilModifier[] = {1,3,2};
-		reloadAction = "ReloadSVD";
 		modes[] = {"SemiAuto"};
 		class SemiAuto: Mode_SemiAuto
 		{
@@ -367,7 +359,7 @@ class cfgWeapons
 							1.01,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\data\GaussMk2.rvmat",
+								"Namalsk_Weapon\GaussMk2\data\gauss.rvmat",
 							}
 						},
 						
@@ -375,7 +367,7 @@ class cfgWeapons
 							0.69999999,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\data\GaussMk2.rvmat"
+								"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"
 							}
 						},
 						
@@ -383,7 +375,7 @@ class cfgWeapons
 							0.5,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\data\GaussMk2_damage.rvmat"
+								"Namalsk_Weapon\GaussMk2\data\gauss_damage.rvmat"
 							}
 						},
 						
@@ -391,7 +383,7 @@ class cfgWeapons
 							0.30000001,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\data\GaussMk2_damage.rvmat"
+								"Namalsk_Weapon\GaussMk2\data\gauss_damage.rvmat"
 							}
 						},
 						
@@ -399,7 +391,7 @@ class cfgWeapons
 							0.01,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\data\GaussMk2_destruct.rvmat",
+								"Namalsk_Weapon\GaussMk2\data\gauss_destruct.rvmat",
 							}
 						}
 					};
@@ -407,54 +399,38 @@ class cfgWeapons
 			};
 		};
 	};
-	class A2GaussMk2_Black: A2GaussMk2_Base
-	{
-		scope = 2;
-		displayName = "ER7 RFW MK2 (Black)";
-		hiddenSelections[] = {"camo"};
-		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\GaussMk2.rvmat"};
-		hiddenSelectionsTextures[] = {"Namalsk_Weapon\GaussMk2\data\dayz_co.paa"};
-	};
-	class A2GaussMk2_Gold: A2GaussMk2_Base
-	{
-		scope = 2;
-		displayName = "ER7 RFW MK2 (Gold)";
-		hiddenSelections[] = {"camo"};
-		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\GuassMk2_Gold.rvmat"};
-		hiddenSelectionsTextures[] = {"Namalsk_Weapon\GaussMk2\data\dayz_co.paa"};
-	};
 };
 
-class CfgMagazines
-{
-	class Mag_AKM_30Rnd;
-	class A2GaussMk2_Magazine: Mag_AKM_30Rnd
-	{
-		scope = 2;
-		displayName = "ER7 Magazine";
-		descriptionShort = "A ten round M82 magazine.";
-		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
-		weight = 230;
-		itemSize[] = {2,2};
-		count = 10;
-		ammo = "Bullet_ER7RFW";
-		ammoItems[] = {"Ammo_ER7RFW"};
-		isMeleeWeapon = 0;
-		tracersEvery = 1;
-	};
-};
+// class CfgMagazines
+// {
+// 	class Mag_AKM_30Rnd;
+// 	class A2GaussMk2_Magazine: Mag_AKM_30Rnd
+// 	{
+// 		scope = 2;
+// 		displayName = "ER7 Magazine";
+// 		descriptionShort = "A ten round M82 magazine.";
+// 		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
+// 		weight = 230;
+// 		itemSize[] = {2,2};
+// 		count = 10;
+// 		ammo = "Bullet_ER7RFW";
+// 		ammoItems[] = {"Ammo_ER7RFW"};
+// 		isMeleeWeapon = 0;
+// 		tracersEvery = 1;
+// 	};
+// };
 
 
-class CfgNonAIVehicles
-{
-	class ProxyAttachment;
-	class ProxyA2GaussMk2_Magazine: ProxyAttachment
-	{
-		scope = 2;
-		inventorySlot = "magazine";
-		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
-	};
-};
+// class CfgNonAIVehicles
+// {
+// 	class ProxyAttachment;
+// 	class ProxyA2GaussMk2_Magazine: ProxyAttachment
+// 	{
+// 		scope = 2;
+// 		inventorySlot = "magazine";
+// 		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
+// 	};
+// };
 
 
 class CfgSoundShaders
