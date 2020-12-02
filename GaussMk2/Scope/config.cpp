@@ -47,7 +47,7 @@ class cfgVehicles
 							1.01,
 								
 							{
-								"Namalsk_Weapon\GaussMk2\Scope\Data\scope.rvmat",
+								"Namalsk_Weapon\GaussMk2\Scope\Data\ER7Scope.rvmat",
 							}
 						},
 							
@@ -55,7 +55,7 @@ class cfgVehicles
 							0.69999999,
 								
 							{
-								"Namalsk_Weapon\GaussMk2\Scope\Data\scope.rvmat"
+								"Namalsk_Weapon\GaussMk2\Scope\Data\ER7Scope.rvmat"
 							}
 						},
 							
@@ -63,7 +63,7 @@ class cfgVehicles
 							0.5,
 								
 							{
-								"Namalsk_Weapon\GaussMk2\Scope\Data\scope_damage.rvmat"
+								"Namalsk_Weapon\GaussMk2\Scope\Data\ER7Scope_damage.rvmat"
 							}
 						},
 							
@@ -71,7 +71,7 @@ class cfgVehicles
 							0.30000001,
 								
 							{
-								"Namalsk_Weapon\GaussMk2\Scope\Data\scope_damage.rvmat"
+								"Namalsk_Weapon\GaussMk2\Scope\Data\ER7Scope_damage.rvmat"
 							}
 						},
 							
@@ -79,7 +79,7 @@ class cfgVehicles
 							0.01,
 							
 							{
-								"Namalsk_Weapon\GaussMk2\Scope\Data\scope_destruct.rvmat",
+								"Namalsk_Weapon\GaussMk2\Scope\Data\ER7Scope_destruct.rvmat",
 							}
 						}
 					};
