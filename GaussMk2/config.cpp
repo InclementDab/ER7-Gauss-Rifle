@@ -390,7 +390,8 @@ class cfgWeapons
 			};
 		};
 	};
-	class ER7_Gauss: ER7_Gauss_Base
+	
+	class ER7_Gauss: SKS_Base
 	{
 		scope = 2;
 		displayName = "GRW ER7 MK2";
