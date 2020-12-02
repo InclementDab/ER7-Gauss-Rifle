@@ -1,6 +1,6 @@
  static const ref array<string> GAUSS_LIGHTNING_BOLT_TYPES = { "vfx_gauss_thunderboltnorm", "vfx_gauss_thunderboltheavy" };
 
-class ER7_Gauss_Base : SKS_Base
+class ER7_Gauss : SKS_Base
 {
 	override void EEFired(int muzzleType, int mode, string ammoType)
 	{

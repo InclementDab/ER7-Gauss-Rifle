@@ -43,7 +43,7 @@ class Mode_SemiAuto;
 class cfgWeapons
 {
 	class SKS_Base;
-	class ER7_Gauss_Base: SKS_Base
+	/*class ER7_Gauss_Base: SKS_Base
 	{
 		scope = 0;
 		displayName = "GRW ER7 MK2";
@@ -389,7 +389,7 @@ class cfgWeapons
 				};
 			};
 		};
-	};
+	};*/
 
 	class ER7_Gauss: SKS_Base
 	{
