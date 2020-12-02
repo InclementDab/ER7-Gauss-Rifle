@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class A2GaussMk2_Base
+	class ER7_Gauss
 	{
 		units[] = {};
 		weapons[] = {};
@@ -42,10 +42,10 @@ class Mode_Safe;
 class Mode_SemiAuto;
 class cfgWeapons
 {
-	class FAL_Base;
-	class ER7_Gauss: FAL_Base
+	class Rifle_Base;
+	class ER7_Gauss_Base: Rifle_Base
 	{
-		scope = 2;
+		scope = 0;
 		displayName = "GRW ER7 MK2";
 		descriptionShort = "The GK8 ER7 is a Linear motor device that uses an electromagnetic force to shoot a projectile at high velocity.";
 		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
@@ -62,6 +62,8 @@ class cfgWeapons
 		PPDOFProperties[] = {0,0,0,0,0,0};
 		chamberedRound = "";
 		chamberSize = 4;
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		attachments[] = {"weaponOptics","weaponOpticsHunting"};
 		chamberableFrom[] = {"Ammo_ER7RFW"};
 		recoilModifier[] = {1,3,2};
@@ -398,6 +400,12 @@ class cfgWeapons
 				};
 			};
 		};
+	};
+	class ER7_Gauss: ER7_Gauss_Base
+	{
+		scope = 2;
+		displayName = "GRW ER7 MK2";
+		hiddenSelectionsTextures[] = {"Namalsk_Weapon\GaussMk2\data\gauss_co.paa"};
 	};
 };
 
