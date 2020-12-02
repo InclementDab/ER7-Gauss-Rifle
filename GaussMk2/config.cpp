@@ -414,7 +414,7 @@ class cfgWeapons
 		descriptionShort = "A 3 round magazine for the GRW ER7 Gauss Rifle.";
  		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
  		weight = 230;
- 		itemSize[] = {1,2};
+ 		itemSize[] = {2,1};
  		count = 3;
  		ammo = "Bullet_ER7RFW";
  		ammoItems[] = {"Ammo_ER7RFW"};
