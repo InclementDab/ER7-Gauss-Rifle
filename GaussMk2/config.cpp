@@ -42,8 +42,8 @@ class Mode_Safe;
 class Mode_SemiAuto;
 class cfgWeapons
 {
-	class Rifle_Base;
-	class ER7_Gauss_Base: Rifle_Base
+	class SKS_Base;
+	class ER7_Gauss_Base: SKS_Base
 	{
 		scope = 0;
 		displayName = "GRW ER7 MK2";
@@ -52,9 +52,8 @@ class cfgWeapons
 		weight = 13000;
 		itemSize[] = {10,4};
 		dexterity = 1.8;
+		DisplayMagazine=0;
 		absorbency = 0.1;
-		repairableWithKits[] = {5,1};
-		repairCosts[] = {30,25};
 		discreteDistance[] = {100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
 		discreteDistanceInitIndex = 0;
 		distanceZoomMin = 100;
@@ -62,21 +61,11 @@ class cfgWeapons
 		PPDOFProperties[] = {0,0,0,0,0,0};
 		chamberedRound = "";
 		chamberSize = 4;
+		chamberableFrom[] = {"Ammo_ER7RFW"};
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		attachments[] = {"weaponOptics","weaponOpticsHunting"};
-		chamberableFrom[] = {"Ammo_ER7RFW"};
 		recoilModifier[] = {1,3,2};
-		modes[] = {"SemiAuto"};
-		class SemiAuto: Mode_SemiAuto
-		{
-			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
-			reloadTime = 0.425;
-			recoil = "recoil_AKM";
-			recoilProne = "recoil_AKM_prone";
-			dispersion = 0.00075;
-			magazineSlot = "magazine";
-		};
 		class Particles
 		{
 			class OnFire
