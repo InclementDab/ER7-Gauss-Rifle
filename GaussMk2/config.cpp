@@ -390,12 +390,11 @@ class cfgWeapons
 			};
 		};
 	};
-	
+
 	class ER7_Gauss: SKS_Base
 	{
 		scope = 2;
 		displayName = "GRW ER7 MK2";
-		hiddenSelectionsTextures[] = {"Namalsk_Weapon\GaussMk2\data\gauss_co.paa"};
 	};
 };
 
