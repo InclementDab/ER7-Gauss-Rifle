@@ -42,10 +42,10 @@ class Mode_Safe;
 class Mode_SemiAuto;
 class cfgWeapons
 {
-	class Rifle_Base;
-	class ER7_Gauss_Base: Rifle_Base
+	class FAL_Base;
+	class ER7_Gauss: FAL_Base
 	{
-		scope = 0;
+		scope = 2;
 		displayName = "GRW ER7 MK2";
 		descriptionShort = "The GK8 ER7 is a Linear motor device that uses an electromagnetic force to shoot a projectile at high velocity.";
 		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
@@ -61,9 +61,10 @@ class cfgWeapons
 		distanceZoomMax = 100;
 		PPDOFProperties[] = {0,0,0,0,0,0};
 		chamberedRound = "";
-		chamberSize = 4;
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
+		chamberSize = 1;
+		magazines[] = {"ER7_Gauss_Magazine"};
 		attachments[] = {"weaponOptics","weaponOpticsHunting"};
 		chamberableFrom[] = {"Ammo_ER7RFW"};
 		recoilModifier[] = {1,3,2};
@@ -401,44 +402,38 @@ class cfgWeapons
 			};
 		};
 	};
-	class ER7_Gauss: ER7_Gauss_Base
-	{
-		scope = 2;
-		displayName = "GRW ER7 MK2";
-		hiddenSelectionsTextures[] = {"Namalsk_Weapon\GaussMk2\data\gauss_co.paa"};
-	};
 };
 
-// class CfgMagazines
-// {
-// 	class Mag_AKM_30Rnd;
-// 	class A2GaussMk2_Magazine: Mag_AKM_30Rnd
-// 	{
-// 		scope = 2;
-// 		displayName = "ER7 Magazine";
-// 		descriptionShort = "A ten round M82 magazine.";
-// 		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
-// 		weight = 230;
-// 		itemSize[] = {2,2};
-// 		count = 10;
-// 		ammo = "Bullet_ER7RFW";
-// 		ammoItems[] = {"Ammo_ER7RFW"};
-// 		isMeleeWeapon = 0;
-// 		tracersEvery = 1;
-// 	};
-// };
+ class CfgMagazines
+ {
+ 	class Mag_AKM_30Rnd;
+	class ER7_Gauss_Magazine: Mag_AKM_30Rnd
+ 	{
+		scope = 2;
+ 		displayName = "ER7 Magazine";
+		descriptionShort = "A 3 round magazine for the GRW ER7 Gauss Rifle.";
+ 		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
+ 		weight = 230;
+ 		itemSize[] = {1,2};
+ 		count = 3;
+ 		ammo = "Bullet_ER7RFW";
+ 		ammoItems[] = {"Ammo_ER7RFW"};
+		isMeleeWeapon = 0;
+		tracersEvery = 1;
+ 	};
+ };
 
 
-// class CfgNonAIVehicles
-// {
-// 	class ProxyAttachment;
-// 	class ProxyA2GaussMk2_Magazine: ProxyAttachment
-// 	{
-// 		scope = 2;
-// 		inventorySlot = "magazine";
-// 		model = "Namalsk_Weapon\GaussMk2\A2GaussMk2_Magazine.p3d";
-// 	};
-// };
+ class CfgNonAIVehicles
+ {
+ 	class ProxyAttachment;
+ 	class ProxyER7_Gauss_Magazine: ProxyAttachment
+ 	{
+ 		scope = 2;
+ 		inventorySlot = "magazine";
+ 		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
+ 	};
+ };
 
 
 class CfgSoundShaders
