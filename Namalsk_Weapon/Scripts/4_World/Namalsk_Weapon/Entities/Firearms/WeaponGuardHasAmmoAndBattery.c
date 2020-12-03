@@ -5,6 +5,6 @@ class WeaponGuardHasAmmoAndBattery extends WeaponGuardHasAmmo
         if (!super.GuardCondition(e))
             return false;
 
-		return GetCompEM().CanWork();
+		return m_weapon.GetCompEM().CanWork();
 	}
 };
