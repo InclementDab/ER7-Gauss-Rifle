@@ -45,7 +45,7 @@ class cfgWeapons
 		class SemiAuto: Mode_SemiAuto
 		{
 			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
-			reloadTime = 1;
+			reloadTime = 0.475;
 			recoil = "recoil_AKM";
 			recoilProne = "recoil_AKM_prone";
 			dispersion = 0.00075;
