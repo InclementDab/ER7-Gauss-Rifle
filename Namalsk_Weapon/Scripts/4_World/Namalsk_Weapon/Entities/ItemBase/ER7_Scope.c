@@ -74,8 +74,7 @@ class ER7_Scope: ItemOptics
 
 	void ~ER7_Scope()
 	{
-		if (m_ScopeWidget && IsMissionClient())
-		{
+		if (m_ScopeWidget && IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
 			m_ScopeWidget.Unlink();
 		}
 	}
@@ -83,7 +82,7 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
-		if (IsMissionClient()) {
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
 			m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
 		}
 	}
@@ -91,7 +90,7 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();		
-		if (m_ScopeWidget && IsMissionClient()) {
+		if (m_ScopeWidget && IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
 			m_ScopeWidget.Unlink();
 		}
 	}
