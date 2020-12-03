@@ -19,7 +19,7 @@ class CfgVehicles
         scope = 2;
         displayName = "Railgun Battery";
         descriptionShort = "Railgun Battery";
-        model = "\dz\gear\consumables\9v_battery.p3d";
+        model = "\Namalsk_Weapon\RailBattery\RailBattery.p3d";
         isMeleeWeapon = 1;
         weight = 10;
         absorbency = 0.8;
