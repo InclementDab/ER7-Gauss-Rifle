@@ -31,7 +31,7 @@ class CfgMods
 				value="";
 				files[] = 
 				{
-					"Namalsk_Weapon\Scripts\4_World"
+					"Namalsk_Weapon/Scripts/4_World"
 				};
 			};
 		};
