@@ -4,7 +4,6 @@ class LaunchOfflineModTool: DayZProjectManager
 {
 	override void Run()
 	{
-		RunDayZBat(string.Format("P:\\%1\\Workbench\\Batchfiles\\Exit.bat", ModName), true);
 		RunDayZBat(string.Format("P:\\%1\\Workbench\\Batchfiles\\LaunchOffline.bat", ModName), true);
 	}
 }
