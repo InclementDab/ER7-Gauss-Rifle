@@ -359,6 +359,14 @@ class ER7_Gauss : FAL_Base
 		}
 	}
 	
+	void OnFireFailed()
+	{		
+		EffectSound sound;
+		if (PlaySoundSet(sound, "ER7_Shot_Failed_SoundSet", 0, 0)) {
+			sound.Start();
+		}
+	}
+	
 	private void CreateBolts()
 	{		
 		for (int i = 0; i < 8; i++) {			

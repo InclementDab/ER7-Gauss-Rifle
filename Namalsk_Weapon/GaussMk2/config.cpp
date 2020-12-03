@@ -442,6 +442,12 @@ class CfgSoundShaders
 		range = 3000;
 		rangeCurve[] = {{0,0},{50,0},{3000,1},{3000,2}};
 	};
+	class ER7_failFire_SoundShader
+	{
+		samples[] = {{"Namalsk_Weapon\GaussMk2\Sound\er7_fire_failed", 1}};
+		volume = 1;
+		range = 10;
+	};
 };
 
 class CfgSoundSets
@@ -456,6 +462,11 @@ class CfgSoundSets
 	class ER7_Shot_SoundSet: Rifle_Shot_Base_SoundSet
 	{
 		soundShaders[] = {"ER7_Shot_SoundShader","ER7_midShot_SoundShader","ER7_distShot_SoundShader"};
+	};
+
+	class ER7_Shot_Failed_SoundSet: baseCharacter_SoundSet
+	{
+		soundShaders[] = {"ER7_failFire_SoundShader"};
 	};
 };
 
