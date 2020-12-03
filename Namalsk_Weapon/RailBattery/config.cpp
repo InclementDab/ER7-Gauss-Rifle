@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class RailgunBattery
+	class Namalsk_Weapon_RailBattery
 	{
 		units[] = {};
 		weapons[] = {};
@@ -10,8 +10,6 @@ class CfgPatches
 		ammo[] = {};
 	};
 };
-
-
 
 class Inventory_Base;  
 class CfgVehicles 
