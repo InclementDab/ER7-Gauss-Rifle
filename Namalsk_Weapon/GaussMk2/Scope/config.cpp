@@ -14,8 +14,8 @@ class cfgVehicles
 	class ER7_Scope: ItemOptics
 	{
 		scope = 2;
-		displayName = "ER7 SCOPE THING DONT HAVE A NAME YET REEEEEEEEEEE";
-		descriptionShort = "FUCK WHAT DO I CALL YOU";
+		displayName = "ER11-PRS 6x30";
+		descriptionShort = "High powered optic, specifically desiged for the ER7 Railgun. Displays range, altitude and other variables while in reticle";
 		model = "\Namalsk_Weapon\GaussMk2\Scope\ER7Scope.p3d";
 		animClass = "Binoculars";
 		attachments[] = {"BatteryD"};
