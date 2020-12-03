@@ -13,9 +13,4 @@ modded class Weapon_Base
             RegisterNetSyncVariableInt("m_EM.m_EnergySourceNetworkIDHigh");
         }
     }
-
-    bool HasBattery()
-    {
-        return false;
-    }
 };
