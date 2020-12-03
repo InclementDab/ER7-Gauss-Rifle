@@ -55,10 +55,9 @@ class cfgWeapons
         {
 			hasIcon = 1;
             isPassiveDevice = 1;
-			energyUsagePerSecond = 10;
+			energyUsagePerSecond = 10.0;
 			plugType = 1;
 			attachmentAction = 1;
-			updateInterval = 30;
         };
 		class Particles
 		{

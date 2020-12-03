@@ -1,5 +1,5 @@
 modded class DayZPlayerImplement
-{
+{/*
     #ifndef CF_DAYZPLAYERIMPLEMENT_IDT_REMOTE
 	override void OnInputForRemote (ParamsReadContext ctx)
 	{
@@ -149,4 +149,5 @@ modded class DayZPlayerImplement
             Error("OnEventForRemoteWeapon - no entity in hands");
         return true;
     }
+    */
 };

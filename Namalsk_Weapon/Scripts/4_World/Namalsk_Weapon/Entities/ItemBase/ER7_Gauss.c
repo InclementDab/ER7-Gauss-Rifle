@@ -55,6 +55,8 @@ class ER7_Gauss : FAL_Base
 		WeaponStateBase Trigger_C10 = new WeaponFireLast(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL)); // cock with clip
 		WeaponFireAndChamberNext Trigger_C11 = new WeaponFireAndChamberNext(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL));
 		WeaponStateBase Trigger_C11L = new WeaponFireLast(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_LAST));
+		WeaponStateBase Trigger_NB10 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
+		WeaponStateBase Trigger_NB11 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
 		WeaponStateBase Trigger_C01 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
 		WeaponStateBase Trigger_O00 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
 		WeaponStateBase Trigger_O01 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, GetWeaponSpecificCommand(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
@@ -158,7 +160,7 @@ class ER7_Gauss : FAL_Base
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C01,		_dto_,	C01));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C01,		_abt_,	C01));
 		
-		m_fsm.AddTransition(new WeaponTransition( C10,				__T__,	Trigger_C10));
+		m_fsm.AddTransition(new WeaponTransition( C10,				__T__,	Trigger_C10, NULL, new WeaponGuardBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10,		_fin_,	C00));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10,		_rto_,	C00));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10,		_abt_,	C00));
@@ -168,10 +170,20 @@ class ER7_Gauss : FAL_Base
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11,		_rto_,	C11));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11,		_abt_,	C11));
 		
-		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_C11L));
+		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_C11L, NULL, new WeaponGuardBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11L,	_fin_,	O01));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11L,	_rto_,	O01));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11L,	_abt_,	O01));
+		
+		m_fsm.AddTransition(new WeaponTransition( C10,				__T__,	Trigger_NB10, NULL, new WeaponGuardNoBattery(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB10,		_fin_,	C10));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB10,		_rto_,	C10));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB10,		_abt_,	C10));
+		
+		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_NB11, NULL, new WeaponGuardNoBattery(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_fin_,	C11));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_rto_,	C11));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_abt_,	C11));
 	
 		m_fsm.AddTransition(new WeaponTransition( O00,				__T__,	Trigger_O00));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_O00,		_fin_,	O00));
@@ -344,14 +356,9 @@ class ER7_Gauss : FAL_Base
 	
 	override void EEFired(int muzzleType, int mode, string ammoType)
 	{
-		Print("EEFired");
 		super.EEFired(muzzleType, mode, ammoType);
-
-		ComponentEnergyManager comp = GetCompEM();
-		if (comp)
-		{
-			comp.ConsumeEnergy(comp.GetEnergyUsage());
-		}
+		
+		if (GetCompEM()) GetCompEM().UpdateCanWork();
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 			thread CreateBolts();			

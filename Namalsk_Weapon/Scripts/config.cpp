@@ -22,10 +22,19 @@ class CfgMods
 		type = "mod";
 		dependencies[] =
 		{
+			"Game",
 			"World"
 		};
 		class defs
 		{
+			class gameScriptModule
+			{
+				value="";
+				files[] = 
+				{
+					"Namalsk_Weapon/Scripts/3_Game"
+				};
+			};
 			class worldScriptModule
 			{
 				value="";
