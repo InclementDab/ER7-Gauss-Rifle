@@ -362,8 +362,8 @@ class ER7_Gauss : FAL_Base
 		{
 			EntityAI source = GetCompEM().GetEnergySource();
 			if (source)
-			{
-				source.GetCompEM().AddEnergy(GetCompEM().GetEnergyUsage());
+			{				
+				source.GetCompEM().AddEnergy(-1 * GetCompEM().GetEnergyUsage());
 			}
 			GetCompEM().UpdateCanWork();
 		}
