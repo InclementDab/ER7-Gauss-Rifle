@@ -11,8 +11,8 @@ class CfgPatches
 	};
 };
 
-class Inventory_Base;  
-class CfgVehicles 
+class Inventory_Base;
+class CfgVehicles
 {
 	class ER7_Gauss_Battery: Inventory_Base
     {
@@ -75,6 +75,6 @@ class CfgSlots
 	{
 		name = "RailgunBattery";
 		displayName = "RailgunBattery";
-		ghostIcon = "";
+		modGhostIcon = "set:gauss_ghost image:ghost";
 	};
 };

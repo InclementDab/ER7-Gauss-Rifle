@@ -1,0 +1,20 @@
+ImageSetClass {
+ Name "gauss_ghost"
+ RefSize 150 150
+ Textures {
+  ImageSetTextureClass {
+   mpix 1
+   path "{590DFCDDBD36A3B2}Namalsk_Weapon/GaussMk2/GUI/imagesets/mag_ghost.edds"
+  }
+ }
+ Images {
+  ImageSetDefClass ghost {
+   Name "ghost"
+   Pos 0 0
+   Size 150 150
+   Flags 0
+  }
+ }
+ Groups {
+ }
+}
