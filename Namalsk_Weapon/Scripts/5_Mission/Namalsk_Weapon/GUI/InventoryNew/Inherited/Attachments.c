@@ -1,3 +1,4 @@
+#ifndef CF_GHOSTICONS_V2
 modded class Attachments
 {
     override void InitAttachmentGrid(int att_row_index)
@@ -36,3 +37,4 @@ modded class Attachments
         }
     }
 };
+#endif

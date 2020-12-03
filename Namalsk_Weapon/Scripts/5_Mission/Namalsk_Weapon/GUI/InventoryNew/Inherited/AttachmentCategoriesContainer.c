@@ -1,3 +1,5 @@
+
+#ifndef CF_GHOSTICONS_V2
 modded class AttachmentCategoriesContainer
 {
     override void LoadAttachmentCategoriesIcon(SlotsContainer items_cont, string icon_name, int slot_number)
@@ -33,3 +35,4 @@ modded class AttachmentCategoriesContainer
         }
     }
 };
+#endif
