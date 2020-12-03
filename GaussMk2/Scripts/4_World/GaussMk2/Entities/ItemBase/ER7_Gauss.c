@@ -10,16 +10,15 @@ class ER7_Gauss : FAL_Base
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 		
-			//for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++) {
 				vector pos = GetPosition();
 				vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
 				float scl = GetScale() * 0.001;
-				thread CreateFireBolt(pos, vector.Zero, scl);
-			//}
+				CreateFireBolt(pos, ori, scl);
+			}
 		
 			Print("Pew electric effects!");
 		}
-	
 	}
 	
  	private void CreateFireBolt(vector position, vector orientation, float scale)
@@ -29,7 +28,6 @@ class ER7_Gauss : FAL_Base
  		if (!bolt) return;
  		bolt.SetOrientation(orientation);
  		bolt.SetScale(scale);
- 		Sleep(25);
- 		GetGame().ObjectDelete(bolt);
+		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(GetGame().ObjectDelete, 25, false, bolt);
  	}
 }
