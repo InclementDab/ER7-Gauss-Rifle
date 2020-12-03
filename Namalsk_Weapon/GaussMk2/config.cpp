@@ -338,42 +338,42 @@ class cfgWeapons
 					hitpoints=500;
 					healthLevels[]=
 					{
-						
+
 						{
 							1.01,
-							
+
 							{
 								"Namalsk_Weapon\GaussMk2\data\gauss.rvmat",
 							}
 						},
-						
+
 						{
 							0.69999999,
-							
+
 							{
 								"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"
 							}
 						},
-						
+
 						{
 							0.5,
-							
+
 							{
 								"Namalsk_Weapon\GaussMk2\data\gauss_damage.rvmat"
 							}
 						},
-						
+
 						{
 							0.30000001,
-							
+
 							{
 								"Namalsk_Weapon\GaussMk2\data\gauss_damage.rvmat"
 							}
 						},
-						
+
 						{
 							0.01,
-							
+
 							{
 								"Namalsk_Weapon\GaussMk2\data\gauss_destruct.rvmat",
 							}
@@ -410,7 +410,7 @@ class cfgWeapons
  	class ProxyAttachment;
  	class ProxyER7_Gauss_Magazine: ProxyAttachment
  	{
- 		scope = 2;
+ 		scope = 0;
  		inventorySlot = "magazine";
  		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
  	};
@@ -469,7 +469,7 @@ class CfgSoundSets
 	};
 };
 
-class CfgVehicles 
+class CfgVehicles
 {
 	class HouseNoDestruct;
 	class vfx_gauss_thunderboltnorm: HouseNoDestruct
