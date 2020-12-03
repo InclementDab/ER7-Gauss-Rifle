@@ -358,7 +358,15 @@ class ER7_Gauss : FAL_Base
 	{
 		super.EEFired(muzzleType, mode, ammoType);
 		
-		if (GetCompEM()) GetCompEM().UpdateCanWork();
+		if (GetCompEM())
+		{
+			EntityAI source = GetCompEM().GetEnergySource();
+			if (source)
+			{
+				source.GetCompEM().AddEnergy(GetCompEM().GetEnergyUsage());
+			}
+			GetCompEM().UpdateCanWork();
+		}
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 			thread CreateBolts();			
