@@ -163,7 +163,7 @@ class ER7_Gauss : FAL_Base
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10,		_rto_,	C00));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10,		_abt_,	C00));
 		
-		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_C11, NULL, new WeaponGuardHasAmmo(this)));
+		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_C11, NULL, new WeaponGuardHasAmmoAndBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11,		_fin_,	C11));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11,		_rto_,	C11));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11,		_abt_,	C11));
@@ -347,7 +347,11 @@ class ER7_Gauss : FAL_Base
 		Print("EEFired");
 		super.EEFired(muzzleType, mode, ammoType);
 
-		GetCompEM().DeviceUpdate();
+		ComponentEnergyManager comp = GetCompEM();
+		if (comp)
+		{
+			comp.ConsumeEnergy(comp.GetEnergyUsage());
+		}
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 			thread CreateBolts();			

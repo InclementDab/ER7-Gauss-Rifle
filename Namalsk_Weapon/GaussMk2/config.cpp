@@ -51,6 +51,15 @@ class cfgWeapons
 			dispersion = 0.00075;
 			magazineSlot = "magazine";
 		};
+        class EnergyManager
+        {
+			hasIcon = 1;
+            isPassiveDevice = 1;
+			energyUsagePerSecond = 10;
+			plugType = 1;
+			attachmentAction = 1;
+			updateInterval = 30;
+        };
 		class Particles
 		{
 			class OnFire
