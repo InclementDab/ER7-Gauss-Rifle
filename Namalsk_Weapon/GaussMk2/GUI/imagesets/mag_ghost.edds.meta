@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{590DFCDDBD36A3B2}Namalsk_Weapon/GaussMk2/GUI/imagesets/mag_ghost.edds"
+ Author "wrdg"
+ ChangeDate 1399171458
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "mag_ghost.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
