@@ -7,6 +7,8 @@ class ER7_Gauss : FAL_Base
 	{
 		Print("EEFired");
 		super.EEFired(muzzleType, mode, ammoType);
+		
+		GetCompEM().DeviceUpdate();
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
 		
