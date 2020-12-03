@@ -66,3 +66,15 @@ class CfgVehicles
         };
     };
 };
+
+
+
+class CfgSlots
+{
+	class Slot_RailgunBattery
+	{
+		name = "RailgunBattery";
+		displayName = "RailgunBattery";
+		ghostIcon = "";
+	};
+};
