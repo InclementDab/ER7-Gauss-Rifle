@@ -97,7 +97,7 @@ GameProjectClass {
      Paths {
       "scripts/editor/Workbench"
       "scripts/editor/plugins"
-      "JM/CF/scripts/editor/plugins"
+      "Namalsk_Weapon/scripts/editor/plugins"
      } 
      EntryPoint ""
     } 
