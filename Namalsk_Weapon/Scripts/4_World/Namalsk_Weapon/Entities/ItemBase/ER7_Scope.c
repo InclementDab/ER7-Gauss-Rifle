@@ -71,6 +71,14 @@ class ER7_Scope: ItemOptics
 {
 	protected bool m_IsEnabled;	
 	protected Widget m_ScopeWidget;
+
+	void ~ER7_Scope()
+	{
+		if (m_ScopeWidget && IsMissionClient())
+		{
+			m_ScopeWidget.Unlink();
+		}
+	}
 	
 	override void OnWorkStart()
 	{
