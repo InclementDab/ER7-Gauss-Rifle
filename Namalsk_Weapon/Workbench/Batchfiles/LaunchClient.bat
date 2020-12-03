@@ -170,10 +170,4 @@ for %%a in ("%mods:;=" "%") do (
 
 chdir /d "%gameDirectory%"
 echo start %clientEXE% %clientLaunchParams% "-mod=%modList%" "%playerName%" -dologs -adminlog -freezecheck "-scriptDebug=true"
-REM REM P:/Mods/@Community-Online-Tools;P:/Mods/@DayZ-Expansion;P:/Mods/@DayZ-Expansion-Licensed;
 start %clientEXE% %clientLaunchParams% "-mod=%modList%" "%playerName%" -dologs -adminlog -freezecheck "-scriptDebug=true"
-
-
-
-
-
