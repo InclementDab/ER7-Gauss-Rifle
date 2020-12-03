@@ -1,8 +1,4 @@
 name = "Gauss Rifle";
-picture = "DayZEditor/gui/images/dayz_editor_icon_black.edds";
-logo = "DayZEditor/gui/images/dayz_editor_icon_black.edds";
-logoSmall = "DayZEditor/gui/images/dayz_editor_icon_black.edds";
-logoOver = "DayZEditor/gui/images/dayz_editor_icon_black.edds";
 tooltip = "Gauss Rifle";
 overview = "";
 action = "";
