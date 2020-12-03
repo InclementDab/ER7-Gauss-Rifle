@@ -13,7 +13,7 @@ class ER7_Gauss : FAL_Base
 			for (int i = 0; i < 10; i++) {
 				vector pos = GetPosition();
 				vector ori = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
-				float scl = GetScale() * 0.1;
+				float scl = GetScale() * 0.01;
 				CreateFireBolt(pos, ori, scl);
 			}
 		
