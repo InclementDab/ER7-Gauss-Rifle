@@ -20,7 +20,7 @@ class cfgWeapons
 	{
 		scope = 2;
 		displayName = "GRW-ER7 Gauss Rifle";
-		descriptionShort = "The GRW-ER7 is a Linear motor firearm that uses an electromagnetic force to shoot a projectile at high velocity.";
+		descriptionShort = "The GRW-ER7 is a Linear motor firearm that uses an electromagnetic force to shoot a projectile at high velocity. Requires high capacity Railgun Batteries to fire.";
 		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
 		weight = 13000;
 		itemSize[] = {10,4};

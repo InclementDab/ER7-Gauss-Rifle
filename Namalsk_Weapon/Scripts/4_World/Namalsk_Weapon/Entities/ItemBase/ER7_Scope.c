@@ -1,11 +1,9 @@
-class ER7_ScopeLayoutHandler: ScriptedWidgetEventHandler
-{
-	protected Widget m_LayoutRoot;
-	
-	protected TextWidget range_text;
-	protected TextWidget alt_base;
-	protected TextWidget ang_base;
-	
+class ER7_ScopeLayoutHandler: Controller
+{	
+	protected int Range;
+	protected string Altitude;
+	protected string Angle;
+		
 	protected ImageWidget contact_marker;
 	
 	protected ref Timer m_Timer;
@@ -22,12 +20,6 @@ class ER7_ScopeLayoutHandler: ScriptedWidgetEventHandler
 		Print("~ER7_ScopeLayoutHandler");
 		m_Timer.Stop();
 		delete m_Timer;
-	}
-	
-	void OnWidgetScriptInit(Widget w)
-	{
-		m_LayoutRoot = w;
-		m_LayoutRoot.SetHandler(this);
 	}
 	
 	void UpdateHud()
@@ -49,22 +41,21 @@ class ER7_ScopeLayoutHandler: ScriptedWidgetEventHandler
 		
 		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, player, false, false);
 		
-		float distance = vector.Distance(begin, contact_pos);
-		distance = Math.Round(distance);
-		
-		// Set Range
-		range_text.SetText(distance.ToString()); 
+		Range = vector.Distance(begin, contact_pos);
+		NotifyPropertyChanged("Range");
 		
 		vector player_pos = player.GetPosition();
 		vector player_ori = player.GetDirection();
 		
 		// Set ALT
-		alt_base.SetText(string.Format("ALT: %1", Math.Round(contact_pos[1])));
+		Altitude = string.Format("ALT: %1", Math.Round(contact_pos[1]));
+		NotifyPropertyChanged("Altitude");
 		
 		float ang = Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]) * Math.RAD2DEG;
 		
 		// Set ANG
-		ang_base.SetText(string.Format("ANG: %1", Math.Round(ang)));
+		Angle = string.Format("ANG: %1", Math.Round(ang));
+		NotifyPropertyChanged("Angle");
 		
 		// Set Human Detection
 		contact_marker.Show(false);
