@@ -387,7 +387,7 @@ class ER7_Gauss : FAL_Base
 		for (int i = 0; i < 8; i++) {			
 			vector position = ModelToWorld(GetMemoryPointPos("usti hlavne"));
 			vector orientation = 180 * Vector(Math.RandomFloat01(), Math.RandomFloat01(), Math.RandomFloat01());
-			float scale = GetScale() * 0.008;
+			float scale = GetScale() * 0.0025;
 			Object bolt = GetGame().CreateObjectEx(GAUSS_LIGHTNING_BOLT_TYPES.GetRandomElement(), position, ECE_LOCAL);
  			
 			if (bolt) {
