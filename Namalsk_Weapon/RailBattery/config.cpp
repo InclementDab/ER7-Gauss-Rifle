@@ -60,7 +60,12 @@ class CfgVehicles
                 class Health
                 {
                     hitpoints = 20;
-                    healthLevels[] = {{1.0,{"DZ\gear\consumables\data\9v.rvmat"}},{0.7,{"DZ\gear\consumables\data\9v.rvmat"}},{0.5,{"DZ\gear\consumables\data\9v_damage.rvmat"}},{0.3,{"DZ\gear\consumables\data\9v_damage.rvmat"}},{0.0,{"DZ\gear\consumables\data\9v_destruct.rvmat"}}};
+                    healthLevels[] = 
+                    {{1.0,{"DZ\gear\consumables\data\RailBattery.rvmat"}},
+                    {0.7,{"DZ\gear\consumables\data\RailBattery.rvmat"}},
+                    {0.5,{"DZ\gear\consumables\data\RailBattery_damage.rvmat"}},
+                    {0.3,{"DZ\gear\consumables\data\RailBattery_damage.rvmat"}},
+                    {0.0,{"DZ\gear\consumables\data\RailBattery_destruct.rvmat"}}};
                 };
             };
         };
