@@ -56,9 +56,8 @@
         <value name="Tier3"/>
         <value name="Tier4"/>
 	</type>
-	<type name="Bullet_ER7RFW">
+	<type name="Ammo_ER7RFW">
 		<nominal>30</nominal>
-        <lifetime>14400</lifetime>
         <restock>0</restock>
         <min>15</min>
         <quantmin>40</quantmin>
