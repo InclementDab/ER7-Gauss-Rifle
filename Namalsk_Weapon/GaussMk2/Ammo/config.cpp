@@ -59,7 +59,7 @@ class CfgMagazines
 		itemSize[] = {1,3};
 		rotationFlags = 34;
 		weight = 24;
-		count = 20;
+		count = 5;
 		ammo = "Bullet_ER7RFW";
 	};
 };

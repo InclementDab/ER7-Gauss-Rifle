@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <types>
 	<type name="ER7_Gauss">
-		<nominal>3</nominal>
+		<nominal>2</nominal>
         <lifetime>28800</lifetime>
-        <restock>30</restock>
-        <min>1</min>
+        <restock>1200</restock>
+        <min>0</min>
 		<quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -31,7 +31,7 @@
 		<nominal>5</nominal>
         <lifetime>14400</lifetime>
         <restock>90</restock>
-        <min>3</min>
+        <min>2</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -47,8 +47,8 @@
         <lifetime>28800</lifetime>
         <restock>300</restock>
         <min>10</min>
-        <quantmin>10</quantmin>
-        <quantmax>70</quantmax>
+        <quantmin>0</quantmin>
+        <quantmax>2</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <category name="weapons"/>
@@ -58,10 +58,10 @@
 	</type>
 	<type name="Ammo_ER7RFW">
 		<nominal>30</nominal>
-        <restock>0</restock>
+        <restock>300</restock>
         <min>15</min>
-        <quantmin>40</quantmin>
-        <quantmax>90</quantmax>
+        <quantmin>1</quantmin>
+        <quantmax>5</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <category name="weapons"/>
