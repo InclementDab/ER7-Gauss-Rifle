@@ -48,7 +48,7 @@ class cfgWeapons
 			reloadTime = 0.475;
 			recoil = "recoil_AKM";
 			recoilProne = "recoil_AKM_prone";
-			dispersion = 0.00075;
+			dispersion = 0.0000075;
 			magazineSlot = "magazine";
 		};
         class EnergyManager
