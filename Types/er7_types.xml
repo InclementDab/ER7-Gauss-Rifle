@@ -2,70 +2,74 @@
 <types>
 	<type name="ER7_Gauss">
 		<nominal>2</nominal>
-        <lifetime>28800</lifetime>
-        <restock>1200</restock>
+        <lifetime>14400</lifetime>
+        <restock>1800</restock>
         <min>0</min>
 		<quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
 		<flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1" crafted="0" deloot="0"/>
         <category name="weapons"/>
-        <usage name="Military"/>
+        <usage />
+        <tag name="military"/>
         <value name="Tier4"/>
 	</type>
 	<type name="ER7_Gauss_Battery">
-		<nominal>10</nominal>
-        <lifetime>28800</lifetime>
-        <restock>900</restock>
-        <min>5</min>
-        <quantmin>-1</quantmin>
-        <quantmax>-1</quantmax>
-        <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
-        <category name="weapons"/>
-        <usage name="Military"/>
-        <value name="Tier3"/>
-        <value name="Tier4"/>
-	</type>
-	<type name="ER7_Scope">
 		<nominal>5</nominal>
         <lifetime>14400</lifetime>
-        <restock>90</restock>
+        <restock>1800</restock>
         <min>2</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <usage />
+        <tag name="military"/>
+        <value name="Tier3"/>
+        <value name="Tier4"/>
+	</type>
+	<type name="ER7_Scope">
+		<nominal>2</nominal>
+        <lifetime>14400</lifetime>
+        <restock>1800</restock>
+        <min>1</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <category name="weapons"/>
-        <tag name="floor"/>
-        <usage name="Military"/>
+        <usage />
+        <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
 	</type>
 	<type name="ER7_Gauss_Magazine">
-		<nominal>20</nominal>
-        <lifetime>28800</lifetime>
-        <restock>300</restock>
-        <min>10</min>
-        <quantmin>0</quantmin>
-        <quantmax>2</quantmax>
+		<nominal>5</nominal>
+        <lifetime>14400</lifetime>
+        <restock>900</restock>
+        <min>2</min>
+        <quantmin>10</quantmin>
+        <quantmax>40</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <category name="weapons"/>
-        <usage name="Military"/>
+        <usage />
+        <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
 	</type>
 	<type name="Ammo_ER7RFW">
-		<nominal>30</nominal>
+		<nominal>10</nominal>
+        <lifetime>14400</lifetime>
         <restock>300</restock>
-        <min>15</min>
-        <quantmin>1</quantmin>
-        <quantmax>5</quantmax>
+        <min>5</min>
+        <quantmin>20</quantmin>
+        <quantmax>60</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <category name="weapons"/>
-        <usage name="Military"/>
+        <usage />
+        <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
 	</type>
