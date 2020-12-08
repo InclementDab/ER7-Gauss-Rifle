@@ -61,11 +61,11 @@ class CfgVehicles
                 {
                     hitpoints = 20;
                     healthLevels[] = 
-                    {{1.0,{"DZ\gear\consumables\data\RailBattery.rvmat"}},
-                    {0.7,{"DZ\gear\consumables\data\RailBattery.rvmat"}},
-                    {0.5,{"DZ\gear\consumables\data\RailBattery_damage.rvmat"}},
-                    {0.3,{"DZ\gear\consumables\data\RailBattery_damage.rvmat"}},
-                    {0.0,{"DZ\gear\consumables\data\RailBattery_destruct.rvmat"}}};
+                    {{1.0,{"Namalsk_Weapon\RailBattery\Data\RailBattery.rvmat"}},
+                    {0.7,{"Namalsk_Weapon\RailBattery\Data\RailBattery.rvmat"}},
+                    {0.5,{"Namalsk_Weapon\RailBattery\Data\RailBattery_damage.rvmat"}},
+                    {0.3,{"Namalsk_Weapon\RailBattery\Data\RailBattery_damage.rvmat"}},
+                    {0.0,{"Namalsk_Weapon\RailBattery\Data\RailBattery_destruct.rvmat"}}};
                 };
             };
         };
