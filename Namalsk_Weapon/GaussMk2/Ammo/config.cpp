@@ -11,41 +11,6 @@ class CfgPatches
 	};
 };
 
-class CfgVehicles
-{
-	class Box_Base;
-	class AmmoBox_ER7RFW: Box_Base
-	{
-		scope = 2;
-		displayName = "ER7 RFW (SN Rounds) AmmoBox";
-		descriptionShort = "ER7 RFW Rounds shoot at 500m/s with a very needle nose bullet (Not final version)";
-		model = "\dz\weapons\ammunition\00Buck_10RoundBox.p3d";
-		itemSize[] = {1,2};
-		rotationFlags = 17;
-		weight = 300;
-		hiddenSelections[] = {"camoGround","zbytek"};
-		//hiddenSelectionsTextures[] = {"CPBAmmo\50Cal\Data\50calbox.paa","CPBAmmo\50Cal\Data\50calbox.paa"};
-		class Resources
-		{
-			class Ammo_ER7RFW
-			{
-				value = 10;
-				variable = "quantity";
-			};
-		};
-		class AnimEvents
-		{
-			class SoundWeapon
-			{
-				class interact
-				{
-					soundset = "ammoboxUnpack_SoundSet";
-					id = 70;
-				};
-			};
-		};
-	};
-};
 
 class CfgMagazines
 {
@@ -56,7 +21,7 @@ class CfgMagazines
 		displayName = "ER7 RFW (SN Rounds)";
 		descriptionShort = "ER7 RFW SN Rounds are used in the almighty ER7 RFW Gauss Rifle.";
 		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
-		itemSize[] = {1,3};
+		itemSize[] = {1,2};
 		rotationFlags = 34;
 		weight = 24;
 		count = 5;
