@@ -82,7 +82,7 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {
 			m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
 		}
 	}
