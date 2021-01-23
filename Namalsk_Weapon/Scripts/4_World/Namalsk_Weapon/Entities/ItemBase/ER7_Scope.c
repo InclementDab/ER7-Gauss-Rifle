@@ -1,12 +1,14 @@
 class ER7_ScopeLayoutHandler: Controller
 {	
-	protected int Range;
+	protected string Range;
 	protected string Altitude;
 	protected string Angle;
 		
 	protected ImageWidget contact_marker;
 	
 	protected ref Timer m_Timer;
+	
+	protected ItemOptics m_Scope;
 	
 	void ER7_ScopeLayoutHandler()
 	{
@@ -18,7 +20,10 @@ class ER7_ScopeLayoutHandler: Controller
 	void ~ER7_ScopeLayoutHandler()
 	{	
 		Print("~ER7_ScopeLayoutHandler");
-		m_Timer.Stop();
+		if (m_Timer) {
+			m_Timer.Stop();
+		}
+		
 		delete m_Timer;
 	}
 	
@@ -34,14 +39,21 @@ class ER7_ScopeLayoutHandler: Controller
 		}
 			
 		vector begin = GetGame().GetCurrentCameraPosition();
-		vector end = begin + (GetGame().GetCurrentCameraDirection() * 2500);
+		vector end = begin + (GetGame().GetCurrentCameraDirection() * 5000);
 		vector contact_pos, contact_dir;
-		int contact_component;
-		set<Object> results = new set<Object>();
+
+		Object result;
+		float hit_fract;
+		DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.AI | PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, result, contact_pos, contact_dir, hit_fract);
+
+		float distance = vector.Distance(begin, contact_pos);
+		if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
+			Range = "" + distance / 3500; // 3500 m/s
+			Range = Range[0] + Range[1] + Range[2] + "s";
+		} else {
+			Range = ((int)distance).ToString();
+		}
 		
-		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, contact_component, results, null, player, false, false);
-		
-		Range = vector.Distance(begin, contact_pos);
 		NotifyPropertyChanged("Range");
 		
 		vector player_pos = player.GetPosition();
@@ -57,13 +69,17 @@ class ER7_ScopeLayoutHandler: Controller
 		Angle = string.Format("ANG: %1", Math.Round(ang));
 		NotifyPropertyChanged("Angle");
 		
+		Print(result);
 		// Set Human Detection
 		contact_marker.Show(false);
-		foreach (Object result: results) {
-			if (result.IsAlive() && result.IsMan()) {
-				contact_marker.Show(true);
-			}
+		if (result && result.IsAlive() && result.IsMan()) {
+			contact_marker.Show(true);
 		}
+	}
+	
+	void SetScope(ItemOptics scope)
+	{
+		m_Scope = scope;
 	}
 }
 
@@ -84,6 +100,11 @@ class ER7_Scope: ItemOptics
 		super.OnWorkStart();
 		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {
 			m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
+			ER7_ScopeLayoutHandler scope_handler;
+			m_ScopeWidget.GetScript(scope_handler);
+			if (scope_handler) {
+				scope_handler.SetScope(this);
+			}
 		}
 	}
 

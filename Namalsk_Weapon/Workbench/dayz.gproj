@@ -57,6 +57,7 @@ GameProjectClass {
      Paths {
       "scripts/3_Game"
       "JM/CF/Defines"
+      "JM/CF/Debugger/3_Game"
       "JM/CF/XML/3_Game"
       "JM/CF/Permissions/3_Game"
       "JM/CF/ModStorage/3_Game"
