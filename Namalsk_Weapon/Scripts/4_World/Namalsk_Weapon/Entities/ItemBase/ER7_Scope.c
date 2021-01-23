@@ -45,14 +45,17 @@ class ER7_ScopeLayoutHandler: Controller
 		Object result;
 		float hit_fract;
 		bool raycast = DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, result, contact_pos, contact_dir, hit_fract);
-		if (!raycast) return;
 		
-		float distance = vector.Distance(begin, contact_pos);
-		if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
-			Range = "" + distance / 3500; // 3500 m/s
-			Range = Range[0] + Range[1] + Range[2] + "s";
+		if (raycast) {
+			float distance = vector.Distance(begin, contact_pos);
+			if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
+				Range = "" + distance / 3500; // 3500 m/s
+				Range = Range[0] + Range[1] + Range[2] + "s";
+			} else {
+				Range = ((int)distance).ToString();
+			}
 		} else {
-			Range = ((int)distance).ToString();
+			Range = "- - -";
 		}
 		
 		NotifyPropertyChanged("Range");
