@@ -70,7 +70,7 @@ class ER7_ScopeLayoutHandler: Controller
 		Angle = string.Format("ANG: %1", Math.Round(ang));
 		NotifyPropertyChanged("Angle");
 		
-		Print(result);
+
 		// Set Human Detection
 		contact_marker.Show(false);
 		if (result && result.IsAlive() && result.IsMan()) {

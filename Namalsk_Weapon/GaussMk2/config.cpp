@@ -40,7 +40,7 @@ class cfgWeapons
 		magazines[] = {"ER7_Gauss_Magazine"};
 		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
 		chamberableFrom[] = {"Ammo_ER7RFW"};
-		recoilModifier[] = {1,3,2};
+		recoilModifier[] = {1.5,1.5,2};
 		modes[] = {"SemiAuto"};
 		class SemiAuto: Mode_SemiAuto
 		{
