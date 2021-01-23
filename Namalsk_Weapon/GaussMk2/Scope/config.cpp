@@ -15,7 +15,7 @@ class cfgVehicles
 	{
 		scope = 2;
 		displayName = "ER11-PRS 6x30";
-		descriptionShort = "High powered optic, specifically desiged for the ER7 Railgun. Displays range, altitude and other variables while in reticle";
+		descriptionShort = "High powered optic, specifically desiged for the ER7 Railgun. Displays range, altitude and other variables while in reticle. When attached to an ER7 Railgun, it will display TTI (Time to impact) instead of range";
 		model = "\Namalsk_Weapon\GaussMk2\Scope\ER7Scope.p3d";
 		animClass = "Binoculars";
 		attachments[] = {"BatteryD"};
