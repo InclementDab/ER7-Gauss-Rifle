@@ -41,12 +41,14 @@ class ER7_ScopeLayoutHandler: Controller
 		vector begin = GetGame().GetCurrentCameraPosition();
 		vector end = begin + (GetGame().GetCurrentCameraDirection() * 5000);
 		vector contact_pos, contact_dir;
-
-		Object result;
+		int component;
+		set<Object> results = new set<Object>();
+		Object unused;
 		float hit_fract;
-		bool raycast = DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, result, contact_pos, contact_dir, hit_fract);
 		
-		if (raycast) {
+		// main raycast
+		// Set Range
+		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.DEFAULT | PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
 			float distance = vector.Distance(begin, contact_pos);
 			if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
 				Range = "" + distance / 3500; // 3500 m/s
@@ -73,11 +75,14 @@ class ER7_ScopeLayoutHandler: Controller
 		Angle = string.Format("ANG: %1", Math.Round(ang));
 		NotifyPropertyChanged("Angle");
 		
-
 		// Set Human Detection
+		// we do a second raycast since RaycastBullet doesnt have a way of returning characters (PhxInteractionLayers bug?)
+		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, component, results); 
 		contact_marker.Show(false);
-		if (result && result.IsAlive() && result.IsMan()) {
-			contact_marker.Show(true);
+		foreach (Object result: results) {
+			if (result && result.IsAlive() && result.IsMan()) {
+				contact_marker.Show(true);
+			}
 		}
 	}
 	
