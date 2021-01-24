@@ -94,7 +94,6 @@ class ER7_ScopeLayoutHandler: Controller
 
 class ER7_Scope: ItemOptics
 {
-	protected bool m_IsEnabled;	
 	protected Widget m_ScopeWidget;
 
 	void ~ER7_Scope()
