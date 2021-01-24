@@ -34,7 +34,7 @@ FrameWidgetClass root_widget {
    }
   }
   ImageWidgetClass contact_marker {
-   visible 1
+   visible 0
    ignorepointer 1
    position 236.284 182.94798
    size 20 20

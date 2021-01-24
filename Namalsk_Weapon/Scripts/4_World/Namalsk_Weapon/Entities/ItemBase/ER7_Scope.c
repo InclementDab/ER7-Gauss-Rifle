@@ -80,7 +80,7 @@ class ER7_ScopeLayoutHandler: Controller
 		DayZPhysics.RaycastRV(begin, end, contact_pos, contact_dir, component, results); 
 		contact_marker.Show(false);
 		foreach (Object result: results) {
-			if (result && result.IsAlive() && result.IsMan()) {
+			if (result && result.IsAlive() && result.IsMan() && result != GetGame().GetPlayer()) {
 				contact_marker.Show(true);
 			}
 		}
