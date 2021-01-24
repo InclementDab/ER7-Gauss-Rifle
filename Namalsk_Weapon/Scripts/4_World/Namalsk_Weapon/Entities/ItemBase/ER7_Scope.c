@@ -48,7 +48,7 @@ class ER7_ScopeLayoutHandler: Controller
 		
 		// main raycast
 		// Set Range
-		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.DEFAULT | PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
+		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
 			float distance = vector.Distance(begin, contact_pos);
 			if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
 				Range = "" + distance / 3500; // 3500 m/s
