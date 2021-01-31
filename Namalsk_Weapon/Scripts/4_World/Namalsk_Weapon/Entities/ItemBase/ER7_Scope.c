@@ -38,6 +38,10 @@ class ER7_ScopeLayoutHandler: Controller
 		
 		// Edge Case
 		if (m_Scope && player.IsUnconscious()) {
+			if (m_Timer) {
+				m_Timer.Stop();
+			}
+		
 			m_Scope.CloseScope();
 			return;
 		}
