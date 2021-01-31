@@ -12,14 +12,12 @@ class ER7_ScopeLayoutHandler: Controller
 	
 	void ER7_ScopeLayoutHandler()
 	{
-		Print("ER7_ScopeLayoutHandler");
 		m_Timer = new Timer(CALL_CATEGORY_GUI);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
 	void ~ER7_ScopeLayoutHandler()
 	{	
-		Print("~ER7_ScopeLayoutHandler");
 		if (m_Timer) {
 			m_Timer.Stop();
 		}
