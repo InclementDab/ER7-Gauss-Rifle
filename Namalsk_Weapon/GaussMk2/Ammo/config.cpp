@@ -58,9 +58,10 @@ class cfgAmmo
 		supersonicCrackFar[] = {};
 		initSpeed = 3500;
 		tracerScale = 2;
-		tracerStartTime = 0.075;
+		tracerStartTime = 0;
 		tracerEndTime = 100;
 		weight = 0.0149;
+		simulationStep = 0.05;
 		class DamageApplied
 		{
 			type = "Projectile";
