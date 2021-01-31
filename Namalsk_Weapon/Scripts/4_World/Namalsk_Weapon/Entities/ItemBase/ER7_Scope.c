@@ -8,7 +8,7 @@ class ER7_ScopeLayoutHandler: Controller
 	
 	protected ref Timer m_Timer;
 	
-	protected ItemOptics m_Scope;
+	protected ER7_Scope m_Scope;
 	
 	void ER7_ScopeLayoutHandler()
 	{
@@ -35,6 +35,12 @@ class ER7_ScopeLayoutHandler: Controller
 	
 		PlayerBase player = GetGame().GetPlayer();
 		if (!player) {
+			return;
+		}
+		
+		// Edge Case
+		if (m_Scope && player.IsUnconscious()) {
+			m_Scope.CloseScope();
 			return;
 		}
 			
@@ -86,7 +92,7 @@ class ER7_ScopeLayoutHandler: Controller
 		}
 	}
 	
-	void SetScope(ItemOptics scope)
+	void SetScope(ER7_Scope scope)
 	{
 		m_Scope = scope;
 	}
@@ -119,6 +125,11 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();		
+		CloseScope();
+	}
+	
+	void CloseScope()
+	{
 		if (m_ScopeWidget && IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
 			m_ScopeWidget.Unlink();
 		}
