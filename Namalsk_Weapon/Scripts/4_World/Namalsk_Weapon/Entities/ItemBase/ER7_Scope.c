@@ -155,7 +155,9 @@ class ER7_Scope: ItemOptics
 
 	void ~ER7_Scope()
 	{
-		CloseScope();
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
+			CloseScope();
+		}
 	}
 	
 	override void OnWorkStart()
@@ -173,13 +175,15 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();		
-		CloseScope();
-	}
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
+			CloseScope();
+		}
+	}	
 	
 	void CloseScope()
 	{
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			delete m_ScopeWidget;	
+		if (IsMissionClient()) {
+			delete m_ScopeWidget;	 
 		}
 	}
 }
