@@ -25,7 +25,6 @@ class ER7_Scope: ItemOptics
 
 	override void OnWorkStop()
 	{
-		Print("OnWorkStop");
 		super.OnWorkStop();		
 		if (IsMissionClient()) {
 			if (m_Timer) {
