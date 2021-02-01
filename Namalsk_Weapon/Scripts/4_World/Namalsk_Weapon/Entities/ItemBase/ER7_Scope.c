@@ -161,7 +161,10 @@ class ER7_Scope: ItemOptics
 	{
 		super.OnWorkStart();
 		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {	
-			Print(m_ScopeWidget);		
+			if (m_ScopeWidget) {
+				delete m_ScopeWidget;
+			}
+			
 			m_ScopeWidget = new ER7_Scope_View(this);
 		}
 	}
