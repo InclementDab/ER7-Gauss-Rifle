@@ -55,11 +55,9 @@ class ER7_Scope_View_Controller: Controller
 		// Set ALT
 		Altitude = string.Format("ALT: %1", Math.Round(contact_pos[1]));
 		NotifyPropertyChanged("Altitude");
-		
-		float ang = Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]) * Math.RAD2DEG;
-		
+				
 		// Set ANG
-		Angle = string.Format("ANG: %1", Math.Round(ang));
+		Angle = string.Format("ANG: %1", Math.Round(Math.Atan2(player_pos[2] - contact_pos[2], player_pos[0] - contact_pos[0]) * Math.RAD2DEG));
 		NotifyPropertyChanged("Angle");
 		
 		// Set Force Range (gauss only)
