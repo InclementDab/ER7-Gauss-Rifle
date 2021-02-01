@@ -29,8 +29,8 @@ class ER7_Scope_View_Controller: Controller
 		int component;
 		set<Object> results = new set<Object>();
 		Object unused;
-		float hit_fract;
-		float distance;
+		float hit_fract, distance;
+		
 		// main raycast
 		// Set Range
 		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
