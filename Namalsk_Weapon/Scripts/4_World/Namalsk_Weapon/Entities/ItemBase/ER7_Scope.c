@@ -32,7 +32,7 @@ class ER7_Scope_View_Controller: Controller
 	
 	void UpdateHud()
 	{
-		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
+		if (!IsMissionClient()) {
 			return;
 		}
 	
