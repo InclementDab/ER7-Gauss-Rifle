@@ -14,7 +14,7 @@ FrameWidgetClass root_widget {
   TextWidgetClass range_text {
    ignorepointer 1
    color 1 0 0.1608 1
-   position -334.52499 0.00983
+   position -334.52499 0
    size 100 0.0342
    halign center_ref
    valign center_ref
@@ -26,7 +26,9 @@ FrameWidgetClass root_widget {
    text "1000"
    font "gui/fonts/MetronLight"
    "text color" 0.5608 0.0706 0.4392 1
+   "exact text" 1
    "text halign" center
+   "text valign" center
    {
     ScriptParamsClass {
      Binding_Name "Range"
@@ -61,6 +63,7 @@ FrameWidgetClass root_widget {
    Padding 0
    Margin 0
    "Size To Content H" 1
+   "Size To Content V" 1
    {
     TextWidgetClass alt_base {
      ignorepointer 1
@@ -99,11 +102,43 @@ FrameWidgetClass root_widget {
       }
      }
     }
+    TextWidgetClass rng_base {
+     ignorepointer 1
+     color 1 0 0.1608 1
+     position 0.65 0.65
+     size 1 20
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     scriptclass "ViewBinding"
+     text "Range:"
+     font "gui/fonts/Metron16"
+     {
+      ScriptParamsClass {
+       Binding_Name "Range_Force"
+      }
+     }
+    }
+    TextWidgetClass bat_base {
+     ignorepointer 1
+     color 1 0 0.1608 1
+     position 0.65 0.65
+     size 1 20
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     scriptclass "ViewBinding"
+     text "Battery:"
+     font "gui/fonts/Metron16"
+     {
+      ScriptParamsClass {
+       Binding_Name "Battery_Level"
+      }
+     }
+    }
    }
-  }
- }
- {
-  ScriptParamsClass {
   }
  }
 }

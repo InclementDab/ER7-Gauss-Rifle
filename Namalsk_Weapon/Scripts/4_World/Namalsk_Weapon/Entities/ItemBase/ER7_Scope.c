@@ -3,8 +3,12 @@ class ER7_ScopeLayoutHandler: Controller
 	protected string Range;
 	protected string Altitude;
 	protected string Angle;
+	protected string Range_Force;
+	protected string Battery_Level;
 		
 	protected ImageWidget contact_marker;
+	protected TextWidget rng_base;
+	protected TextWidget bat_base;
 	
 	protected ref Timer m_Timer;
 	
@@ -38,13 +42,12 @@ class ER7_ScopeLayoutHandler: Controller
 		
 		// Edge Case
 		if (m_Scope && player.IsUnconscious()) {
-			if (m_Timer) {
-				m_Timer.Stop();
-			}
-		
-			m_Scope.CloseScope();
+			//GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(m_Scope.CloseScope, 1000);
+			//delete this;
 			return;
 		}
+		
+		bool is_gauss = (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss));
 			
 		vector begin = GetGame().GetCurrentCameraPosition();
 		vector end = begin + (GetGame().GetCurrentCameraDirection() * 5000);
@@ -53,12 +56,12 @@ class ER7_ScopeLayoutHandler: Controller
 		set<Object> results = new set<Object>();
 		Object unused;
 		float hit_fract;
-		
+		float distance;
 		// main raycast
 		// Set Range
 		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
-			float distance = vector.Distance(begin, contact_pos);
-			if (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss)) {
+			distance = vector.Distance(begin, contact_pos);
+			if (is_gauss) {
 				Range = "" + distance / 3500; // 3500 m/s
 				Range = Range[0] + Range[1] + Range[2] + "s";
 			} else {
@@ -82,6 +85,35 @@ class ER7_ScopeLayoutHandler: Controller
 		// Set ANG
 		Angle = string.Format("ANG: %1", Math.Round(ang));
 		NotifyPropertyChanged("Angle");
+		
+		// Set Force Range (gauss only)
+		if (is_gauss) {
+			Range_Force = string.Format("Range: %1", (int)distance);
+			NotifyPropertyChanged("Range_Force");
+		} 
+		
+		rng_base.Show(is_gauss);
+		
+		// Set Battery Level (gauss only)
+		if (is_gauss) {
+			string battery_final;
+			if (m_Scope.GetHierarchyParent().GetCompEM() && m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource()) {
+				string battery_exact = ((m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantity() / m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantityMax()) * 100).ToString();
+				for (int i = 0; i < battery_exact.Length(); i++) {
+					if (i <= 3) {
+						battery_final += battery_exact[i];
+					}
+				}
+			} else {
+				battery_final = "0";
+			}
+			
+			Battery_Level = string.Format("ER7 Battery: %1%%", battery_final);
+			NotifyPropertyChanged("Battery_Level");
+		}
+		
+		bat_base.Show(is_gauss);
+		
 		
 		// Set Human Detection
 		// we do a second raycast since RaycastBullet doesnt have a way of returning characters (PhxInteractionLayers bug?)
