@@ -9,28 +9,20 @@ class ER7_Scope_View_Controller: Controller
 	protected ImageWidget contact_marker;
 	protected TextWidget rng_base;
 	protected TextWidget bat_base;
-	
-	protected ref Timer m_Timer;
-	
+		
 	protected ER7_Scope m_Scope;
 	
 	void ER7_Scope_View_Controller()
 	{
-		m_Timer = new Timer(CALL_CATEGORY_GUI);		
-		m_Timer.Run(0.1, this, "UpdateHud", null, true);
+		Print("ER7_Scope_View_Controller");
 	}
 	
 	void ~ER7_Scope_View_Controller()
 	{	
 		Print("~ER7_Scope_View_Controller");
-		if (m_Timer) {
-			m_Timer.Stop();
-		}
-		
-		delete m_Timer;
 	}
 	
-	void UpdateHud()
+	void OnTimer()
 	{
 		if (!IsMissionClient()) {
 			return;
@@ -38,8 +30,8 @@ class ER7_Scope_View_Controller: Controller
 		
 		// Edge Case
 		if (m_Scope && !m_Scope.GetHierarchyRootPlayer()) {			
- 			m_Scope.CloseScope();
-			return;
+ 			//m_Scope.CloseScope();
+			//return;
 		}
 		
 		PlayerBase player = GetGame().GetPlayer();
@@ -143,6 +135,11 @@ class ER7_Scope_View: ScriptViewTemplate<ER7_Scope_View_Controller>
 		GetTemplateController().SetScope(scope);
 	}
 	
+	void OnTimer()
+	{
+		GetTemplateController().OnTimer();
+	}
+	
 	override string GetLayoutFile()
 	{
 		return "Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout";
@@ -152,12 +149,17 @@ class ER7_Scope_View: ScriptViewTemplate<ER7_Scope_View_Controller>
 class ER7_Scope: ItemOptics
 {
 	protected ref ER7_Scope_View m_ScopeWidget;
+	protected ref Timer m_Timer;
+	
+	void ER7_Scope()
+	{
 
+	}
+	
 	void ~ER7_Scope()
 	{
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			CloseScope();
-		}
+		delete m_ScopeWidget;
+		delete m_Timer;
 	}
 	
 	override void OnWorkStart()
@@ -169,21 +171,36 @@ class ER7_Scope: ItemOptics
 			}
 			
 			m_ScopeWidget = new ER7_Scope_View(this);
+			m_Timer = new Timer(CALL_CATEGORY_GUI);		
+			m_Timer.Run(0.1, this, "OnTimer", null, true);
 		}
 	}
 
 	override void OnWorkStop()
 	{
+		Print("OnWorkStop");
 		super.OnWorkStop();		
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			CloseScope();
-		}
-	}	
-	
-	void CloseScope()
-	{
 		if (IsMissionClient()) {
-			delete m_ScopeWidget;	 
+			if (m_Timer) {
+				m_Timer.Stop();
+			}
+		
+			delete m_Timer;
+			delete m_ScopeWidget;
+		}
+	}
+	
+	void OnTimer()
+	{
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
+			m_ScopeWidget.OnTimer();
+		} else {
+			/*if (m_Timer) {
+				m_Timer.Stop();
+			}
+		
+			delete m_Timer; 
+			delete m_ScopeWidget;*/
 		}
 	}
 }
