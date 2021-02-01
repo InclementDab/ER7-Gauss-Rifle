@@ -22,6 +22,7 @@ class ER7_ScopeLayoutHandler: Controller
 	
 	void ~ER7_ScopeLayoutHandler()
 	{	
+		Print("~ER7_ScopeLayoutHandler");
 		if (m_Timer) {
 			m_Timer.Stop();
 		}
@@ -39,11 +40,10 @@ class ER7_ScopeLayoutHandler: Controller
 		if (!player) {
 			return;
 		}
-		
+				
 		// Edge Case
-		if (m_Scope && player.IsUnconscious()) {
-			//GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(m_Scope.CloseScope, 1000);
-			//delete this;
+		if (m_Scope && !m_Scope.GetHierarchyRootPlayer()) {			
+ 			m_Scope.CloseScope();
 			return;
 		}
 		
@@ -62,9 +62,11 @@ class ER7_ScopeLayoutHandler: Controller
 		if (DayZPhysics.RayCastBullet(begin, end, PhxInteractionLayers.TERRAIN | PhxInteractionLayers.CHARACTER | PhxInteractionLayers.BUILDING, player, unused, contact_pos, contact_dir, hit_fract)) {
 			distance = vector.Distance(begin, contact_pos);
 			if (is_gauss) {
+				// this does the math for TTI when gauss is attached
 				Range = "" + distance / 3500; // 3500 m/s
 				Range = Range[0] + Range[1] + Range[2] + "s";
 			} else {
+				// default to normal ranging
 				Range = ((int)distance).ToString();
 			}
 		} else {
@@ -105,6 +107,7 @@ class ER7_ScopeLayoutHandler: Controller
 					}
 				}
 			} else {
+				// just a backup if no battery is found
 				battery_final = "0";
 			}
 			
@@ -132,27 +135,40 @@ class ER7_ScopeLayoutHandler: Controller
 	}
 }
 
+class ER7_Scope_Widget: ScriptView
+{
+	protected ER7_Scope m_Scope;
+	
+	void ER7_Scope_Widget(ER7_Scope scope)
+	{
+		ER7_ScopeLayoutHandler.Cast(GetController()).SetScope(scope);
+	}
+	
+	override typename GetControllerType() 
+	{
+		return ER7_ScopeLayoutHandler;
+	}
+	
+	override string GetLayoutFile()
+	{
+		return "Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout";
+	}
+}
+
 class ER7_Scope: ItemOptics
 {
-	protected Widget m_ScopeWidget;
+	protected ref ER7_Scope_Widget m_ScopeWidget;
 
 	void ~ER7_Scope()
 	{
-		if (m_ScopeWidget && IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			m_ScopeWidget.Unlink();
-		}
+		CloseScope();
 	}
 	
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {
-			m_ScopeWidget = GetGame().GetWorkspace().CreateWidgets("Namalsk_Weapon/GaussMk2/GUI/layouts/gauss_scope.layout");
-			ER7_ScopeLayoutHandler scope_handler;
-			m_ScopeWidget.GetScript(scope_handler);
-			if (scope_handler) {
-				scope_handler.SetScope(this);
-			}
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {			
+			m_ScopeWidget = new ER7_Scope_Widget(this);
 		}
 	}
 
@@ -164,8 +180,8 @@ class ER7_Scope: ItemOptics
 	
 	void CloseScope()
 	{
-		if (m_ScopeWidget && IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			m_ScopeWidget.Unlink();
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
+			delete m_ScopeWidget;
 		}
 	}
 }

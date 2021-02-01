@@ -9,7 +9,7 @@ FrameWidgetClass root_widget {
  vexactpos 1
  hexactsize 0
  vexactsize 0
- scriptclass "ER7_ScopeLayoutHandler"
+ scriptclass ""
  {
   TextWidgetClass range_text {
    ignorepointer 1
