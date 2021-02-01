@@ -35,17 +35,18 @@ class ER7_Scope_View_Controller: Controller
 		if (!IsMissionClient()) {
 			return;
 		}
-	
-		PlayerBase player = GetGame().GetPlayer();
-		if (!player) {
-			return;
-		}
-				
+		
 		// Edge Case
 		if (m_Scope && !m_Scope.GetHierarchyRootPlayer()) {			
  			m_Scope.CloseScope();
 			return;
 		}
+		
+		PlayerBase player = GetGame().GetPlayer();
+		if (!player) {
+			return;
+		}
+			
 		
 		bool is_gauss = (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss));
 			
@@ -162,7 +163,7 @@ class ER7_Scope: ItemOptics
 		super.OnWorkStart();
 		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {	
 			if (m_ScopeWidget) {
-				delete m_ScopeWidget;
+				return;
 			}
 			
 			m_ScopeWidget = new ER7_Scope_View(this);
@@ -178,7 +179,7 @@ class ER7_Scope: ItemOptics
 	void CloseScope()
 	{
 		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			delete m_ScopeWidget;
+			delete m_ScopeWidget;	
 		}
 	}
 }
