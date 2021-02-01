@@ -9,9 +9,7 @@ class ER7_Scope_View_Controller: Controller
 	protected ImageWidget contact_marker;
 	protected TextWidget rng_base;
 	protected TextWidget bat_base;
-		
-	protected ER7_Scope m_Scope;
-	
+			
 	void ER7_Scope_View_Controller()
 	{
 		Print("ER7_Scope_View_Controller");
@@ -22,25 +20,19 @@ class ER7_Scope_View_Controller: Controller
 		Print("~ER7_Scope_View_Controller");
 	}
 	
-	void OnTimer()
+	void OnTimer(ER7_Scope scope)
 	{
 		if (!IsMissionClient()) {
 			return;
 		}
-		
-		// Edge Case
-		if (m_Scope && !m_Scope.GetHierarchyRootPlayer()) {			
- 			//m_Scope.CloseScope();
-			//return;
-		}
-		
+				
 		PlayerBase player = GetGame().GetPlayer();
 		if (!player) {
 			return;
 		}
 			
 		
-		bool is_gauss = (m_Scope && m_Scope.GetHierarchyParent() && m_Scope.GetHierarchyParent().IsInherited(ER7_Gauss));
+		bool is_gauss = (scope && scope.GetHierarchyParent() && scope.GetHierarchyParent().IsInherited(ER7_Gauss));
 			
 		vector begin = GetGame().GetCurrentCameraPosition();
 		vector end = begin + (GetGame().GetCurrentCameraDirection() * 5000);
@@ -92,8 +84,8 @@ class ER7_Scope_View_Controller: Controller
 		// Set Battery Level (gauss only)
 		if (is_gauss) {
 			string battery_final;
-			if (m_Scope.GetHierarchyParent().GetCompEM() && m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource()) {
-				string battery_exact = ((m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantity() / m_Scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantityMax()) * 100).ToString();
+			if (scope.GetHierarchyParent().GetCompEM() && scope.GetHierarchyParent().GetCompEM().GetEnergySource()) {
+				string battery_exact = ((scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantity() / scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantityMax()) * 100).ToString();
 				for (int i = 0; i < battery_exact.Length(); i++) {
 					if (i <= 3) {
 						battery_final += battery_exact[i];
@@ -121,23 +113,13 @@ class ER7_Scope_View_Controller: Controller
 			}
 		}
 	}
-	
-	void SetScope(ER7_Scope scope)
-	{
-		m_Scope = scope;
-	}
 }
 
 class ER7_Scope_View: ScriptViewTemplate<ER7_Scope_View_Controller>
-{
-	void ER7_Scope_View(ER7_Scope scope)
+{	
+	void OnTimer(ER7_Scope scope)
 	{
-		GetTemplateController().SetScope(scope);
-	}
-	
-	void OnTimer()
-	{
-		GetTemplateController().OnTimer();
+		GetTemplateController().OnTimer(scope);
 	}
 	
 	override string GetLayoutFile()
@@ -150,11 +132,6 @@ class ER7_Scope: ItemOptics
 {
 	protected ref ER7_Scope_View m_ScopeWidget;
 	protected ref Timer m_Timer;
-	
-	void ER7_Scope()
-	{
-
-	}
 	
 	void ~ER7_Scope()
 	{
@@ -170,7 +147,7 @@ class ER7_Scope: ItemOptics
 				return;
 			}
 			
-			m_ScopeWidget = new ER7_Scope_View(this);
+			m_ScopeWidget = new ER7_Scope_View();
 			m_Timer = new Timer(CALL_CATEGORY_GUI);		
 			m_Timer.Run(0.1, this, "OnTimer", null, true);
 		}
@@ -193,14 +170,7 @@ class ER7_Scope: ItemOptics
 	void OnTimer()
 	{
 		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer()) {
-			m_ScopeWidget.OnTimer();
-		} else {
-			/*if (m_Timer) {
-				m_Timer.Stop();
-			}
-		
-			delete m_Timer; 
-			delete m_ScopeWidget;*/
+			m_ScopeWidget.OnTimer(this);
 		}
 	}
 }
