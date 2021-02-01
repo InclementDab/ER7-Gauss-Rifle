@@ -1,4 +1,4 @@
-class ER7_ScopeLayoutHandler: Controller
+class ER7_Scope_View_Controller: Controller
 {	
 	protected string Range;
 	protected string Altitude;
@@ -14,15 +14,15 @@ class ER7_ScopeLayoutHandler: Controller
 	
 	protected ER7_Scope m_Scope;
 	
-	void ER7_ScopeLayoutHandler()
+	void ER7_Scope_View_Controller()
 	{
 		m_Timer = new Timer(CALL_CATEGORY_GUI);		
 		m_Timer.Run(0.1, this, "UpdateHud", null, true);
 	}
 	
-	void ~ER7_ScopeLayoutHandler()
+	void ~ER7_Scope_View_Controller()
 	{	
-		Print("~ER7_ScopeLayoutHandler");
+		Print("~ER7_Scope_View_Controller");
 		if (m_Timer) {
 			m_Timer.Stop();
 		}
@@ -135,18 +135,11 @@ class ER7_ScopeLayoutHandler: Controller
 	}
 }
 
-class ER7_Scope_Widget: ScriptView
+class ER7_Scope_View: ScriptViewTemplate<ER7_Scope_View_Controller>
 {
-	protected ER7_Scope m_Scope;
-	
-	void ER7_Scope_Widget(ER7_Scope scope)
+	void ER7_Scope_View(ER7_Scope scope)
 	{
-		ER7_ScopeLayoutHandler.Cast(GetController()).SetScope(scope);
-	}
-	
-	override typename GetControllerType() 
-	{
-		return ER7_ScopeLayoutHandler;
+		GetTemplateController().SetScope(scope);
 	}
 	
 	override string GetLayoutFile()
@@ -157,7 +150,7 @@ class ER7_Scope_Widget: ScriptView
 
 class ER7_Scope: ItemOptics
 {
-	protected ref ER7_Scope_Widget m_ScopeWidget;
+	protected ref ER7_Scope_View m_ScopeWidget;
 
 	void ~ER7_Scope()
 	{
@@ -167,8 +160,9 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
-		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {			
-			m_ScopeWidget = new ER7_Scope_Widget(this);
+		if (IsMissionClient() && GetGame().GetPlayer() == GetHierarchyRootPlayer() && IsInOptics()) {	
+			Print(m_ScopeWidget);		
+			m_ScopeWidget = new ER7_Scope_View(this);
 		}
 	}
 
