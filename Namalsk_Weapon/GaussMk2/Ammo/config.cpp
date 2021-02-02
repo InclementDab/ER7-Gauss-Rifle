@@ -19,7 +19,7 @@ class CfgMagazines
 	{
 		scope = 2;
 		displayName = "ER7 RFW (SN Rounds)";
-		descriptionShort = "ER7 RFW SN Rounds are used in the almighty ER7 RFW Gauss Rifle.";
+		descriptionShort = "ER7 RFW SN Rounds are a high velocity Railgun Projectile for use in the ER7 RFW Gauss Rifle.";
 		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
 		itemSize[] = {1,2};
 		rotationFlags = 34;
@@ -32,7 +32,7 @@ class CfgMagazines
 	{
 		scope = 2;
 		displayName = "ER7 RFW (Teleportation Rounds)";
-		descriptionShort = "ER7 RFW Teleportation Rounds are an experimental technology for the ER7 Gauss Rifle. The round contains a small piece of NAC Orbalist technology in the tip, that once exposed at high impact, teleports the target. Not for use with children under 12";
+		descriptionShort = "ER7 RFW Teleportation Rounds are an experimental technology for the ER7 Gauss Rifle. The round contains a small piece of NAC Orbalist technology in the tip, that once exposed at high impact, teleports the target to a random destination. Not for use with children under 12";
 		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
 		itemSize[] = {1,2};
 		rotationFlags = 34;
