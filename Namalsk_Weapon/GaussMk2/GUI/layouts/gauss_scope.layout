@@ -24,7 +24,7 @@ FrameWidgetClass root_widget {
    vexactsize 0
    scriptclass "ViewBinding"
    text "1000"
-   font "gui/fonts/MetronLight"
+   font "gui/fonts/MetronBook28"
    "text color" 0.5608 0.0706 0.4392 1
    "exact text" 1
    "size to text h" 1

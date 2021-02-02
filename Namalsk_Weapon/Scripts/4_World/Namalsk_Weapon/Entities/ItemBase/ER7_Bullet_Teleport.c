@@ -34,9 +34,9 @@ modded class PlayerBase
 
 void ER7_TeleportObject(Object object)
 {
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("Blowout_Teleport", object.GetPosition(), 1), true);
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(object.GetPosition()), true);
 	ER7_TeleportObject(object, ER7_GetRandomTeleportPosition());
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", object.GetPosition(), 1), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(object.GetPosition()), true);
 }
 
 void ER7_TeleportObject(notnull Object object, vector position)
@@ -60,7 +60,7 @@ void ER7_FinishRandomTeleportObject(ref Param2<Object, vector> params_ref)
 	OLinkT link = new OLinkT(params_ref.param1);
 	
 	Sleep(500);
-	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("Blowout_Teleport", params_ref.param1.GetPosition(), 1), true);
+	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", params_ref.param1.GetPosition(), 1), true);
 	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(params_ref.param2), true);
 	
 	delete params_ref;
