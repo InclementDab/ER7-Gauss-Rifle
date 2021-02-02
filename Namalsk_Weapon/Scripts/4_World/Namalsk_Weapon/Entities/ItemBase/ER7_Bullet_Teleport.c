@@ -2,10 +2,7 @@ modded class ItemBase
 {
 	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
-		Print(this);
-		Print(GetHierarchyRoot());
-		
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);		
 		if (ammo == "Bullet_ER7RFW_Teleport") {
 			ER7_TeleportObject(GetHierarchyRoot());
 		}
@@ -37,8 +34,8 @@ modded class PlayerBase
 
 void ER7_TeleportObject(Object object)
 {
-	GetGame().RPCSingleParam(object, ERPCsBlowoutStorm.BLOWOUT_RPC_PLAY_SOUND_ENVIRONMENT, new Param3<BlowoutSound, vector, float>(BlowoutSound.Blowout_Teleport, object.GetPosition(), 1), true);
-	GetGame().RPCSingleParam(object, ERPCsBlowoutStorm.BLOWOUT_RPC_TELEPORT_FLASH, new Param1<vector>(object.GetPosition()), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("Blowout_Teleport", object.GetPosition(), 1), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(object.GetPosition()), true);
 	ER7_TeleportObject(object, ER7_GetRandomTeleportPosition());
 }
 
@@ -63,8 +60,8 @@ void ER7_FinishRandomTeleportObject(ref Param2<Object, vector> params_ref)
 	OLinkT link = new OLinkT(params_ref.param1);
 	
 	Sleep(500);
-	GetGame().RPCSingleParam(params_ref.param1, ERPCsBlowoutStorm.BLOWOUT_RPC_PLAY_SOUND_ENVIRONMENT, new Param3<BlowoutSound, vector, float>(BlowoutSound.Blowout_Teleport, params_ref.param1.GetPosition(), 1), true);
-	GetGame().RPCSingleParam(params_ref.param1, ERPCsBlowoutStorm.BLOWOUT_RPC_TELEPORT_FLASH, new Param1<vector>(params_ref.param2), true);
+	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("Blowout_Teleport", params_ref.param1.GetPosition(), 1), true);
+	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(params_ref.param2), true);
 	
 	// Safe
 	Sleep(10000);
@@ -124,32 +121,85 @@ static vector ER7_GetRandomTeleportPosition(float x = 5467, float z = 8660, floa
 	return position;
 }
 
-static void CreateTeleportFlash(vector position)
+class ER7_TeleportLight: ScriptedLightBase
 {
-	ScriptedLightBase.CreateLight(BlowoutTeleportLight, position);
+	void ER7_TeleportLight()
+	{
+		SetLightType(LightType.AMBIENT);
+		SetVisibleDuringDaylight(true);
+		SetLifetime(0.07);
+		SetFadeOutTime(0.02);
+		SetCastShadow(true);
+		
+		SetDiffuseColor(0.3, 0.3, 1);	
+		SetAmbientColor(0.3, 0.3, 1);	
+		SetBrightnessTo(25);
+		SetRadiusTo(1200);
+		SetFlareVisible(true);
+	}
+}
+
+enum ER7_TeleportRPCs
+{
+	PLAYSOUND = 42456,
+	PLAYFLASH = 42457
 }
 
 void ER7_HandleRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
 {
 	switch (rpc_type) {
-		case ERPCsBlowoutStorm.BLOWOUT_RPC_PLAY_SOUND_ENVIRONMENT: {
-			Param3<BlowoutSound, vector, float> sound_param;
+		case ER7_TeleportRPCs.PLAYSOUND: {
+			Param3<string, vector, float> sound_param;
 			if (!ctx.Read(sound_param)) {
 				break;
 			}
 			
-			thread PlayEnvironmentSound(sound_param.param1, sound_param.param2, sound_param.param3);
+			EffectSound effect_sound = SEffectManager.PlaySound(sound_param.param1, sound_param.param2, 0, 0, false);
+			if (!effect_sound) {
+				PrintFormat("Sound failed to create %1", sound_param.param1);
+				break;
+			}
+			// this doesnt work btw
+			effect_sound.SetSoundVolume(sound_param.param3);
+			effect_sound.SetSoundAutodestroy(true);			
 			break;
 		}
 		
-		case ERPCsBlowoutStorm.BLOWOUT_RPC_TELEPORT_FLASH: {
+		case ER7_TeleportRPCs.PLAYFLASH: {
 			Param1<vector> flash_params;
 			if (!ctx.Read(flash_params)) {
 				break;
 			}
 			
-			thread CreateTeleportFlash(flash_params.param1);
+			ScriptedLightBase.CreateLight(ER7_TeleportLight, flash_params.param1);
 			break;
 		}
+	}
+}
+
+modded class EmoteManager
+{
+	override void CommitSuicide()
+	{
+		ER7_Gauss weapon;
+		WeaponEventBase weapon_event = new WeaponEventTrigger;
+		// cast to ER7
+		if (Class.CastTo(weapon, m_Player.GetItemInHands())) {
+			//TODO : check multiple muzzles for shotguns, eventually
+			string ammo;
+			float damage;		
+			
+			if (weapon.CanFire() && weapon.GetCartridgeInfo(0, damage, ammo) && ammo == "Bullet_ER7RFW_Teleport") {
+				
+				m_Callback.RegisterAnimationEvent("Simulation_End", EmoteConstants.EMOTE_SUICIDE_SIMULATION_END);
+				weapon.ProcessWeaponEvent(weapon_event);
+				m_Callback.InternalCommand(DayZPlayerConstants.CMD_ACTIONINT_FINISH);
+				
+				ER7_TeleportObject(m_Player);
+				return;
+			}
+		}
+
+		super.CommitSuicide();
 	}
 }
