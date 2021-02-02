@@ -14,8 +14,8 @@ FrameWidgetClass root_widget {
   TextWidgetClass range_text {
    ignorepointer 1
    color 1 0 0.1608 1
-   position -334.52499 0
-   size 100 0.0342
+   position -334.52499 0.003
+   size 100 0.04
    halign center_ref
    valign center_ref
    hexactpos 1
@@ -24,9 +24,9 @@ FrameWidgetClass root_widget {
    vexactsize 0
    scriptclass "ViewBinding"
    text "1000"
-   font "gui/fonts/MetronBook28"
+   font "gui/fonts/MetronLight"
    "text color" 0.5608 0.0706 0.4392 1
-   "exact text" 1
+   "exact text" 0
    "size to text h" 1
    "size to text v" 1
    "text halign" center
