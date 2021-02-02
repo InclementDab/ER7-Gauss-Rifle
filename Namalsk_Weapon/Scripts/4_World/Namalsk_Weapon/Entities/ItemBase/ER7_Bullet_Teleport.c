@@ -114,30 +114,6 @@ static vector ER7_GetRandomTeleportPosition(float x = 5467, float z = 8660, floa
 	return position;
 }
 
-class ER7_TeleportLight: ScriptedLightBase
-{
-	void ER7_TeleportLight()
-	{
-		SetLightType(LightType.AMBIENT);
-		SetVisibleDuringDaylight(true);
-		SetLifetime(0.07);
-		SetFadeOutTime(0.02);
-		SetCastShadow(true);
-		
-		SetDiffuseColor(0.3, 0.3, 1);	
-		SetAmbientColor(0.3, 0.3, 1);	
-		SetBrightnessTo(25);
-		SetRadiusTo(1200);
-		SetFlareVisible(true);
-	}
-}
-
-enum ER7_TeleportRPCs
-{
-	PLAYSOUND = 42456,
-	PLAYFLASH = 42457
-}
-
 void ER7_HandleRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
 {
 	switch (rpc_type) {
@@ -170,29 +146,37 @@ void ER7_HandleRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
 	}
 }
 
-modded class EmoteManager
-{
-	override void CommitSuicide()
-	{
-		ER7_Gauss weapon;
-		WeaponEventBase weapon_event = new WeaponEventTrigger;
-		// cast to ER7
-		if (Class.CastTo(weapon, m_Player.GetItemInHands())) {
-			//TODO : check multiple muzzles for shotguns, eventually
-			string ammo;
-			float damage;		
-			
-			if (weapon.CanFire() && weapon.GetCartridgeInfo(0, damage, ammo) && ammo == "Bullet_ER7RFW_Teleport") {
-				
-				m_Callback.RegisterAnimationEvent("Simulation_End", EmoteConstants.EMOTE_SUICIDE_SIMULATION_END);
-				weapon.ProcessWeaponEvent(weapon_event);
-				m_Callback.InternalCommand(DayZPlayerConstants.CMD_ACTIONINT_FINISH);
-				
-				ER7_TeleportObject(m_Player);
-				return;
-			}
-		}
 
-		super.CommitSuicide();
+/*
+class ER7BulletSimulation: Entity
+{
+	void ER7BulletSimulation()
+	{
+		Print("ER7BulletSimulation");
 	}
-}
+	
+	protected FlareLight		m_FlareLight;
+	const static float			MAX_FARLIGHT_DIST = 40;
+	const static float			MIN_FARLIGHT_DIST = 5; 
+	
+	void OnActivation(Entity bullet)
+	{
+		Print("ER7BulletSimulation::OnActivation");
+		m_FlareLight = FlareLight.Cast(ScriptedLightBase.CreateLight(FlareLight, Vector(0,0,0)));
+		if (m_FlareLight)
+			m_FlareLight.AttachOnObject(bullet);
+		
+	}
+	
+	void OnFire(Entity bullet)
+	{
+		Print("ER7BulletSimulation::OnFire");
+		//m_ParMainFire = Particle.PlayOnObject( ParticleList.FLAREPROJ_FIRE, flare);
+		//m_ParMainFire.SetWiggle( 7, 0.3);
+	}
+	
+	void Simulate(Entity bullet)
+	{
+		Print("ER7BulletSimulation::Simulate");
+	}
+}*/

@@ -42,7 +42,7 @@ class CfgMagazines
 	};
 };
 
-class cfgAmmoTypes
+class CfgAmmoTypes
 {
 	class Bullet_ER7RFW
 	{
@@ -55,15 +55,18 @@ class cfgAmmoTypes
 	};
 };
 
-class cfgAmmo
+class Entity;
+class CfgAmmo
 {
+	class ER7BulletSimulation: Entity {};
+
 	class Bullet_Base;
 	class Bullet_ER7RFW: Bullet_Base
 	{
 		scope = 2;
 		lootCategory = "Crafted";
 		cartridge = "FxCartridge_9mm";
-		model = "\dz\weapons\projectiles\tracer_green.p3d";
+		model = "\dz\weapons\projectiles\tracer_red.p3d";
 		spawnPileType = "Ammo_ER7RFW";
 		hit = 11;
 		indirectHit = 0;
@@ -82,7 +85,6 @@ class cfgAmmo
 		tracerEndTime = 100;
 		weight = 0.0149;
 		simulationStep = 0.05;
-
 		class DamageApplied
 		{
 			type = "Projectile";
