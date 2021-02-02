@@ -48,7 +48,7 @@ class cfgAmmo
 		hit = 11;
 		indirectHit = 0;
 		indirectHitRange = 0;
-		caliber = 0.65000004;
+		caliber = 1;
 		deflecting = 0;
 		visibleFire = 5;
 		audibleFire = 9;
