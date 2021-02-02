@@ -447,6 +447,13 @@ class CfgSoundShaders
 		volume = 1;
 		range = 10;
 	};
+	class ER7_teleport_SoundShader
+	{
+		samples[] = {{"Namalsk_Weapon\GaussMk2\Sound\er7_teleport", 1}};
+		volume = 1;
+		radius = 80;
+		range = 300;
+	};
 };
 
 class CfgSoundSets
@@ -466,6 +473,11 @@ class CfgSoundSets
 	class ER7_Shot_Failed_SoundSet: baseCharacter_SoundSet
 	{
 		soundShaders[] = {"ER7_failFire_SoundShader"};
+	};
+
+	class ER7_Teleport_SoundSet: baseCharacter_SoundSet
+	{
+		soundShaders[] = {"ER7_teleport_SoundShader"};
 	};
 };
 

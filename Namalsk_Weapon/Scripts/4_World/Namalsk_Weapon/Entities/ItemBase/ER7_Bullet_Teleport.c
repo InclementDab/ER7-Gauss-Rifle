@@ -63,13 +63,6 @@ void ER7_FinishRandomTeleportObject(ref Param2<Object, vector> params_ref)
 	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("Blowout_Teleport", params_ref.param1.GetPosition(), 1), true);
 	GetGame().RPCSingleParam(params_ref.param1, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(params_ref.param2), true);
 	
-	// Safe
-	Sleep(10000);
-	PlayerBase p_base;
-	if (Class.CastTo(p_base, params_ref.param1)) {
-		p_base.SetTeleporting(false);
-	}
-
 	delete params_ref;
 }
 
