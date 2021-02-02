@@ -51,10 +51,9 @@ modded class AnimalBase
 
 void ER7_TeleportObject(Object object)
 {
-	vector position = object.GetPosition();
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", object.GetPosition(), 1), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(object.GetPosition()), true);
 	ER7_TeleportObject(object, ER7_GetRandomTeleportPosition());
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", position, 1), true);
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(position), true);
 }
 
 void ER7_TeleportObject(notnull Object object, vector position)
@@ -65,11 +64,7 @@ void ER7_TeleportObject(notnull Object object, vector position)
 	}
 
 	ER7_SetWorldPosition(object, position);
-	dBodyActive(object, ActiveState.ACTIVE);
-	//object.CreateDynamicPhysics(PhxInteractionLayers.DYNAMICITEM);
-	
-	//OnTeleportServer(object);
-	
+	dBodyActive(object, ActiveState.ACTIVE);	
 	thread ER7_FinishRandomTeleportObject(new Param2<Object, vector>(object, position));
 }
 
