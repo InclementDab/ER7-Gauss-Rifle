@@ -32,11 +32,29 @@ modded class PlayerBase
 	}
 }
 
+modded class AnimalBase
+{
+	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
+	{
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
+		if (ammo == "Bullet_ER7RFW_Teleport") {
+			ER7_TeleportObject(GetHierarchyRoot());
+		}
+	}
+	
+	override void OnRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
+	{
+		super.OnRPC(sender, rpc_type, ctx);
+		ER7_HandleRPC(sender, rpc_type, ctx);
+	}
+}
+
 void ER7_TeleportObject(Object object)
 {
+	vector position = object.GetPosition();
 	ER7_TeleportObject(object, ER7_GetRandomTeleportPosition());
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", object.GetPosition(), 1), true);
-	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(object.GetPosition()), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYSOUND, new Param3<string, vector, float>("ER7_Teleport_SoundSet", position, 1), true);
+	GetGame().RPCSingleParam(object, ER7_TeleportRPCs.PLAYFLASH, new Param1<vector>(position), true);
 }
 
 void ER7_TeleportObject(notnull Object object, vector position)

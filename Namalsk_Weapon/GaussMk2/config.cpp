@@ -450,7 +450,7 @@ class CfgSoundShaders
 	class ER7_teleport_SoundShader
 	{
 		samples[] = {{"Namalsk_Weapon\GaussMk2\Sound\er7_teleport", 1}};
-		volume = 1;
+		volume = 0.25;
 		radius = 80;
 		range = 300;
 	};
