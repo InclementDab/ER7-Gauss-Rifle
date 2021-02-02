@@ -6,8 +6,8 @@ class CfgPatches
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"DZ_Weapons_Magazines","DZ_Weapons_Ammunition"};
-		magazines[] = {"Ammo_ER7RFW"};
-		ammo[] = {"Bullet_ER7RFW"};
+		magazines[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
+		ammo[] = {"Bullet_ER7RFW", "Bullet_ER7RFW_Teleport"};
 	};
 };
 
@@ -27,14 +27,34 @@ class CfgMagazines
 		count = 5;
 		ammo = "Bullet_ER7RFW";
 	};
+
+	class Ammo_ER7RFW_Teleport: Ammunition_Base
+	{
+		scope = 2;
+		displayName = "ER7 RFW (Teleportation Rounds)";
+		descriptionShort = "ER7 RFW Teleportation Rounds are an experimental technology for the ER7 Gauss Rifle. The round contains a small piece of NAC Orbalist technology in the tip, that once exposed at high impact, teleports the target. Not for use with children under 12";
+		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
+		itemSize[] = {1,2};
+		rotationFlags = 34;
+		weight = 24;
+		count = 5;
+		ammo = "Bullet_ER7RFW_Teleport";
+	};
 };
+
 class cfgAmmoTypes
 {
 	class Bullet_ER7RFW
 	{
 		name = "Bullet_ER7RFW";
 	};
+
+	class Bullet_ER7RFW_Teleport
+	{
+		name = "Bullet_ER7RFW_Teleport";
+	};
 };
+
 class cfgAmmo
 {
 	class Bullet_Base;
@@ -62,6 +82,7 @@ class cfgAmmo
 		tracerEndTime = 100;
 		weight = 0.0149;
 		simulationStep = 0.05;
+
 		class DamageApplied
 		{
 			type = "Projectile";
@@ -80,10 +101,33 @@ class cfgAmmo
 				damage = 50000;
 			};
 		};
+
 		class NoiseHit
 		{
 			strength = 15;
 			type = "shot";
+		};
+	};
+
+	class Bullet_ER7RFW_Teleport: Bullet_ER7RFW
+	{
+		class DamageApplied
+		{
+			type = "Projectile";
+			dispersion = 0;
+			bleedThreshold = 1;
+			class Health
+			{
+				damage = 10;
+			};
+			class Blood
+			{
+				damage = 10;
+			};
+			class Shock
+			{
+				damage = 10;
+			};
 		};
 	};
 };

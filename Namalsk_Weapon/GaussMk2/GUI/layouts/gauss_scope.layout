@@ -27,6 +27,8 @@ FrameWidgetClass root_widget {
    font "gui/fonts/MetronLight"
    "text color" 0.5608 0.0706 0.4392 1
    "exact text" 1
+   "size to text h" 1
+   "size to text v" 1
    "text halign" center
    "text valign" center
    {

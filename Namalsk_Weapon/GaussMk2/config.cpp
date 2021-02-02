@@ -39,7 +39,7 @@ class cfgWeapons
 		chamberSize = 1;
 		magazines[] = {"ER7_Gauss_Magazine"};
 		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
-		chamberableFrom[] = {"Ammo_ER7RFW"};
+		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
 		modes[] = {"SemiAuto"};
 		class SemiAuto: Mode_SemiAuto
@@ -398,7 +398,7 @@ class cfgWeapons
  		itemSize[] = {2,1};
  		count = 3;
  		ammo = "Bullet_ER7RFW";
- 		ammoItems[] = {"Ammo_ER7RFW"};
+ 		ammoItems[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		isMeleeWeapon = 0;
 		tracersEvery = 1;
  	};
