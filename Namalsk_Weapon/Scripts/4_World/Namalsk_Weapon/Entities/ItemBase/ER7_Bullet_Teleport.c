@@ -21,6 +21,7 @@ modded class PlayerBase
 	{
 		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
 		if (ammo == "Bullet_ER7RFW_Teleport") {
+			DropAllItems();
 			ER7_TeleportObject(GetHierarchyRoot());
 		}
 	}
