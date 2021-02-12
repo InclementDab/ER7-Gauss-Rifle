@@ -37,8 +37,15 @@ class ER7_Scope_View_Controller: Controller
 			distance = vector.Distance(begin, contact_pos);
 			if (is_gauss) {
 				// this does the math for TTI when gauss is attached
-				Range = "" + distance / 3500; // 3500 m/s
-				Range = Range[0] + Range[1] + Range[2] + "s";
+				Range = "";
+				string _range = "" + distance / 3500; // 3500 m/s
+				for (int j = 0; j < _range.Length(); j++) {
+					if (j <= 3) {
+						Range += _range[j];
+					}
+				}
+				Range += "s";
+				
 			} else {
 				// default to normal ranging
 				Range = ((int)distance).ToString();
@@ -70,9 +77,9 @@ class ER7_Scope_View_Controller: Controller
 		
 		// Set Battery Level (gauss only)
 		if (is_gauss) {
-			string battery_final;
-			if (scope.GetHierarchyParent().GetCompEM() && scope.GetHierarchyParent().GetCompEM().GetEnergySource()) {
-				string battery_exact = ((scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantity() / scope.GetHierarchyParent().GetCompEM().GetEnergySource().GetQuantityMax()) * 100).ToString();
+			string battery_final;	
+			if (scope.GetHierarchyParent() && scope.GetHierarchyParent().GetAttachmentByType(ER7_Gauss_Battery)) {
+				string battery_exact = ((scope.GetHierarchyParent().GetAttachmentByType(ER7_Gauss_Battery).GetQuantity() / scope.GetHierarchyParent().GetAttachmentByType(ER7_Gauss_Battery).GetQuantityMax()) * 100).ToString();
 				for (int i = 0; i < battery_exact.Length(); i++) {
 					if (i <= 3) {
 						battery_final += battery_exact[i];
