@@ -42,6 +42,15 @@ class cfgWeapons
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
 		modes[] = {"SemiAuto"};
+		class AnimationSources
+		{
+			class AnimateFlaps
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 2.5;
+			};
+		};
 		class SemiAuto: Mode_SemiAuto
 		{
 			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
