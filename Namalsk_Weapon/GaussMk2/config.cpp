@@ -44,12 +44,54 @@ class cfgWeapons
 		modes[] = {"SemiAuto"};
 		class AnimationSources
 		{
-			class AnimateFlaps
+			class AnimateFlaps1a
 			{
 				source = "user";
 				initPhase = 0;
-				animPeriod = 2.5;
+				animPeriod = 0.5;
 			};
+			class AnimateFlaps2a
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps3a
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps4a
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps1b
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps2b
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps3b
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateFlaps4b
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};			
 		};
 		class SemiAuto: Mode_SemiAuto
 		{
