@@ -16,7 +16,7 @@ class ER7_Scope_View_Controller: Controller
 			return;
 		}
 				
-		PlayerBase player = GetGame().GetPlayer();
+		PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
 		if (!player) {
 			return;
 		}
