@@ -13,6 +13,7 @@
         <usage />
         <tag name="military"/>
         <value name="Tier4"/>
+        <value name="Tier5"/>
 	</type>
 	<type name="ER7_Gauss_Battery">
 		<nominal>5</nominal>
@@ -27,6 +28,7 @@
         <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
+        <value name="Tier5"/>
 	</type>
 	<type name="ER7_Scope">
 		<nominal>2</nominal>
@@ -42,6 +44,7 @@
         <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
+        <value name="Tier5"/>
 	</type>
 	<type name="ER7_Gauss_Magazine">
 		<nominal>5</nominal>
@@ -57,6 +60,7 @@
         <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
+        <value name="Tier5"/>
 	</type>
 	<type name="Ammo_ER7RFW">
 		<nominal>10</nominal>
@@ -72,5 +76,6 @@
         <tag name="military"/>
         <value name="Tier3"/>
         <value name="Tier4"/>
+        <value name="Tier5"/>
 	</type>
 </types>
