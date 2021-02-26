@@ -434,6 +434,13 @@ class cfgWeapons
 			};
 		};
 	};
+
+	// this ONLY exists so we can easily modify types for Tier5 loot
+	// its hacky but it works
+	class ER7_Gauss_T5: ER7_Gauss 
+	{
+
+	};
 };
 
  class CfgMagazines
