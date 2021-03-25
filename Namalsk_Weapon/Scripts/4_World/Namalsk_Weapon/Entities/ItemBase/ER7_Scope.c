@@ -19,7 +19,7 @@ class ER7_Scope: ItemOptics
 			
 			m_ScopeWidget = new ER7_Scope_View();
 			m_Timer = new Timer(CALL_CATEGORY_GUI);		
-			m_Timer.Run(0.1, this, "OnTimer", null, true);
+			m_Timer.Run(0.05, this, "OnTimer", null, true);
 		}
 	}
 
