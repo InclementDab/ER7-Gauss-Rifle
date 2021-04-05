@@ -8,7 +8,7 @@ PixelShaderID = "Super";
 VertexShaderID = "Super";
 class Stage1
 {
-	texture = "Namalsk_Weapon\RailBattery\Data\metal_nohq.paa";
+	texture = "Namalsk_Weapon\GaussMk2\Battery\Data\metal_nohq.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-	texture = "Namalsk_Weapon\RailBattery\Data\metal_as.paa";
+	texture = "Namalsk_Weapon\GaussMk2\Battery\Data\metal_as.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-	texture = "Namalsk_Weapon\RailBattery\Data\metal_smdi.paa";
+	texture = "Namalsk_Weapon\GaussMk2\Battery\Data\metal_smdi.paa";
 	uvSource = "tex";
 	class uvTransform
 	{

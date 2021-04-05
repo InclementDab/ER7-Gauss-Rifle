@@ -372,6 +372,15 @@ class ER7_Gauss : FAL_Base
 			thread CreateBolts();			
 			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
 		}
+		
+		if (GetGame().IsServer()) {
+			thread OnFireServer();
+		}
+	}
+	
+	override RecoilBase SpawnRecoilObject()
+	{
+		return new ER7Recoil(this);
 	}
 	
 	void OnFireFailed()
@@ -380,6 +389,31 @@ class ER7_Gauss : FAL_Base
 		if (PlaySoundSet(sound, "ER7_Shot_Failed_SoundSet", 0, 0)) {
 			sound.Start();
 		}
+	}
+	
+	void OnFireServer()
+	{
+		SetAnimationPhase("AnimateFlaps1a", 1);
+		SetAnimationPhase("AnimateFlaps2a", 1);
+		SetAnimationPhase("AnimateFlaps3a", 1);
+		SetAnimationPhase("AnimateFlaps4a", 1);		
+		
+		SetAnimationPhase("AnimateFlaps1b", 1);
+		SetAnimationPhase("AnimateFlaps2b", 1);
+		SetAnimationPhase("AnimateFlaps3b", 1);
+		SetAnimationPhase("AnimateFlaps4b", 1);
+		Print(GetAnimationPhase("AnimateFlaps1a"));
+		Sleep(2000);
+		SetAnimationPhase("AnimateFlaps1a", 0);
+		SetAnimationPhase("AnimateFlaps2a", 0);
+		SetAnimationPhase("AnimateFlaps3a", 0);
+		SetAnimationPhase("AnimateFlaps4a", 0);		
+		
+		SetAnimationPhase("AnimateFlaps1b", 0);
+		SetAnimationPhase("AnimateFlaps2b", 0);
+		SetAnimationPhase("AnimateFlaps3b", 0);
+		SetAnimationPhase("AnimateFlaps4b", 0);
+		Print(GetAnimationPhase("AnimateFlaps"));
 	}
 	
 	private void CreateBolts()

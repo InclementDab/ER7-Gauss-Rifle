@@ -19,16 +19,16 @@ class CfgVehicles
         scope = 2;
         displayName = "Railgun Battery";
         descriptionShort = "High capacity Railgun Battery, will fire 12 shots before drained.";
-        model = "\Namalsk_Weapon\RailBattery\RailBattery.p3d";
+        model = "\Namalsk_Weapon\GaussMk2\Battery\RailBattery.p3d";
         isMeleeWeapon = 1;
         weight = 10;
         absorbency = 0.8;
         itemSize[] = {1,1};
         stackedUnit = "w";
         quantityBar = 1;
-        varQuantityInit = 120;
+        varQuantityInit = 90;
         varQuantityMin = 0.0;
-        varQuantityMax = 120;
+        varQuantityMax = 90;
         varQuantityDestroyOnMin = 0;
         inventorySlot[] = {"RailgunBattery"};
         rotationFlags = 17;
@@ -61,11 +61,11 @@ class CfgVehicles
                 {
                     hitpoints = 20;
                     healthLevels[] = 
-                    {{1.0,{"Namalsk_Weapon\RailBattery\Data\RailBattery.rvmat"}},
-                    {0.7,{"Namalsk_Weapon\RailBattery\Data\RailBattery.rvmat"}},
-                    {0.5,{"Namalsk_Weapon\RailBattery\Data\RailBattery_damage.rvmat"}},
-                    {0.3,{"Namalsk_Weapon\RailBattery\Data\RailBattery_damage.rvmat"}},
-                    {0.0,{"Namalsk_Weapon\RailBattery\Data\RailBattery_destruct.rvmat"}}};
+                    {{1.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
+                    {0.7,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
+                    {0.5,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
+                    {0.3,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
+                    {0.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_destruct.rvmat"}}};
                 };
             };
         };
