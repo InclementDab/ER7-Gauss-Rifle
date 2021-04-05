@@ -72,14 +72,12 @@ class CfgVehicles
     };
 };
 
-
-
 class CfgSlots
 {
 	class Slot_RailgunBattery
 	{
 		name = "RailgunBattery";
 		displayName = "Railgun Battery";
-		modGhostIcon = "set:gauss_ghost image:ghost";
+		ghostIcon = "set:gauss_ghost image:ghost";
 	};
 };
