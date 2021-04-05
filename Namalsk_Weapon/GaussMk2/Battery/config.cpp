@@ -18,7 +18,7 @@ class CfgVehicles
     {
         scope = 2;
         displayName = "Railgun Battery";
-        descriptionShort = "High capacity Railgun Battery, will fire 12 shots before drained.";
+        descriptionShort = "High capacity Railgun Battery, will fire 9 shots before drained.";
         model = "\Namalsk_Weapon\GaussMk2\Battery\RailBattery.p3d";
         isMeleeWeapon = 1;
         weight = 10;
