@@ -24,7 +24,7 @@ class cfgVehicles
 		rotationFlags = 16;
 		reversed = 0;
 		weight = 440;
-		itemSize[] = {3,1};
+		itemSize[] = {4,1};
 		inventorySlot = "WeaponOptics";
 		selectionFireAnim = "zasleh";
 		simulation = "itemoptics";
