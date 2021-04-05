@@ -21,7 +21,7 @@ class CfgVehicles
         descriptionShort = "High capacity Railgun Battery, will fire 9 shots before drained.";
         model = "\Namalsk_Weapon\GaussMk2\Battery\RailBattery.p3d";
         isMeleeWeapon = 1;
-        weight = 10;
+        weight = 900;
         absorbency = 0.8;
         itemSize[] = {1,1};
         stackedUnit = "w";
