@@ -37,8 +37,8 @@ class CfgVehicles
             hasIcon = 1;
             switchOnAtSpawn = 1;
             isPassiveDevice = 1;
-            energyStorageMax = 120;
-            energyAtSpawn = 120;
+            energyStorageMax = 90; 
+            energyAtSpawn = 90;
             convertEnergyToQuantity = 1;
             reduceMaxEnergyByDamageCoef = 1;
             powerSocketsCount = 1;
