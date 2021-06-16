@@ -12,7 +12,7 @@ class ER7_Scope_View_Controller: ViewController
 	
 	void OnTimer(ER7_Scope scope)
 	{
-		if (!IsMissionClient()) {
+		if (!(GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			return;
 		}
 				

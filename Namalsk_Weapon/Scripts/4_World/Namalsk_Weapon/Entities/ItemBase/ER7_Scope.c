@@ -12,7 +12,7 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStart()
 	{
 		super.OnWorkStart();
-		if (IsMissionClient() && GetGame().GetPlayer() == DayZPlayer.Cast(GetHierarchyRootPlayer()) && IsInOptics()) {	
+		if ((GetGame().IsClient() || !GetGame().IsMultiplayer()) && GetGame().GetPlayer() == DayZPlayer.Cast(GetHierarchyRootPlayer()) && IsInOptics()) {	
 			if (m_ScopeWidget) {
 				return;
 			}
@@ -26,7 +26,7 @@ class ER7_Scope: ItemOptics
 	override void OnWorkStop()
 	{
 		super.OnWorkStop();		
-		if (IsMissionClient()) {
+		if ((GetGame().IsClient() || !GetGame().IsMultiplayer())) {
 			if (m_Timer) {
 				m_Timer.Stop();
 			}
@@ -38,7 +38,7 @@ class ER7_Scope: ItemOptics
 	
 	void OnTimer()
 	{
-		if (IsMissionClient() && GetGame().GetPlayer() == DayZPlayer.Cast(GetHierarchyRootPlayer())) {
+		if ((GetGame().IsClient() || !GetGame().IsMultiplayer()) && GetGame().GetPlayer() == DayZPlayer.Cast(GetHierarchyRootPlayer())) {
 			m_ScopeWidget.OnTimer(this);
 		}
 	}
