@@ -1,4 +1,4 @@
-class ER7_Scope_View_Controller: Controller
+class ER7_Scope_View_Controller: ViewController
 {	
 	protected string Range;
 	protected string Altitude;
