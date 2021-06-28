@@ -12,7 +12,7 @@
         <category name="weapons"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier4"/>
+        <value user="Tier4"/>
 	</type>
     <type name="ER7_Gauss_T5">
 		<nominal>1</nominal>
@@ -26,7 +26,7 @@
         <category name="weapons"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier5"/>
+        <value user="Tier5"/>
 	</type>
 	<type name="ER7_Gauss_Battery">
 		<nominal>5</nominal>
@@ -39,7 +39,7 @@
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier345"/>
+        <value user="Tier345"/>
 	</type>
 	<type name="ER7_Scope">
 		<nominal>2</nominal>
@@ -53,7 +53,7 @@
         <category name="weapons"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier345"/>
+        <value user="Tier345"/>
 	</type>
 	<type name="ER7_Gauss_Magazine">
 		<nominal>5</nominal>
@@ -67,7 +67,7 @@
         <category name="weapons"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier345"/>
+        <value user="Tier345"/>
 	</type>
 	<type name="Ammo_ER7RFW">
 		<nominal>10</nominal>
@@ -81,6 +81,6 @@
         <category name="weapons"/>
         <usage />
         <tag name="military"/>
-        <value name="Tier345"/>
+        <value user="Tier345"/>
 	</type>
 </types>
