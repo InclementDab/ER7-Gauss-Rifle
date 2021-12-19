@@ -206,12 +206,12 @@ class ER7_Gauss : FAL_Base
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF1,		_abt_,	JF1));
 		
 
-		m_fsm.AddTransition(new WeaponTransition( C10,				__TJ_,	Trigger_C10J));
+		m_fsm.AddTransition(new WeaponTransition( C10,				__TJ_,	Trigger_C10J, NULL, new WeaponGuardBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10J,	_fin_,	JF0));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10J,	_rto_,	JF0));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C10J,	_abt_,	JF0));		
 		
-		m_fsm.AddTransition(new WeaponTransition( C11,				__TJ_,	Trigger_C11J));
+		m_fsm.AddTransition(new WeaponTransition( C11,				__TJ_,	Trigger_C11J, NULL, new WeaponGuardBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11J,	_fin_,	JF1));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11J,	_rto_,	JF1));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C11J,	_abt_,	JF1));	
