@@ -392,28 +392,52 @@ class ER7_Gauss : FAL_Base
 	}
 	
 	void OnFireServer()
-	{
-		SetAnimationPhase("AnimateFlaps1a", 1);
-		SetAnimationPhase("AnimateFlaps2a", 1);
-		SetAnimationPhase("AnimateFlaps3a", 1);
-		SetAnimationPhase("AnimateFlaps4a", 1);		
+	{	// Lower Right
+		SetAnimationPhase("AnimateLowerFlaps1Right", 1);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 1);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 1);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 1);
+		// Upper Right
+		SetAnimationPhase("AnimateUpperFlaps1Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps4Right", 1);
+		// Lower Left
+		SetAnimationPhase("AnimateLowerFlaps1Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps4Left", 1);
+		// Upper Left
+		SetAnimationPhase("AnimateUpperFlaps1Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps4Left", 1);
 		
-		SetAnimationPhase("AnimateFlaps1b", 1);
-		SetAnimationPhase("AnimateFlaps2b", 1);
-		SetAnimationPhase("AnimateFlaps3b", 1);
-		SetAnimationPhase("AnimateFlaps4b", 1);
-		Print(GetAnimationPhase("AnimateFlaps1a"));
+		Print(GetAnimationPhase("AnimateLowerFlaps1Right"));
 		Sleep(2000);
-		SetAnimationPhase("AnimateFlaps1a", 0);
-		SetAnimationPhase("AnimateFlaps2a", 0);
-		SetAnimationPhase("AnimateFlaps3a", 0);
-		SetAnimationPhase("AnimateFlaps4a", 0);		
 		
-		SetAnimationPhase("AnimateFlaps1b", 0);
-		SetAnimationPhase("AnimateFlaps2b", 0);
-		SetAnimationPhase("AnimateFlaps3b", 0);
-		SetAnimationPhase("AnimateFlaps4b", 0);
-		Print(GetAnimationPhase("AnimateFlaps"));
+		// Lower Right
+		SetAnimationPhase("AnimateLowerFlaps1Right", 0);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 0);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 0);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 0);
+		// Upper Right
+		SetAnimationPhase("AnimateUpperFlaps1Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps4Right", 0);
+		// Lower Left
+		SetAnimationPhase("AnimateLowerFlaps1Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps4Left", 0);
+		// Upper Left
+		SetAnimationPhase("AnimateUpperFlaps1Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps4Left", 0);
+		
+		Print(GetAnimationPhase("AnimateLowerFlaps1Right"));
 	}
 	
 	private void CreateBolts()
