@@ -44,54 +44,105 @@ class cfgWeapons
 		modes[] = {"SemiAuto"};
 		class AnimationSources
 		{
-			class AnimateFlaps1a
+			class AnimateLowerFlaps1Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps2a
+			class AnimateLowerFlaps2Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps3a
+			class AnimateLowerFlaps3Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps4a
+			class AnimateLowerFlaps4Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps1b
+			class AnimateUpperFlaps1Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps2b
+			class AnimateUpperFlaps2Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps3b
+			class AnimateUpperFlaps3Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
 			};
-			class AnimateFlaps4b
+			class AnimateUpperFlaps4Right
 			{
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
-			};			
+			};
+
+			// Left
+
+			class AnimateLowerFlaps1Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateLowerFlaps2Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateLowerFlaps3Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateLowerFlaps4Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateUpperFlaps1Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateUpperFlaps2Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateUpperFlaps3Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};
+			class AnimateUpperFlaps4Left
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
+			};	
 		};
 		class SemiAuto: Mode_SemiAuto
 		{
