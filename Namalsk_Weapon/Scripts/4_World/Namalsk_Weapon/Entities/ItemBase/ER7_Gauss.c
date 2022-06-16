@@ -3,6 +3,8 @@ static const ref array<string> GAUSS_LIGHTNING_BOLT_TYPES = { "vfx_gauss_thunder
 
 class ER7_Gauss : FAL_Base
 {
+	protected ref array<Particle> m_GaussHeat = {};
+	
 	override void InitStateMachine()
 	{
 		m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_MAGAZINE_BULLET)));
@@ -352,6 +354,13 @@ class ER7_Gauss : FAL_Base
 		HideMagazine();
 
 		m_fsm.Start();
+		
+		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
+            for (int i = 1; i <= 4; i++) {
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
+            }
+        }
 	}
 	
 	override void EEFired(int muzzleType, int mode, string ammoType)
