@@ -354,13 +354,6 @@ class ER7_Gauss : FAL_Base
 		HideMagazine();
 
 		m_fsm.Start();
-		
-		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
-            for (int i = 1; i <= 4; i++) {
-                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
-                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
-            }
-        }
 	}
 	
 	override void EEFired(int muzzleType, int mode, string ammoType)
@@ -378,6 +371,10 @@ class ER7_Gauss : FAL_Base
 		}
 	
 		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
+			for (int i = 1; i <= 4; i++) {
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
+            }
 			thread CreateBolts();			
 			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
 		}
