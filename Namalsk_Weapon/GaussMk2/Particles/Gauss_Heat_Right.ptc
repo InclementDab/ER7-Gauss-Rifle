@@ -30,8 +30,11 @@ EffectDef {
    Size {
     0 0 0.125 0.85 1 1
    }
-   EffectTime 0.05
-   Repeat 1
+   EffectTime 2
+   Repeat 0
+   AlphaMast {
+    0 1 1 0
+   }
   }
  }
 }
