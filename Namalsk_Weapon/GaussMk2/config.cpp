@@ -22,7 +22,7 @@ class cfgWeapons
 		displayName = "GRW-ER7 Gauss Rifle";
 		descriptionShort = "The ER7 is a Linear motor firearm that uses an electromagnetic force to fire a projectile at over 3500 m/s. Requires high capacity Railgun Batteries to fire.";
 		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
-		weight = 10500;
+		weight = 8000;
 		itemSize[] = {10,4};
 		dexterity = 1.8;
 		absorbency = 0.1;
