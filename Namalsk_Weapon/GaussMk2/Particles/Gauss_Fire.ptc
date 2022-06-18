@@ -1,0 +1,114 @@
+EffectDef {
+ Emitors {
+  EmitorDef Flash {
+   ShapeType Point
+   ShapeSize 0 0 0
+   ConeAngle 0 0 0
+   MaxNum 2
+   BirthRate 1000
+   Angles 0 0 0
+   LocalTransform 0
+   Material "{9833D8BE7A512C63}graphics/Particles/materials/flash/electric.emat"
+   SizeMultiplier 3
+   SizeRND 0
+   RandomRotDir 0
+   StreakFullUV 0
+   VelAngle 0
+   RandomAngle 1
+   Sort 0
+   BillboardingType Full
+   Velocity 0
+   VelAffect 0
+   AirResistance 0
+   GravityMultiply 0
+   AnimFPS 0
+   LifeTime 0.1
+   LifeTimeRND 0
+   Color {
+    0 0.4 0.4 0.5 1 0.5 0.5 0.6
+   }
+   Alpha {
+    0 0.49836 0.625 0.35 1 0
+   }
+   Size {
+    0 0 0.50031 0.50055 1 1
+   }
+   EffectTime 0.1
+   Repeat 0
+  }
+  EmitorDef plasma_Cloud {
+   ShapeType Cone
+   ShapeSize 0 0 0
+   ConeAngle 360 0 250
+   MaxNum 100
+   BirthRate 2000
+   Angles 180 0 90
+   LocalTransform 0
+   Material "{17F1336FEF157B35}graphics/Particles/materials/smoke/smoke_dust_01_em_Spooky.emat"
+   SizeMultiplier 2
+   SizeRND 0
+   RandomRotDir 0
+   StretchMultiplier 1
+   StreakFullUV 0
+   VelAngle 0
+   RandomAngle 1
+   Sort 0
+   BillboardingType Full
+   Velocity 8
+   VelAffect 0
+   AirResistance 0
+   GravityMultiply 0
+   AnimFPS 0
+   LifeTime 1
+   LifeTimeRND 0
+   Color {
+    0 0.7519 0.4 0.5 1 0.5 0.5 0.6
+   }
+   Alpha {
+    0 0.05 1 0
+   }
+   Size {
+    0 0 0.37279 1 1 1
+   }
+   EffectTime 1
+   Repeat 0
+  }
+  EmitorDef Static_discharge {
+   ShapeType Cone
+   ShapeSize 0 0 0
+   ConeAngle 360 0 240
+   MaxNum 100
+   BirthRate 3000
+   Angles 180 0 90
+   LocalTransform 0
+   Material "{9833D8BE7A512C63}graphics/Particles/materials/flash/electric.emat"
+   SizeMultiplier 0.3
+   SizeRND 0.2
+   RandomRotDir 0
+   StretchMultiplier 1
+   StreakFullUV 0
+   VelAngle 0
+   RandomAngle 1
+   Sort 0
+   BillboardingType Full
+   Velocity 9
+   VelAffect 0
+   AirResistance 0
+   GravityMultiply 0
+   AnimFPS 0
+   LifeTime 1
+   LifeTimeRND 0
+   Color {
+    0 0.7519 0.4 0.5 1 0.5 0.5 0.6
+   }
+   Alpha {
+    0 0.05 0.225 0.05 0.75 0 1 0
+   }
+   Size {
+    0 0 0.37279 1 1 1
+   }
+   EffectTime 1
+   Repeat 0
+  }
+ }
+}

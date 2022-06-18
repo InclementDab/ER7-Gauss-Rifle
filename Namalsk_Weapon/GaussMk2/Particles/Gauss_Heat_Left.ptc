@@ -1,6 +1,6 @@
 EffectDef {
  Emitors {
-  EmitorDef emitor1 {
+  EmitorDef heat_smoke {
    ShapeType Ellipse
    ShapeSize 0.045 0 0
    ConeAngle 360 0 50
@@ -26,6 +26,42 @@ EffectDef {
    }
    Alpha {
     0 0 0.25 0.1 1 0
+   }
+   Size {
+    0 0 0.125 0.85 1 1
+   }
+   EffectTime 2
+   Repeat 0
+   AlphaMast {
+    0 1 1 0
+   }
+  }
+  EmitorDef plasmaorsomething {
+   ShapeType Ellipse
+   ShapeSize 0.045 0 0
+   ConeAngle 360 0 50
+   MaxNum 70
+   BirthRate 40
+   Angles 0 80 0
+   LocalTransform 0
+   Material "{9833D8BE7A512C63}graphics/Particles/materials/flash/electric.emat"
+   SizeMultiplier 0.05
+   SizeRND 0.05
+   VelAngle 0
+   RandomAngle 1
+   Sort 0
+   Velocity 0.15
+   VelAffect 0
+   AirResistance 0
+   GravityMultiply -0.035
+   AnimFPS 30
+   LifeTime 0.65
+   LifeTimeRND 0
+   Color {
+    0 0.4 0.4 0.5 1 0.5 0.5 0.6
+   }
+   Alpha {
+    0 0 0.325 0.5 1 0
    }
    Size {
     0 0 0.125 0.85 1 1
