@@ -374,6 +374,7 @@ class ER7_Gauss : FAL_Base
 			for (int i = 1; i <= 4; i++) {
                 m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
                 m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_FIRE, this, GetMemoryPointPos("usti hlavne")));
             }
 			thread CreateBolts();			
 			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
