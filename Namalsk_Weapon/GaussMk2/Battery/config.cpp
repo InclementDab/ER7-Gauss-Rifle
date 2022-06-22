@@ -14,35 +14,36 @@ class CfgPatches
 class Inventory_Base;
 class CfgVehicles
 {
-	class ER7_Gauss_Battery: Inventory_Base
+	class ER7_Energy_Cell: Inventory_Base
     {
         scope = 2;
-        displayName = "Railgun Battery";
-        descriptionShort = "High capacity Railgun Battery, will fire 9 shots before drained.";
-        model = "\Namalsk_Weapon\GaussMk2\Battery\RailBattery.p3d";
+        displayName = "ER7 Energy Cell";
+        descriptionShort = "Experimental compact nuclear cell. (Can create and store enough energy to fire 3 times in relatively quick sucession. The cell will recharge completly over time).";
+        model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
         isMeleeWeapon = 1;
-        weight = 2600;
+        weight = 1200;
         absorbency = 0.8;
-        itemSize[] = {1,1};
+        itemSize[] = {2,1};
         stackedUnit = "w";
         quantityBar = 1;
-        varQuantityInit = 90;
+        varQuantityInit = 30;
         varQuantityMin = 0.0;
-        varQuantityMax = 90;
+        varQuantityMax = 30;
         varQuantityDestroyOnMin = 0;
-        inventorySlot[] = {"RailgunBattery"};
+        inventorySlot[] = {"ER7_Energy_Cell"};
         rotationFlags = 17;
         class EnergyManager
         {
             hasIcon = 1;
             switchOnAtSpawn = 1;
             isPassiveDevice = 1;
-            energyStorageMax = 90; 
-            energyAtSpawn = 90;
+            energyStorageMax = 30; 
+            energyAtSpawn = 30;
             convertEnergyToQuantity = 1;
             reduceMaxEnergyByDamageCoef = 1;
             powerSocketsCount = 1;
             compatiblePlugTypes[] = {1};
+            energyUsagePerSecond = -1.0;
         };
         class AnimationSources
         {
@@ -74,10 +75,10 @@ class CfgVehicles
 
 class CfgSlots
 {
-	class Slot_RailgunBattery
+	class ER7_Energy_Cell
 	{
-		name = "RailgunBattery";
-		displayName = "Railgun Battery";
+		name = "ER7_Energy_Cell";
+		displayName = "ER7 Energy Cell";
 		ghostIcon = "set:gauss_ghost image:ghost";
 	};
 };
