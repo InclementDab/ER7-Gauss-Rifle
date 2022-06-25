@@ -5,8 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition","DZ_Weapons_Magazines"};
-		//magazines[] = {"A2GaussMk2_Magazine"};
+		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition"};
 		ammo[] = {};
 	};
 };
@@ -37,7 +36,7 @@ class cfgWeapons
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		chamberSize = 1;
-		magazines[] = {""};
+		magazines[] = {};
 		attachments[] = {"weaponOptics","weaponOpticsHunting","ER7_Energy_Cell"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
@@ -157,7 +156,6 @@ class cfgWeapons
 			recoil = "recoil_AKM";
 			recoilProne = "recoil_AKM_prone";
 			dispersion = 0;
-			magazineSlot = "magazine";
 		};
         class EnergyManager
         {
@@ -193,30 +191,6 @@ class cfgWeapons
 					overrideParticle = "weapon_shot_Flame_3D_4star";
 					overridePoint = "usti hlavne";
 				};
-				class GasPistonBurstR
-				{
-					overrideParticle = "weapon_shot_chamber_smoke";
-					overridePoint = "GasPiston";
-					overrideDirectionVector[] = {0,0,0};
-				};
-				class GasPistonBurstL
-				{
-					overrideParticle = "weapon_shot_chamber_smoke";
-					overridePoint = "GasPiston";
-					overrideDirectionVector[] = {180,0,0};
-				};
-				class GasPistonSmokeRaiseR
-				{
-					overrideParticle = "weapon_shot_chamber_smoke_raise";
-					overridePoint = "GasPiston";
-					overrideDirectionVector[] = {0,0,0};
-				};
-				class GasPistonSmokeRaiseL
-				{
-					overrideParticle = "weapon_shot_chamber_smoke_raise";
-					overridePoint = "GasPiston";
-					overrideDirectionVector[] = {180,0,0};
-				};
 			};
 			class OnOverheating
 			{
@@ -227,27 +201,6 @@ class cfgWeapons
 				{
 					positionOffset[] = {0.1,0,0};
 					onlyWithinRainLimits[] = {0,0.2};
-				};
-				class SmokingBarrel1: SmokingBarrelBase
-				{
-					overridePoint = "GasPiston";
-					positionOffset[] = {0.05,-0.02,0};
-					overrideParticle = "smoking_barrel_small";
-					onlyWithinOverheatLimits[] = {0,0.2};
-				};
-				class SmokingBarrelHot1: SmokingBarrelBase
-				{
-					overridePoint = "GasPiston";
-					positionOffset[] = {0.12,-0.02,0};
-					overrideParticle = "smoking_barrel";
-					onlyWithinOverheatLimits[] = {0.2,0.6};
-				};
-				class SmokingBarrelHot3: SmokingBarrelBase
-				{
-					overridePoint = "GasPiston";
-					positionOffset[] = {0.21,-0.02,0};
-					overrideParticle = "smoking_barrel_heavy";
-					onlyWithinOverheatLimits[] = {0.6,1};
 				};
 				class Steam
 				{
