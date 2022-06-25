@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Namalsk_Weapon_RailBattery
+	class Namalsk_Weapon_Energy_Cell
 	{
 		units[] = {};
 		weapons[] = {};
@@ -18,7 +18,7 @@ class CfgVehicles
     {
         scope = 2;
         displayName = "ER7 Energy Cell";
-        descriptionShort = "Experimental compact nuclear cell. (Can create and store enough energy to fire 3 times in relatively quick sucession. The cell will recharge completly over time).";
+        descriptionShort = "Experimental compact nuclear cell. Stores enough energy to fire the ER7 Gauss Rifle 3 times in relatively quick sucession.";
         model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
         isMeleeWeapon = 1;
         weight = 1200;
@@ -26,9 +26,9 @@ class CfgVehicles
         itemSize[] = {2,1};
         stackedUnit = "w";
         quantityBar = 1;
-        varQuantityInit = 30;
+        varQuantityInit = 200;
         varQuantityMin = 0.0;
-        varQuantityMax = 30;
+        varQuantityMax = 200;
         varQuantityDestroyOnMin = 0;
         inventorySlot[] = {"ER7_Energy_Cell"};
         rotationFlags = 17;
@@ -37,22 +37,12 @@ class CfgVehicles
             hasIcon = 1;
             switchOnAtSpawn = 1;
             isPassiveDevice = 1;
-            energyStorageMax = 30; 
-            energyAtSpawn = 30;
+            energyStorageMax = 200; 
+            energyAtSpawn = 200;
             convertEnergyToQuantity = 1;
             reduceMaxEnergyByDamageCoef = 1;
             powerSocketsCount = 1;
             compatiblePlugTypes[] = {1};
-            energyUsagePerSecond = -1.0;
-        };
-        class AnimationSources
-        {
-            class cover
-            {
-                source = "user";
-                animPeriod = 0.5;
-                initPhase = 1;
-            };
         };
         class DamageSystem
         {
@@ -62,11 +52,11 @@ class CfgVehicles
                 {
                     hitpoints = 20;
                     healthLevels[] = 
-                    {{1.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
-                    {0.7,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
-                    {0.5,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
-                    {0.3,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
-                    {0.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_destruct.rvmat"}}};
+                    {{1.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell.rvmat"}},
+                    {0.7,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell.rvmat"}},
+                    {0.5,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_damage.rvmat"}},
+                    {0.3,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_damage.rvmat"}},
+                    {0.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_destruct.rvmat"}}};
                 };
             };
         };
@@ -75,7 +65,7 @@ class CfgVehicles
 
 class CfgSlots
 {
-	class ER7_Energy_Cell
+	class Slot_ER7_Energy_Cell
 	{
 		name = "ER7_Energy_Cell";
 		displayName = "ER7 Energy Cell";
