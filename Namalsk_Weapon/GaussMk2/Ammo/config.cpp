@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {"AmmoBox_ER7RFW"};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Weapons_Magazines","DZ_Weapons_Ammunition"};
+		requiredAddons[] = {"DZ_Weapons_Ammunition"};
 		magazines[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		ammo[] = {"Bullet_ER7RFW", "Bullet_ER7RFW_Teleport"};
 	};
@@ -21,7 +21,7 @@ class CfgMagazines
 		displayName = "ER7 RFW (SN Rounds)";
 		descriptionShort = "ER7 RFW SN Rounds are a high velocity Railgun Projectile for use in the ER7 RFW Gauss Rifle.";
 		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
-		itemSize[] = {1,2};
+		itemSize[] = {2,1};
 		rotationFlags = 34;
 		weight = 24;
 		count = 5;
@@ -34,7 +34,7 @@ class CfgMagazines
 		displayName = "ER7 RFW (Teleportation Rounds)";
 		descriptionShort = "ER7 RFW Teleportation Rounds are an experimental technology for the ER7 Gauss Rifle. The round contains a small piece of NAC Orbalist technology in the tip, that once exposed at high impact, teleports the target to a random destination. Not for use with children under 12";
 		model = "Namalsk_Weapon\GaussMk2\Ammo\ER7RFW_Ammo.p3d";
-		itemSize[] = {1,2};
+		itemSize[] = {2,1};
 		rotationFlags = 34;
 		weight = 24;
 		count = 5;
