@@ -37,7 +37,7 @@ class cfgWeapons
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		chamberSize = 1;
-		//magazines[] = {"ER7_Gauss_Magazine"};
+		magazines[] = {""};
 		attachments[] = {"weaponOptics","weaponOpticsHunting","ER7_Energy_Cell"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
