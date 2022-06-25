@@ -76,9 +76,3 @@ class Stage7
 	texture = "dz\data\data\env_land_co.paa";
 	uvSource = "none";
 };
-/*
-class Stage8
-{
-	texture = "Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_emmisive.paa";
-	texGen = "0";
-}; */
