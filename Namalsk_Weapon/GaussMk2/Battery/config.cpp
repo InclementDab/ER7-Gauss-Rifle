@@ -14,10 +14,10 @@ class CfgPatches
 class Inventory_Base;
 class CfgVehicles
 {
-	class ER7_Energy_Cell: Inventory_Base
+	class ER7_Gauss_Battery: Inventory_Base
     {
         scope = 2;
-        displayName = "ER7 Energy Cell";
+        displayName = "ER7 Energy Battery";
         descriptionShort = "Experimental compact nuclear cell. Stores enough energy to fire the ER7 Gauss Rifle 3 times in relatively quick sucession.";
         model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
         isMeleeWeapon = 1;
@@ -26,19 +26,19 @@ class CfgVehicles
         itemSize[] = {2,1};
         stackedUnit = "w";
         quantityBar = 1;
-        varQuantityInit = 200;
+        varQuantityInit = 90;
         varQuantityMin = 0.0;
-        varQuantityMax = 200;
+        varQuantityMax = 90;
         varQuantityDestroyOnMin = 0;
-        inventorySlot[] = {"ER7_Energy_Cell"};
+        inventorySlot[] = {"ER7_Gauss_Battery"};
         rotationFlags = 17;
         class EnergyManager
         {
             hasIcon = 1;
             switchOnAtSpawn = 1;
             isPassiveDevice = 1;
-            energyStorageMax = 200; 
-            energyAtSpawn = 200;
+            energyStorageMax = 90; 
+            energyAtSpawn = 90;
             convertEnergyToQuantity = 1;
             reduceMaxEnergyByDamageCoef = 1;
             powerSocketsCount = 1;
@@ -65,9 +65,9 @@ class CfgVehicles
 
 class CfgSlots
 {
-	class Slot_ER7_Energy_Cell
+	class Slot_ER7_Gauss_Battery
 	{
-		name = "ER7_Energy_Cell";
+		name = "ER7_Gauss_Battery";
 		displayName = "ER7 Energy Cell";
 		ghostIcon = "set:gauss_ghost image:ghost";
 	};

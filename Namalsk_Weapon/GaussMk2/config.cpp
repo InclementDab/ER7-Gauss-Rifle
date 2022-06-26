@@ -37,7 +37,7 @@ class cfgWeapons
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		chamberSize = 1;
 		magazines[] = {};
-		attachments[] = {"weaponOptics","weaponOpticsHunting","ER7_Energy_Cell"};
+		attachments[] = {"weaponOptics","weaponOpticsHunting","ER7_Gauss_Battery"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
 		modes[] = {"SemiAuto"};
@@ -487,10 +487,10 @@ class cfgWeapons
  		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
  	};	*/
 
- 	class ProxyER7_Energy_Cell: ProxyAttachment
+ 	class ProxyER7_Gauss_Battery: ProxyAttachment
     {
     	scope = 0;
-    	inventorySlot = "ER7_Energy_Cell";
+    	inventorySlot = "ER7_Gauss_Battery";
     	model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
     };
  };
