@@ -1,7 +1,7 @@
 ambient[]={1,0.99999988,1,1};
 diffuse[]={1,0.99999988,1,1};
 forcedDiffuse[]={0,0,0,1};
-emmisive[]={1.5,1.5,1.5,1};
+emmisive[]={1,1,1,1};
 specular[]={0.9,0.9,0.9,1};
 specularPower=1000;
 renderFlags[] = {NoZWrite,AddBlend};
