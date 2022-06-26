@@ -39,9 +39,9 @@ EffectDef {
   EmitorDef plasma_Cloud {
    ShapeType Cone
    ShapeSize 0 0 0
-   ConeAngle 360 0 250
+   ConeAngle 360 30 60
    MaxNum 100
-   BirthRate 2000
+   BirthRate 4000
    Angles 180 0 90
    LocalTransform 0
    Material "{17F1336FEF157B35}graphics/Particles/materials/smoke/smoke_dust_01_em_Spooky.emat"
@@ -54,7 +54,7 @@ EffectDef {
    RandomAngle 1
    Sort 0
    BillboardingType Full
-   Velocity 8
+   Velocity 15
    VelAffect 0
    AirResistance 0
    GravityMultiply 0
@@ -76,8 +76,8 @@ EffectDef {
   EmitorDef Static_discharge {
    ShapeType Cone
    ShapeSize 0 0 0
-   ConeAngle 360 0 240
-   MaxNum 100
+   ConeAngle 360 0 5
+   MaxNum 250
    BirthRate 3000
    Angles 180 0 90
    LocalTransform 0
@@ -85,16 +85,17 @@ EffectDef {
    SizeMultiplier 0.3
    SizeRND 0.2
    RandomRotDir 0
-   StretchMultiplier 1
-   StreakFullUV 0
+   StretchMultiplier 1.025
+   StreakFullUV 1
    VelAngle 0
    RandomAngle 1
    Sort 0
    BillboardingType Full
-   Velocity 9
+   Velocity 30
    VelAffect 0
    AirResistance 0
    GravityMultiply 0
+   Restitution 1
    AnimFPS 0
    LifeTime 1
    LifeTimeRND 0
@@ -102,7 +103,7 @@ EffectDef {
     0 0.7519 0.4 0.5 1 0.5 0.5 0.6
    }
    Alpha {
-    0 0.05 0.225 0.05 0.75 0 1 0
+    0 0.2467 0.225 0.05 1 0
    }
    Size {
     0 0 0.37279 1 1 1
