@@ -14,4 +14,4 @@ class WeaponGuardBattery extends WeaponGuardBase
 		wpnDebugPrint("[wpnfsm] " + Object.GetDebugName(m_weapon) + " WeaponGuardBattery - no power");
         return false;
     }
-};
+}

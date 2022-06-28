@@ -10,12 +10,11 @@ class CfgPatches
 	};
 };
 
-class Mode_Safe;
-class Mode_SemiAuto;
+class Mode_Single;
 class cfgWeapons
 {
-	class FAL_Base;
-	class ER7_Gauss: FAL_Base
+	class BoltActionRifle_InnerMagazine_Base;
+	class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 	{
 		scope = 2;
 		displayName = "GRW-ER7 Gauss Rifle";
@@ -25,22 +24,52 @@ class cfgWeapons
 		itemSize[] = {10,4};
 		dexterity = 1.8;
 		absorbency = 0.1;
-		repairableWithKits[] = {5,1};
-		repairCosts[] = {30,25};
+		repairableWithKits[] = {1};
+		repairCosts[] = {25};
 		discreteDistance[] = {100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
 		discreteDistanceInitIndex = 0;
 		distanceZoomMin = 100;
 		distanceZoomMax = 100;
-		PPDOFProperties[] = {0,0,0,0,0,0};
 		chamberedRound = "";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
-		chamberSize = 1;
-		magazines[] = {};
+		chamberSize = 3;
 		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
-		recoilModifier[] = {0.5,1,1};
-		modes[] = {"SemiAuto"};
+		recoilModifier[] = {0.7,1,1};
+		animName = "Winchester70";
+		PPDOFProperties[] = {1,0.5,20,170,4,10};
+		WeaponLength = 0.931718;
+		barrelArmor = 3.125;
+		magazines[] = {};
+		DisplayMagazine = 0;
+		ejectType = 0;
+		swayModifier[] = {2.2,2.2,1.2};
+		drySound[] = {"dz\sounds\weapons\firearms\mosin9130\mosin_dry",0.5,1,20};
+		reloadMagazineSound[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_reload",0.8,1,20};
+		reloadSound[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_cycle",0.8,1,20};
+		reloadAction = "ReloadWinchester70";
+		shotAction = "ReloadWinchester70_shot";
+		modes[] = {"Single"};
+		class Single: Mode_Single
+		{
+			soundSetShot[] = {"Win_Shot_SoundSet","Win_Tail_SoundSet","Win_InteriorTail_SoundSet"};
+			soundSetShotExt[] = {{"Win_silencerHomeMade_SoundSet","Win_silencerHomeMadeTail_SoundSet","Win_silencerInteriorHomeMadeTail_SoundSet"}};
+			begin1[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_0",1,1,1000};
+			begin2[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_1",1,1,1000};
+			soundBegin[] = {"begin1",0.5,"begin2",0.5};
+			soundBeginExt[] = {{"beginSilenced_HomeMade",1}};
+			reloadTime = 1;
+			recoil = "recoil_Winchester";
+			recoilProne = "recoil_Winchester_prone";
+			dispersion = 0;
+			magazineSlot = "magazine";
+		};
+		class NoiseShoot
+		{
+			strength = 100;
+			type = "shot";
+		};
 		class AnimationSources
 		{
 			class AnimateLowerFlaps1Right
@@ -148,14 +177,6 @@ class cfgWeapons
 				initPhase = 0;
 				animPeriod = 0.5;
 			};	
-		};
-		class SemiAuto: Mode_SemiAuto
-		{
-			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
-			reloadTime = 0.475;
-			recoil = "recoil_AKM";
-			recoilProne = "recoil_AKM_prone";
-			dispersion = 0;
 		};
         class EnergyManager
         {
@@ -497,41 +518,9 @@ class cfgWeapons
 	};
 };
 
-/* Chambering only
- class CfgMagazines
- {
- 	class Mag_AKM_30Rnd;
- 	
-	class ER7_Gauss_Magazine: Mag_AKM_30Rnd
- 	{
-		scope = 2;
- 		displayName = "ER7 Magazine";
-		descriptionShort = "A 3 round magazine for the GRW ER7 Gauss Rifle.";
- 		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
- 		weight = 230;
- 		itemSize[] = {2,1};
- 		count = 3;
- 		ammo = "Bullet_ER7RFW";
- 		ammoItems[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
-		isMeleeWeapon = 0;
-		tracersEvery = 1;
- 	}; 
- };
-
-*/
-
  class CfgNonAIVehicles
  {
  	class ProxyAttachment;
-
- 	/* Chambering only
- 	class ProxyER7_Gauss_Magazine: ProxyAttachment
- 	{
- 		scope = 0;
- 		inventorySlot = "magazine";
- 		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
- 	};	*/
-
  	class ProxyER7_Gauss_Battery: ProxyAttachment
     {
     	scope = 0;
@@ -603,17 +592,4 @@ class CfgSoundSets
 	{
 		soundShaders[] = {"ER7_teleport_SoundShader"};
 	};
-};
-
-class CfgVehicles
-{
-	class HouseNoDestruct;
-	class vfx_gauss_thunderboltnorm: HouseNoDestruct
-    {
-        model = "\dz\data\data\blesk1.p3d";
-    };
-    class vfx_gauss_thunderboltheavy: HouseNoDestruct
-    {
-        model = "\dz\data\data\blesk2.p3d";
-    };
 };

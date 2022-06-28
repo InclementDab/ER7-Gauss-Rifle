@@ -24,4 +24,4 @@ class WeaponGuardHasAmmoAndBattery extends WeaponGuardBase
 		wpnDebugPrint("[wpnfsm] " + Object.GetDebugName(m_weapon) + " WeaponGuardHasAmmoAndBattery - no ammo");
 		return false;
     }
-};
+}

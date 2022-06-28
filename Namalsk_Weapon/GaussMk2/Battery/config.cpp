@@ -26,9 +26,9 @@ class CfgVehicles
         itemSize[] = {2,1};
         stackedUnit = "w";
         quantityBar = 1;
-        varQuantityInit = 90;
+        varQuantityInit = 60;
         varQuantityMin = 0.0;
-        varQuantityMax = 90;
+        varQuantityMax = 60;
         varQuantityDestroyOnMin = 0;
         inventorySlot[] = {"RailgunBattery"};
         rotationFlags = 17;
@@ -37,8 +37,8 @@ class CfgVehicles
             hasIcon = 1;
             switchOnAtSpawn = 1;
             isPassiveDevice = 1;
-            energyStorageMax = 90; 
-            energyAtSpawn = 90;
+            energyStorageMax = 60; 
+            energyAtSpawn = 60;
             convertEnergyToQuantity = 1;
             reduceMaxEnergyByDamageCoef = 1;
             powerSocketsCount = 1;
