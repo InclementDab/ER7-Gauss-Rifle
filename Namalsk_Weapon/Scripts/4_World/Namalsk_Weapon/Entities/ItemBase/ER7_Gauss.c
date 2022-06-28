@@ -1,12 +1,19 @@
-class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
+class ER7_Gauss: Rifle_Base
 {
 	protected ref array<Particle> m_GaussHeat = {};
+		
+	ref WeaponStateBase D0;
+	ref WeaponStateBase C0;
+	ref	WeaponStateBase C1;
+	ref	WeaponStateBase DF;
+	ref	WeaponStateBase JF;
 	
 	override void InitStateMachine()
 	{
 		m_abilities.Insert(new AbilityRecord(WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED));
-		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED_KEEP));
-		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_OPENED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_COCKED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_UNCOCKED));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_START));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_END));
@@ -15,27 +22,28 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_UNCOCKED));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
 		
+		D0 = new RPTEmptyDischarged(this, NULL, RPTAnimState.DEFAULT);
+		C0 = new RPTEmptyDischarged(this, NULL, RPTAnimState.CHARGED);
+		DF = new RPTLoadedDischarged(this, NULL, RPTAnimState.DEFAULT);
+		C1 = new RPTLoadedCharged(this, NULL, RPTAnimState.CHARGED);
+		JF = new RPTLoadedJammed(this, NULL, RPTAnimState.JAMMED);
 		
-		C0 = new BARIMEmptyDischarged(this, NULL, BARIMAnimState.DEFAULT);
-		C1 = new BARIMLoadedCharged(this, NULL, BARIMAnimState.DEFAULT);
-		JF = new BARIMLoadedJammed(this, NULL, BARIMAnimState.JAMMED);
-		D1 = new BARIMLoadedDischarged(this, NULL, BARIMAnimState.DEFAULT);
-		
-		WeaponStateBase	Mech_C1 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
-		WeaponStateBase	Mech_D1 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
+		//WeaponStateBase	Mech_D0 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
+		WeaponStateBase	Mech_C1 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_OPENED);
+		WeaponStateBase	Mech_DF = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
 
-		
-		LoopedChambering Chamber_C0 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
-		LoopedChambering Chamber_C1 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED_KEEP, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
-		LoopedChambering Chamber_D1 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChamberingEjectLast Chamber_D0 = new LoopedChamberingEjectLast(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_UNCOCKED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChamberingEjectLast Chamber_C0 = new LoopedChamberingEjectLast(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_UNCOCKED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChamberingEjectLast Chamber_C1 = new LoopedChamberingEjectLast(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_COCKED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChamberingEjectLast Chamber_DF = new LoopedChamberingEjectLast(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_SHOTGUN_UNCOCKED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
 		
 		WeaponStateBase	Unjam_JF = new WeaponUnjamming(this, NULL, WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_START);
 		
-		WeaponStateBase	Trigger_C0 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+		WeaponStateBase	Trigger_D0 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+		WeaponStateBase	Trigger_C0 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL);
 		WeaponStateBase	Trigger_C1 = new WeaponFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL);
-		WeaponStateBase	Trigger_D1 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+		WeaponStateBase	Trigger_DF = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
 		WeaponStateBase	Trigger_JF = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
-	
 		
 		WeaponStateBase	Trigger_C1J = new WeaponFireToJam(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_JAM);
 
@@ -54,6 +62,7 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		
 		// Mechanism
 //----------------------------------------
+		m_fsm.AddTransition(new WeaponTransition( D0,			__M__,	Mech_DF));
 		m_fsm.AddTransition(new WeaponTransition( C0,			__M__,	Mech_C1));
 				
 		m_fsm.AddTransition(new WeaponTransition( C1,			__M__,	Mech_C1));
@@ -62,30 +71,31 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_abt_,	C1));
 		
-		m_fsm.AddTransition(new WeaponTransition( D1,			__M__,	Mech_D1));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	C1));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	C1));
+		m_fsm.AddTransition(new WeaponTransition( DF,			__M__,	Mech_DF));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_fin_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_fin_,	DF, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_abt_,	DF, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_DF,		_abt_,	C1));
 		
 		
 //----------------------------------------
+		m_fsm.AddTransition(new WeaponTransition( C0,			__L__,	Chamber_D0));
 		
-		m_fsm.AddTransition(new WeaponTransition( C0,			__L__,	Chamber_C0));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_fin_,	C1));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_abt_,	C1));
+		m_fsm.AddTransition(new WeaponTransition( D0,			__L__,	Chamber_D0));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D0,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D0,	_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D0,	_abt_,	C1));
 		
-		m_fsm.AddTransition(new WeaponTransition( C1,			__L__,	Chamber_C1, NULL, new GuardNot(new WeaponGuardInnerMagazineFullShareChamber(this))));
+		m_fsm.AddTransition(new WeaponTransition( C1,			__L__,	Chamber_C1, NULL, new GuardNot(new WeaponGuardInnerMagazineFull(this))));
 		m_fsm.AddTransition(new WeaponTransition(  Chamber_C1,	_fin_,	C1));
 		m_fsm.AddTransition(new WeaponTransition(  Chamber_C1,	_abt_,	C1));
 		
-		m_fsm.AddTransition(new WeaponTransition( D1,			__L__,	Chamber_D1));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_fin_,	C1));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_abt_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_abt_,	C1));
+		m_fsm.AddTransition(new WeaponTransition( DF,			__L__,	Chamber_DF, NULL, new GuardNot(new WeaponGuardInnerMagazineFull(this))));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_DF,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_DF,	_abt_,	DF, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_DF,	_abt_,	C1));
 		
 //------------------------------------------
 		
@@ -97,48 +107,40 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_abt_,	C1));
 		
-				
+		
 		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_C1, NULL, new WeaponGuardHasAmmoAndBattery(this)));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_fin_,	C1));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_rto_,	C1));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_abt_,	C1));
+				
+		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_DF, NULL, new WeaponGuardNoBattery(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,		_rto_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,		_abt_,	C1));
 		
-		/*
-		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_C11L, NULL, new WeaponGuardBattery(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1L,	_fin_,	O01));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1L,	_rto_,	O01));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1L,	_abt_,	O01));
-		*/
-		
-		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_D1, NULL, new WeaponGuardNoBattery(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_fin_,	C1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_rto_,	C1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_abt_,	C1));
-		
-		/*
-		m_fsm.AddTransition(new WeaponTransition( C11,				__T__,	Trigger_NB11, NULL, new WeaponGuardNoBattery(this)));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_fin_,	C11));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_rto_,	C11));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_NB11,		_abt_,	C11));
-		*/
 		
 //-----------------------------------------
 		
 		// fire
+		m_fsm.AddTransition(new WeaponTransition( D0,			__T__,	Trigger_D0)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D0,	_fin_,	D0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D0,	_dto_,	D0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D0,	_abt_,	D0));
+		
 		m_fsm.AddTransition(new WeaponTransition( C0,			__T__,	Trigger_C0)); // fire.cocked
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_fin_,	C0));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_dto_,	C0));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_abt_,	C0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_fin_,	D0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_dto_,	D0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_abt_,	D0));
 		
 		m_fsm.AddTransition(new WeaponTransition( C1,			__T__,	Trigger_C1)); // fire.cocked
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_fin_,	D1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_rto_,	D1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_abt_,	D1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_fin_,	DF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_rto_,	DF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_abt_,	DF));
 		
-		m_fsm.AddTransition(new WeaponTransition( D1,			__T__,	Trigger_D1)); // fire.cocked
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_fin_,	D1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_dto_,	D1));
-		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_abt_,	D1));
+		m_fsm.AddTransition(new WeaponTransition( DF,			__T__,	Trigger_DF)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,	_fin_,	DF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,	_dto_,	DF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_DF,	_abt_,	DF));
 		
 		m_fsm.AddTransition(new WeaponTransition( JF,			__T__,	Trigger_JF)); // fire.cocked
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF,	_fin_,	JF));
@@ -146,25 +148,126 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF,	_abt_,	JF));
 		
 		
-		m_fsm.AddTransition(new WeaponTransition( C1,			__TJ_,	Trigger_C1J)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition( JF,			__TJ_,	Trigger_C1J)); // fire.cocked
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_fin_,	JF));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_rto_,	JF));
 		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_abt_,	JF));
 		
 //---------------------------------------------	
 		
-		m_fsm.SetInitialState(C0);
+		m_fsm.SetInitialState(D0);
 
 		SelectionBulletHide();
 		HideMagazine();
 
 		m_fsm.Start();
+	}
+	
+	override bool CanChamberBullet (int muzzleIndex, Magazine mag)
+	{
+		return CanChamberFromMag(muzzleIndex, mag) && !IsInternalMagazineFull(muzzleIndex);
+	}
+	
+	override void SetActions()
+	{
+		super.SetActions();
+		AddAction(FirearmActionLoadMultiBullet);
+
+		RemoveAction(FirearmActionLoadBulletQuick); // Easy reload
+		AddAction(FirearmActionLoadMultiBulletQuick); // Easy reload
+	}
 		
-		/*
+	override void EEFired(int muzzleType, int mode, string ammoType)
+	{
+		super.EEFired(muzzleType, mode, ammoType);
 		
+		if (GetCompEM()) {
+			EntityAI source = GetCompEM().GetEnergySource();
+			if (source) {				
+				source.GetCompEM().AddEnergy(-1 * GetCompEM().GetEnergyUsage());
+			}
+			GetCompEM().UpdateCanWork();
+		}
+	
+		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
+			for (int i = 1; i <= 4; i++) {
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
+                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_FIRE, this, GetMemoryPointPos("usti hlavne")));
+            }
+			
+			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
+		}
 		
-		
-		m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_MAGAZINE_BULLET)));
+		if (GetGame().IsServer()) {
+			thread OnFireServer();
+		}
+	}
+	
+	override RecoilBase SpawnRecoilObject()
+	{
+		return new ER7Recoil(this);
+	}
+	
+	void OnFireFailed()
+	{		
+		EffectSound sound;
+		if (PlaySoundSet(sound, "ER7_Shot_Failed_SoundSet", 0, 0)) {
+			sound.Start();
+		}
+	}
+	
+	void OnFireServer()
+	{
+		//flaps 1 closest to barrel flaps 4 closest to user.
+		SetAnimationPhase("AnimateLowerFlaps4Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps4Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps4Right", 1);
+		Sleep(75);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 1);
+		Sleep(100);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 1);
+		Sleep(125);
+		SetAnimationPhase("AnimateLowerFlaps1Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps1Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps1Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps1Right", 1);
+
+		Sleep(850);
+
+		SetAnimationPhase("AnimateLowerFlaps4Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps4Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps4Right", 0);
+		Sleep(175);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 0);
+		Sleep(150);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 0);
+		Sleep(125);
+		SetAnimationPhase("AnimateLowerFlaps1Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps1Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps1Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps1Right", 0);
+	}
+}
+
+
+
+/*
+m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_MAGAZINE_BULLET)));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_NOMAGAZINE_BULLET)));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_MAGAZINE_NOBULLET)));
 		m_abilities.Insert(new AbilityRecord(WeaponActions.RELOAD, GetWeaponSpecificCommand(WeaponActions.RELOAD, WeaponActionReloadTypes.RELOADRIFLE_NOMAGAZINE_NOBULLET)));
@@ -511,91 +614,154 @@ class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
 		HideMagazine();
 
 		m_fsm.Start();*/
-	}
-	
-	override void EEFired(int muzzleType, int mode, string ammoType)
-	{
-		super.EEFired(muzzleType, mode, ammoType);
-		
-		if (GetCompEM()) {
-			EntityAI source = GetCompEM().GetEnergySource();
-			if (source) {				
-				source.GetCompEM().AddEnergy(-1 * GetCompEM().GetEnergyUsage());
-			}
-			GetCompEM().UpdateCanWork();
-		}
-	
-		if (GetGame().IsClient() || !GetGame().IsMultiplayer()) {
-			for (int i = 1; i <= 4; i++) {
-                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_RIGHT, this, GetMemoryPointPos("ParticlePoint_Right_" + i)));
-                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_HEAT_LEFT, this, GetMemoryPointPos("ParticlePoint_Left_" + i)));
-                m_GaussHeat.Insert(Particle.PlayOnObject(ParticleList.GAUSS_FIRE, this, GetMemoryPointPos("usti hlavne")));
-            }
-			
-			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
-		}
-		
-		if (GetGame().IsServer()) {
-			thread OnFireServer();
-		}
-	}
-	
-	override RecoilBase SpawnRecoilObject()
-	{
-		return new ER7Recoil(this);
-	}
-	
-	void OnFireFailed()
-	{		
-		EffectSound sound;
-		if (PlaySoundSet(sound, "ER7_Shot_Failed_SoundSet", 0, 0)) {
-			sound.Start();
-		}
-	}
-	
-	void OnFireServer()
-	{
-		//flaps 1 closest to barrel flaps 4 closest to user.
-		SetAnimationPhase("AnimateLowerFlaps4Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps4Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps4Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps4Right", 1);
-		Sleep(75);
-		SetAnimationPhase("AnimateLowerFlaps3Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps3Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps3Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps3Right", 1);
-		Sleep(100);
-		SetAnimationPhase("AnimateLowerFlaps2Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps2Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps2Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps2Right", 1);
-		Sleep(125);
-		SetAnimationPhase("AnimateLowerFlaps1Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps1Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps1Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps1Right", 1);
 
-		Sleep(850);
 
-		SetAnimationPhase("AnimateLowerFlaps4Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps4Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps4Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps4Right", 0);
-		Sleep(175);
-		SetAnimationPhase("AnimateLowerFlaps3Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps3Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps3Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps3Right", 0);
-		Sleep(150);
-		SetAnimationPhase("AnimateLowerFlaps2Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps2Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps2Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps2Right", 0);
-		Sleep(125);
-		SetAnimationPhase("AnimateLowerFlaps1Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps1Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps1Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps1Right", 0);
-	}
-}
+		/*
+		
+functioning bolt action
+		m_abilities.Insert(new AbilityRecord(WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED_KEEP));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_START));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_END));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_COCKED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_UNCOCKED));
+		m_abilities.Insert(new AbilityRecord(WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY));
+		
+		
+		C0 = new BARIMEmptyDischarged(this, NULL, BARIMAnimState.DEFAULT);
+		C1 = new BARIMLoadedCharged(this, NULL, BARIMAnimState.DEFAULT);
+		JF = new BARIMLoadedJammed(this, NULL, BARIMAnimState.JAMMED);
+		D1 = new BARIMLoadedDischarged(this, NULL, BARIMAnimState.DEFAULT);
+		
+		WeaponStateBase	Mech_C1 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
+		WeaponStateBase	Mech_D1 = new WeaponChargingInnerMag(this, NULL, WeaponActions.MECHANISM, WeaponActionMechanismTypes.MECHANISM_CLOSED);
+
+		
+		LoopedChambering Chamber_C0 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChambering Chamber_C1 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED_KEEP, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		LoopedChambering Chamber_D1 = new LoopedChambering(this, NULL, WeaponActions.CHAMBERING, WeaponActionChamberingTypes.CHAMBERING_STARTLOOPABLE_CLOSED, WeaponActionChamberingTypes.CHAMBERING_ENDLOOPABLE);
+		
+		WeaponStateBase	Unjam_JF = new WeaponUnjamming(this, NULL, WeaponActions.UNJAMMING, WeaponActionUnjammingTypes.UNJAMMING_START);
+		
+		WeaponStateBase	Trigger_C0 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+		WeaponStateBase	Trigger_C1 = new WeaponFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_NORMAL);
+		WeaponStateBase	Trigger_D1 = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+		WeaponStateBase	Trigger_JF = new WeaponDryFire(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_DRY);
+	
+		
+		WeaponStateBase	Trigger_C1J = new WeaponFireToJam(this, NULL, WeaponActions.FIRE, WeaponActionFireTypes.FIRE_JAM);
+
+		
+		WeaponEventBase _fin_ = new WeaponEventHumanCommandActionFinished;
+		WeaponEventBase __L__ = new WeaponEventLoad1Bullet;
+		WeaponEventBase __T__ = new WeaponEventTrigger;
+		WeaponEventBase __TJ_ = new WeaponEventTriggerToJam;
+		WeaponEventBase __U__ = new WeaponEventUnjam;
+		WeaponEventBase	__M__ = new WeaponEventMechanism;
+		WeaponEventBase _abt_ = new WeaponEventHumanCommandActionAborted;
+		WeaponEventBase _rto_ = new WeaponEventReloadTimeout;
+		WeaponEventBase _dto_ = new WeaponEventDryFireTimeout;
+
+		m_fsm = new WeaponFSM();
+		
+		// Mechanism
+//----------------------------------------
+		m_fsm.AddTransition(new WeaponTransition( C0,			__M__,	Mech_C1));
+				
+		m_fsm.AddTransition(new WeaponTransition( C1,			__M__,	Mech_C1));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_fin_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_C1,		_abt_,	C1));
+		
+		m_fsm.AddTransition(new WeaponTransition( D1,			__M__,	Mech_D1));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Mech_D1,		_abt_,	C1));
+		
+		
+//----------------------------------------
+		
+		m_fsm.AddTransition(new WeaponTransition( C0,			__L__,	Chamber_C0));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_C0,	_abt_,	C1));
+		
+		m_fsm.AddTransition(new WeaponTransition( C1,			__L__,	Chamber_C1, NULL, new GuardNot(new WeaponGuardInnerMagazineFullShareChamber(this))));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_C1,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_C1,	_abt_,	C1));
+		
+		m_fsm.AddTransition(new WeaponTransition( D1,			__L__,	Chamber_D1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_abt_,	D1, NULL, new WeaponGuardCurrentChamberFiredOut(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Chamber_D1,	_abt_,	C1));
+		
+//------------------------------------------
+		
+		m_fsm.AddTransition(new WeaponTransition( JF, 			__U__,	Unjam_JF));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_fin_,	JF, NULL, new WeaponGuardJammed(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_fin_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_abt_,	JF, NULL, new WeaponGuardJammed(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_abt_,	C0, NULL, new WeaponGuardCurrentChamberEmpty(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Unjam_JF,	_abt_,	C1));
+		
+				
+		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_C1, NULL, new WeaponGuardHasAmmoAndBattery(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_rto_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,		_abt_,	C1));
+		
+
+		
+		m_fsm.AddTransition(new WeaponTransition( C1,				__T__,	Trigger_D1, NULL, new WeaponGuardNoBattery(this)));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_fin_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_rto_,	C1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,		_abt_,	C1));
+
+		
+//-----------------------------------------
+		
+		// fire
+		m_fsm.AddTransition(new WeaponTransition( C0,			__T__,	Trigger_C0)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_fin_,	C0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_dto_,	C0));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C0,	_abt_,	C0));
+		
+		m_fsm.AddTransition(new WeaponTransition( C1,			__T__,	Trigger_C1)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_fin_,	D1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_rto_,	D1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1,	_abt_,	D1));
+		
+		m_fsm.AddTransition(new WeaponTransition( D1,			__T__,	Trigger_D1)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_fin_,	D1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_dto_,	D1));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_D1,	_abt_,	D1));
+		
+		m_fsm.AddTransition(new WeaponTransition( JF,			__T__,	Trigger_JF)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF,	_fin_,	JF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF,	_dto_,	JF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_JF,	_abt_,	JF));
+		
+		
+		m_fsm.AddTransition(new WeaponTransition( C1,			__TJ_,	Trigger_C1J)); // fire.cocked
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_fin_,	JF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_rto_,	JF));
+		m_fsm.AddTransition(new WeaponTransition(  Trigger_C1J,	_abt_,	JF));
+		
+//---------------------------------------------	
+		
+		m_fsm.SetInitialState(C0);
+
+		SelectionBulletHide();
+		HideMagazine();
+
+		m_fsm.Start();
+		*/
+		

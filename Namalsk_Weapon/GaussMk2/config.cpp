@@ -10,11 +10,11 @@ class CfgPatches
 	};
 };
 
-class Mode_Single;
+class Mode_SemiAuto;
 class cfgWeapons
 {
-	class BoltActionRifle_InnerMagazine_Base;
-	class ER7_Gauss: BoltActionRifle_InnerMagazine_Base
+	class Repeater_Base;
+	class ER7_Gauss: Repeater_Base
 	{
 		scope = 2;
 		displayName = "GRW-ER7 Gauss Rifle";
@@ -48,22 +48,14 @@ class cfgWeapons
 		drySound[] = {"dz\sounds\weapons\firearms\mosin9130\mosin_dry",0.5,1,20};
 		reloadMagazineSound[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_reload",0.8,1,20};
 		reloadSound[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_cycle",0.8,1,20};
-		reloadAction = "ReloadWinchester70";
-		shotAction = "ReloadWinchester70_shot";
 		modes[] = {"Single"};
-		class Single: Mode_Single
+		class SemiAuto: Mode_SemiAuto
 		{
-			soundSetShot[] = {"Win_Shot_SoundSet","Win_Tail_SoundSet","Win_InteriorTail_SoundSet"};
-			soundSetShotExt[] = {{"Win_silencerHomeMade_SoundSet","Win_silencerHomeMadeTail_SoundSet","Win_silencerInteriorHomeMadeTail_SoundSet"}};
-			begin1[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_0",1,1,1000};
-			begin2[] = {"dz\sounds\weapons\firearms\winchester70\winchester70_1",1,1,1000};
-			soundBegin[] = {"begin1",0.5,"begin2",0.5};
-			soundBeginExt[] = {{"beginSilenced_HomeMade",1}};
-			reloadTime = 1;
-			recoil = "recoil_Winchester";
-			recoilProne = "recoil_Winchester_prone";
+			soundSetShot[] = {"ER7_Shot_SoundSet","FNFAL_Tail_SoundSet","FNFAL_InteriorTail_SoundSet"};
+			reloadTime = 0.475;
+			recoil = "recoil_AKM";
+			recoilProne = "recoil_AKM_prone";
 			dispersion = 0;
-			magazineSlot = "magazine";
 		};
 		class NoiseShoot
 		{
