@@ -5,8 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition","DZ_Weapons_Magazines"};
-		magazines[] = {"A2GaussMk2_Magazine"};
+		requiredAddons[] = {"DZ_Data","DZ_Weapons_Firearms","DZ_Weapons_Ammunition"};
 		ammo[] = {};
 	};
 };
@@ -21,7 +20,7 @@ class cfgWeapons
 		scope = 2;
 		displayName = "GRW-ER7 Gauss Rifle";
 		descriptionShort = "The ER7 is a Linear motor firearm that uses an electromagnetic force to fire a projectile at over 3500 m/s. Requires high capacity Railgun Batteries to fire.";
-		model = "\Namalsk_Weapon\GaussMk2\Original_Gauss.p3d";
+		model = "\Namalsk_Weapon\GaussMk2\ER7_Gauss.p3d";
 		weight = 10500;
 		itemSize[] = {10,4};
 		dexterity = 1.8;
@@ -35,9 +34,9 @@ class cfgWeapons
 		PPDOFProperties[] = {0,0,0,0,0,0};
 		chamberedRound = "";
 		hiddenSelections[] = {"camo"};
-		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\originalgauss.rvmat"};
+		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		chamberSize = 1;
-		magazines[] = {"ER7_Gauss_Magazine"};
+		magazines[] = {};
 		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
@@ -142,6 +141,12 @@ class cfgWeapons
 				source = "user";
 				initPhase = 0;
 				animPeriod = 0.5;
+			};
+			class AnimateBolt
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0.5;
 			};	
 		};
 		class SemiAuto: Mode_SemiAuto
@@ -151,7 +156,6 @@ class cfgWeapons
 			recoil = "recoil_AKM";
 			recoilProne = "recoil_AKM_prone";
 			dispersion = 0;
-			magazineSlot = "magazine";
 		};
         class EnergyManager
         {
@@ -493,9 +497,11 @@ class cfgWeapons
 	};
 };
 
+/* Chambering only
  class CfgMagazines
  {
  	class Mag_AKM_30Rnd;
+ 	
 	class ER7_Gauss_Magazine: Mag_AKM_30Rnd
  	{
 		scope = 2;
@@ -509,19 +515,29 @@ class cfgWeapons
  		ammoItems[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		isMeleeWeapon = 0;
 		tracersEvery = 1;
- 	};
+ 	}; 
  };
 
+*/
 
  class CfgNonAIVehicles
  {
  	class ProxyAttachment;
+
+ 	/* Chambering only
  	class ProxyER7_Gauss_Magazine: ProxyAttachment
  	{
  		scope = 0;
  		inventorySlot = "magazine";
  		model = "Namalsk_Weapon\GaussMk2\ER7_Gauss_Magazine.p3d";
- 	};
+ 	};	*/
+
+ 	class ProxyER7_Gauss_Battery: ProxyAttachment
+    {
+    	scope = 0;
+    	inventorySlot = "RailgunBattery";
+    	model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
+    };
  };
 
 

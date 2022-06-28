@@ -17,13 +17,13 @@ class CfgVehicles
 	class ER7_Gauss_Battery: Inventory_Base
     {
         scope = 2;
-        displayName = "Railgun Battery";
-        descriptionShort = "High capacity Railgun Battery, will fire 9 shots before drained.";
-        model = "\Namalsk_Weapon\GaussMk2\Battery\RailBattery.p3d";
+        displayName = "ER7 Energy Battery";
+        descriptionShort = "Experimental compact nuclear cell. Stores enough energy to fire the ER7 Gauss Rifle 3 times in relatively quick sucession.";
+        model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
         isMeleeWeapon = 1;
-        weight = 2600;
+        weight = 1200;
         absorbency = 0.8;
-        itemSize[] = {1,1};
+        itemSize[] = {2,1};
         stackedUnit = "w";
         quantityBar = 1;
         varQuantityInit = 90;
@@ -44,15 +44,6 @@ class CfgVehicles
             powerSocketsCount = 1;
             compatiblePlugTypes[] = {1};
         };
-        class AnimationSources
-        {
-            class cover
-            {
-                source = "user";
-                animPeriod = 0.5;
-                initPhase = 1;
-            };
-        };
         class DamageSystem
         {
             class GlobalHealth
@@ -61,11 +52,11 @@ class CfgVehicles
                 {
                     hitpoints = 20;
                     healthLevels[] = 
-                    {{1.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
-                    {0.7,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery.rvmat"}},
-                    {0.5,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
-                    {0.3,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_damage.rvmat"}},
-                    {0.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\RailBattery_destruct.rvmat"}}};
+                    {{1.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell.rvmat"}},
+                    {0.7,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell.rvmat"}},
+                    {0.5,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_damage.rvmat"}},
+                    {0.3,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_damage.rvmat"}},
+                    {0.0,{"Namalsk_Weapon\GaussMk2\Battery\Data\Energy_Cell_destruct.rvmat"}}};
                 };
             };
         };

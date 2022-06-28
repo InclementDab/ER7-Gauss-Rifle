@@ -1,9 +1,9 @@
-ambient[] = {1,1,1,1};
-diffuse[] = {1,1,1,1};
+ambient[] = {0.8,0.8,0.8,1};
+diffuse[] = {0.8,0.8,0.8,1};
 forcedDiffuse[] = {0,0,0,0};
 emmisive[] = {0,0,0,1};
 specular[] = {0.1,0.1,0.1,1};
-specularPower = 120;
+specularPower = 35;
 PixelShaderID = "Super";
 VertexShaderID = "Super";
 class Stage1
@@ -41,7 +41,7 @@ class Stage3
 		dir[] = {0,0,0};
 		pos[] = {0,0,0};
 	};
-};
+}; /*
 class Stage4
 {
 	texture = "Namalsk_Weapon\GaussMk2\data\gauss_as.paa";
@@ -53,7 +53,7 @@ class Stage4
 		dir[] = {0,0,0};
 		pos[] = {0,0,0};
 	};
-};
+}; */
 class Stage5
 {
 	texture = "Namalsk_Weapon\GaussMk2\data\gauss_smdi.paa";

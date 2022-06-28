@@ -379,7 +379,6 @@ class ER7_Gauss : FAL_Base
 			thread CreateBolts();			
 			//ScriptedLightBase.CreateLight(ER7_Gauss_Fire_Light, ModelToWorld(GetMemoryPointPos("usti hlavne")));
 		}
-		
 		if (GetGame().IsServer()) {
 			thread OnFireServer();
 		}
@@ -399,52 +398,49 @@ class ER7_Gauss : FAL_Base
 	}
 	
 	void OnFireServer()
-	{	// Lower Right
-		SetAnimationPhase("AnimateLowerFlaps1Right", 1);
-		SetAnimationPhase("AnimateLowerFlaps2Right", 1);
-		SetAnimationPhase("AnimateLowerFlaps3Right", 1);
-		SetAnimationPhase("AnimateLowerFlaps4Right", 1);
-		// Upper Right
-		SetAnimationPhase("AnimateUpperFlaps1Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps2Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps3Right", 1);
-		SetAnimationPhase("AnimateUpperFlaps4Right", 1);
-		// Lower Left
-		SetAnimationPhase("AnimateLowerFlaps1Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps2Left", 1);
-		SetAnimationPhase("AnimateLowerFlaps3Left", 1);
+	{	//flaps 1 closest to barrel flaps 4 closest to user.
+		
 		SetAnimationPhase("AnimateLowerFlaps4Left", 1);
-		// Upper Left
-		SetAnimationPhase("AnimateUpperFlaps1Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps2Left", 1);
-		SetAnimationPhase("AnimateUpperFlaps3Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 1);
 		SetAnimationPhase("AnimateUpperFlaps4Left", 1);
-		
-		Print(GetAnimationPhase("AnimateLowerFlaps1Right"));
-		Sleep(2000);
-		
-		// Lower Right
-		SetAnimationPhase("AnimateLowerFlaps1Right", 0);
-		SetAnimationPhase("AnimateLowerFlaps2Right", 0);
-		SetAnimationPhase("AnimateLowerFlaps3Right", 0);
-		SetAnimationPhase("AnimateLowerFlaps4Right", 0);
-		// Upper Right
-		SetAnimationPhase("AnimateUpperFlaps1Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps2Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps3Right", 0);
-		SetAnimationPhase("AnimateUpperFlaps4Right", 0);
-		// Lower Left
-		SetAnimationPhase("AnimateLowerFlaps1Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps2Left", 0);
-		SetAnimationPhase("AnimateLowerFlaps3Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps4Right", 1);
+		Sleep(75);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 1);
+		Sleep(100);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 1);
+		Sleep(125);
+		SetAnimationPhase("AnimateLowerFlaps1Left", 1);
+		SetAnimationPhase("AnimateLowerFlaps1Right", 1);
+		SetAnimationPhase("AnimateUpperFlaps1Left", 1);
+		SetAnimationPhase("AnimateUpperFlaps1Right", 1);
+
+		Sleep(850);
+
 		SetAnimationPhase("AnimateLowerFlaps4Left", 0);
-		// Upper Left
-		SetAnimationPhase("AnimateUpperFlaps1Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps2Left", 0);
-		SetAnimationPhase("AnimateUpperFlaps3Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps4Right", 0);
 		SetAnimationPhase("AnimateUpperFlaps4Left", 0);
-		
-		Print(GetAnimationPhase("AnimateLowerFlaps1Right"));
+		SetAnimationPhase("AnimateUpperFlaps4Right", 0);
+		Sleep(175);
+		SetAnimationPhase("AnimateLowerFlaps3Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps3Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps3Right", 0);
+		Sleep(150);
+		SetAnimationPhase("AnimateLowerFlaps2Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps2Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps2Right", 0);
+		Sleep(125);
+		SetAnimationPhase("AnimateLowerFlaps1Left", 0);
+		SetAnimationPhase("AnimateLowerFlaps1Right", 0);
+		SetAnimationPhase("AnimateUpperFlaps1Left", 0);
+		SetAnimationPhase("AnimateUpperFlaps1Right", 0);
 	}
 	
 	private void CreateBolts()
