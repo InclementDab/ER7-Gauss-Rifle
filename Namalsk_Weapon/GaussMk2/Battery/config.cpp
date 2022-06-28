@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Namalsk_Weapon_Energy_Cell
+	class Namalsk_Weapon_RailBattery
 	{
 		units[] = {};
 		weapons[] = {};
@@ -30,7 +30,7 @@ class CfgVehicles
         varQuantityMin = 0.0;
         varQuantityMax = 90;
         varQuantityDestroyOnMin = 0;
-        inventorySlot[] = {"ER7_Gauss_Battery"};
+        inventorySlot[] = {"RailgunBattery"};
         rotationFlags = 17;
         class EnergyManager
         {
@@ -65,10 +65,10 @@ class CfgVehicles
 
 class CfgSlots
 {
-	class Slot_ER7_Gauss_Battery
+	class Slot_RailgunBattery
 	{
-		name = "ER7_Gauss_Battery";
-		displayName = "ER7 Energy Cell";
+		name = "RailgunBattery";
+		displayName = "Railgun Battery";
 		ghostIcon = "set:gauss_ghost image:ghost";
 	};
 };
