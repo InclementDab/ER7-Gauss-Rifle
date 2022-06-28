@@ -37,7 +37,7 @@ class cfgWeapons
 		hiddenSelectionsMaterials[] = {"Namalsk_Weapon\GaussMk2\data\gauss.rvmat"};
 		chamberSize = 1;
 		magazines[] = {};
-		attachments[] = {"weaponOptics","weaponOpticsHunting","ER7_Gauss_Battery"};
+		attachments[] = {"weaponOptics","weaponOpticsHunting","RailgunBattery"};
 		chamberableFrom[] = {"Ammo_ER7RFW", "Ammo_ER7RFW_Teleport"};
 		recoilModifier[] = {0.5,1,1};
 		modes[] = {"SemiAuto"};
@@ -191,6 +191,30 @@ class cfgWeapons
 					overrideParticle = "weapon_shot_Flame_3D_4star";
 					overridePoint = "usti hlavne";
 				};
+				class GasPistonBurstR
+				{
+					overrideParticle = "weapon_shot_chamber_smoke";
+					overridePoint = "GasPiston";
+					overrideDirectionVector[] = {0,0,0};
+				};
+				class GasPistonBurstL
+				{
+					overrideParticle = "weapon_shot_chamber_smoke";
+					overridePoint = "GasPiston";
+					overrideDirectionVector[] = {180,0,0};
+				};
+				class GasPistonSmokeRaiseR
+				{
+					overrideParticle = "weapon_shot_chamber_smoke_raise";
+					overridePoint = "GasPiston";
+					overrideDirectionVector[] = {0,0,0};
+				};
+				class GasPistonSmokeRaiseL
+				{
+					overrideParticle = "weapon_shot_chamber_smoke_raise";
+					overridePoint = "GasPiston";
+					overrideDirectionVector[] = {180,0,0};
+				};
 			};
 			class OnOverheating
 			{
@@ -201,6 +225,27 @@ class cfgWeapons
 				{
 					positionOffset[] = {0.1,0,0};
 					onlyWithinRainLimits[] = {0,0.2};
+				};
+				class SmokingBarrel1: SmokingBarrelBase
+				{
+					overridePoint = "GasPiston";
+					positionOffset[] = {0.05,-0.02,0};
+					overrideParticle = "smoking_barrel_small";
+					onlyWithinOverheatLimits[] = {0,0.2};
+				};
+				class SmokingBarrelHot1: SmokingBarrelBase
+				{
+					overridePoint = "GasPiston";
+					positionOffset[] = {0.12,-0.02,0};
+					overrideParticle = "smoking_barrel";
+					onlyWithinOverheatLimits[] = {0.2,0.6};
+				};
+				class SmokingBarrelHot3: SmokingBarrelBase
+				{
+					overridePoint = "GasPiston";
+					positionOffset[] = {0.21,-0.02,0};
+					overrideParticle = "smoking_barrel_heavy";
+					onlyWithinOverheatLimits[] = {0.6,1};
 				};
 				class Steam
 				{
@@ -490,7 +535,7 @@ class cfgWeapons
  	class ProxyER7_Gauss_Battery: ProxyAttachment
     {
     	scope = 0;
-    	inventorySlot = "ER7_Gauss_Battery";
+    	inventorySlot = "RailgunBattery";
     	model = "\Namalsk_Weapon\GaussMk2\Battery\ER7_Energy_Cell.p3d";
     };
  };
